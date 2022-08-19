@@ -1,0 +1,29 @@
+:root {
+    --tr-black: #0D0A0B;
+    --tr-green: #72B01D;
+    --tr-green-dark: #4F7914;
+    --tr-white: #FCFFFC;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.tr-btn {
+    background-color: var(--tr-green) !important;
+    color: var(--tr-white) !important;
+    border: 0 !important;
+    transition: 200ms !important;
+}
+
+.tr-btn:hover {
+    filter: brightness(0.9) !important;
+}
+
