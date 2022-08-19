@@ -3,6 +3,7 @@
     --tr-green: #72B01D;
     --tr-green-dark: #4F7914;
     --tr-white: #FCFFFC;
+    --tr-light-text: rgba(13, 10, 11, 0.5);
 }
 
 * {
@@ -28,5 +29,18 @@ html, body {
 
 .tr-btn:hover {
     filter: brightness(0.9) !important;
+}
+
+.tr-input {
+    background-color: var(--tr-white) !important;
+}
+
+.tr-input:focus {
+    border: solid 1px var(--tr-green) !important;
+    box-shadow: none !important;
+}
+
+.tr-input::placeholder {
+    color: var(--tr-light-text) !important;
 }
 
