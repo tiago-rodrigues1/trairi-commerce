@@ -43,4 +43,16 @@ html, body {
 .tr-input::placeholder {
     color: var(--tr-light-text) !important;
 }
-
+header{
+    background-color: #72B01D;
+}
+h1{
+    color: #FCFFFC;  
+}
+.search button{
+    background-color: #4F7914 !important;
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
+.search input{
+    border-radius: 0.5rem 0rem 0rem 0.5rem;
+}
