@@ -3,6 +3,7 @@
     --tr-green: #72B01D;
     --tr-green-dark: #4F7914;
     --tr-white: #FCFFFC;
+    --tr-grey: #f7f7f7;
     --tr-light-text: rgba(13, 10, 11, 0.5);
 }
 
@@ -12,12 +13,17 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     width: 100vw;
     height: 100vh;
 
     background-color: var(--tr-white);
     color: var(--tr-black);
+}
+
+.bg-grey {
+    background-color: var(--tr-grey);
 }
 
 .tr-btn {
@@ -43,16 +49,24 @@ html, body {
 .tr-input::placeholder {
     color: var(--tr-light-text) !important;
 }
-header{
-    background-color: #72B01D;
+
+header {
+    background-color: var(--tr-green);
 }
-h1{
-    color: #FCFFFC;  
+
+h1 {
+    color: var(--tr-white);
 }
-.search button{
-    background-color: #4F7914 !important;
+
+.search button {
+    background-color: var(--tr-green-dark) !important;
     border-radius: 0rem 0.5rem 0.5rem 0rem;
 }
-.search input{
+
+.search input {
     border-radius: 0.5rem 0rem 0rem 0.5rem;
+}
+
+.filter svg {
+    stroke: var(--tr-black);
 }
