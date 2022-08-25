@@ -5,6 +5,7 @@
     --tr-white: #FCFFFC;
     --tr-grey: #f7f7f7;
     --tr-light-text: rgba(13, 10, 11, 0.5);
+    --tr-red: #F25F5C;
 }
 
 * {
@@ -69,4 +70,39 @@ h1 {
 
 .filter svg {
     stroke: var(--tr-black);
+}
+.pedido{
+    color: var(--tr-green-dark);
+}
+.info p{
+    color: var(--tr-black);
+    font-size: small;
+}
+.dados button{
+    background-color: var(--tr-white);
+    border-radius: 0.5rem;
+    color: var(--tr-green);
+    border-color: var(--tr-green);
+}
+
+.dados button:hover{
+    background-color: var(--tr-green);
+    border: none;
+}
+
+.btn-accept{
+    background-color: var(--tr-green) !important;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: var(--tr-white);
+    max-width: 40rem;
+    align-self: center;
+    width: 100%;
+}
+.btn-refuse{
+    color: var(--tr-red);
+    text-align: center;
+}
+.dados h3{
+    color: var(--tr-green);
 }
