@@ -126,3 +126,12 @@ h1 {
 .badge {
     width: 4rem;
 }
+nav{
+    color: var(--tr-white);
+}
+.search-container{
+    max-width: 35%;
+}
+.logo h1{
+font-size: 3rem;
+}
