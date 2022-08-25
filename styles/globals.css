@@ -106,3 +106,32 @@ h1 {
 .dados h3{
     color: var(--tr-green);
 }
+
+.card-container {
+    width: 100%;
+    max-width: 20rem;
+}
+
+.card-price {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    color: var(--tr-green-dark) !important;
+}
+
+.card-container img {
+    max-width: 100%;
+    border-radius: .5rem .5rem 0 0;
+}
+
+.badge {
+    width: 4rem;
+}
+nav{
+    color: var(--tr-white);
+}
+.search-container{
+    max-width: 35%;
+}
+.logo h1{
+font-size: 3rem;
+}
