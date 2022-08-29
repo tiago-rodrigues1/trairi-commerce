@@ -71,26 +71,29 @@ h1 {
 .filter svg {
     stroke: var(--tr-black);
 }
-.pedido{
+
+.pedido {
     color: var(--tr-green-dark);
 }
-.info p{
+
+.info p {
     color: var(--tr-black);
     font-size: small;
 }
-.dados button{
+
+.dados button {
     background-color: var(--tr-white);
     border-radius: 0.5rem;
     color: var(--tr-green);
     border-color: var(--tr-green);
 }
 
-.dados button:hover{
+.dados button:hover {
     background-color: var(--tr-green);
     border: none;
 }
 
-.btn-accept{
+.btn-accept {
     background-color: var(--tr-green) !important;
     border-radius: 0.5rem;
     text-align: center;
@@ -99,11 +102,13 @@ h1 {
     align-self: center;
     width: 100%;
 }
-.btn-refuse{
+
+.btn-refuse {
     color: var(--tr-red);
     text-align: center;
 }
-.dados h3{
+
+.dados h3 {
     color: var(--tr-green);
 }
 
@@ -126,12 +131,27 @@ h1 {
 .badge {
     width: 4rem;
 }
-nav{
+
+nav {
     color: var(--tr-white);
 }
-.search-container{
+
+.search-container {
     max-width: 35%;
 }
-.logo h1{
-font-size: 3rem;
+
+.logo h1 {
+    font-size: 3rem;
+}
+
+.comment {
+    background-color: var(--tr-grey);
+    border-radius: 0.5rem;
+
+}
+
+.image-perfil img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
 }
