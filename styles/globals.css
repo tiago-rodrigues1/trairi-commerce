@@ -155,3 +155,12 @@ nav {
     height: 4rem;
     border-radius: 50%;
 }
+
+.request {
+    background-color: var(--tr-grey);
+    border-radius: 0.5rem;
+}
+
+.status span {
+    color: var(--tr-green);
+}
