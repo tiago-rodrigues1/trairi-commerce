@@ -145,6 +145,17 @@ nav {
     font-size: 3rem;
 }
 
+.comment {
+    background-color: var(--tr-grey);
+    border-radius: 0.5rem;
+
+}
+
+.image-perfil img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
 .filter-container {
     max-width: 20rem;
 }
