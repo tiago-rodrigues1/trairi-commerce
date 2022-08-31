@@ -3,8 +3,8 @@
     --tc-green: #72B01D;
     --tc-green-dark: #4F7914;
     --tc-white: #FCFFFC;
-    --tc-grey: #f7f7f7;
-    --tc-light-text: rgba(13, 10, 11, 0.5);
+    --tc-gray: #f7f7f7;
+    --tc-gray-light: rgba(13, 10, 11, 0.35);
     --tc-red: #F25F5C;
 }
 
@@ -80,6 +80,9 @@ body {
     color: var(--tc-red) !important;
 }
 
+
+
+
 .tc-btn {
     background-color: var(--tc-green) !important;
     color: var(--tc-white) !important;
@@ -91,16 +94,12 @@ body {
     filter: brightness(0.9) !important;
 }
 
-.tc-input {
-    background-color: var(--tc-white) !important;
-}
-
-.tc-input:focus {
+input:focus {
     border: solid 1px var(--tc-green) !important;
     box-shadow: none !important;
 }
 
-.tc-input::placeholder {
+input::placeholder {
     color: var(--tc-light-text) !important;
 }
 
