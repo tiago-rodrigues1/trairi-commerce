@@ -40,15 +40,15 @@ body {
     background-color: var(--tc-green-dark) !important;
 }
 
-.bg-white {
+.bg-tc-white {
     background-color: var(--tc-white) !important;
 }
 
-.bg-gray-ligth {
+.bg-tc-gray-ligth {
     background-color: var(--tc-gray-ligth) !important;
 }
 
-.text-red {
+.bg-tc-red {
     background-color: var(--tc-red) !important;
 }
 
@@ -68,15 +68,15 @@ body {
     color: var(--tc-green-dark) !important;
 }
 
-.text-white {
+.text-tc-white {
     color: var(--tc-white) !important;
 }
 
-.text-gray-ligth {
+.text-tc-gray-ligth {
     color: var(--tc-gray-ligth) !important;
 }
 
-.text-red {
+.text-tc-red {
     color: var(--tc-red) !important;
 }
 
@@ -98,10 +98,6 @@ input:focus {
 
 input::placeholder {
     color: var(--tc-light-text) !important;
-}
-
-h1 {
-    color: var(--tc-white);
 }
 
 .search button {
