@@ -80,9 +80,6 @@ body {
     color: var(--tc-red) !important;
 }
 
-
-
-
 .tc-btn {
     background-color: var(--tc-green) !important;
     color: var(--tc-white) !important;
@@ -101,10 +98,6 @@ input:focus {
 
 input::placeholder {
     color: var(--tc-light-text) !important;
-}
-
-header {
-    background-color: var(--tc-green);
 }
 
 h1 {
