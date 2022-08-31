@@ -24,8 +24,60 @@ body {
     color: var(--tc-black);
 }
 
-.bg-grey {
-    background-color: var(--tc-grey);
+.bg-tc-black {
+    background-color: var(--tc-black) !important;
+}
+
+.bg-tc-gray {
+    background-color: var(--tc-gray) !important;
+}
+
+.bg-tc-green {
+    background-color: var(--tc-green) !important;
+}
+
+.bg-tc-green-dark {
+    background-color: var(--tc-green-dark) !important;
+}
+
+.bg-white {
+    background-color: var(--tc-white) !important;
+}
+
+.bg-gray-ligth {
+    background-color: var(--tc-gray-ligth) !important;
+}
+
+.text-red {
+    background-color: var(--tc-red) !important;
+}
+
+.text-tc-black {
+    color: var(--tc-black) !important;
+}
+
+.text-tc-gray {
+    color: var(--tc-gray) !important;
+}
+
+.text-tc-green {
+    color: var(--tc-green) !important;
+}
+
+.text-tc-green-dark {
+    color: var(--tc-green-dark) !important;
+}
+
+.text-white {
+    color: var(--tc-white) !important;
+}
+
+.text-gray-ligth {
+    color: var(--tc-gray-ligth) !important;
+}
+
+.text-red {
+    color: var(--tc-red) !important;
 }
 
 .tc-btn {
