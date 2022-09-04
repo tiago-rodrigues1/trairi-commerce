@@ -87,8 +87,6 @@ body {
 .tc-btn {
     background-color: var(--tc-green) !important;
     color: var(--tc-white) !important;
-    border: 0 !important;
-    transition: 200ms !important;
 }
 
 .tc-btn:hover {
