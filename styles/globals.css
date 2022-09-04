@@ -48,8 +48,8 @@ body {
     background-color: var(--tc-white) !important;
 }
 
-.bg-tc-gray-ligth {
-    background-color: var(--tc-gray-ligth) !important;
+.bg-tc-gray-light {
+    background-color: var(--tc-gray-light) !important;
 }
 
 .bg-tc-red {
@@ -76,8 +76,8 @@ body {
     color: var(--tc-white) !important;
 }
 
-.text-tc-gray-ligth {
-    color: var(--tc-gray-ligth) !important;
+.text-tc-gray-light {
+    color: var(--tc-gray-light) !important;
 }
 
 .text-tc-red {
@@ -146,7 +146,7 @@ input:focus {
 }
 
 input::placeholder {
-    color: var(--tc-light-text) !important;
+    color: var(--tc-gray-light) !important;
 }
 
 .filter svg {
