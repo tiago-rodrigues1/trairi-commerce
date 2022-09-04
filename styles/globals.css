@@ -24,6 +24,10 @@ body {
     color: var(--tc-black);
 }
 
+.tc-light-text {
+    color: rgba(13, 10, 11, .5);
+}
+
 .bg-tc-black {
     background-color: var(--tc-black) !important;
 }
