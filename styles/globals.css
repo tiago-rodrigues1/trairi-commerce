@@ -24,6 +24,10 @@ body {
     color: var(--tc-black);
 }
 
+.tc-light-text {
+    color: rgba(13, 10, 11, .5);
+}
+
 .bg-tc-black {
     background-color: var(--tc-black) !important;
 }
@@ -44,8 +48,8 @@ body {
     background-color: var(--tc-white) !important;
 }
 
-.bg-tc-gray-ligth {
-    background-color: var(--tc-gray-ligth) !important;
+.bg-tc-gray-light {
+    background-color: var(--tc-gray-light) !important;
 }
 
 .bg-tc-red {
@@ -72,8 +76,8 @@ body {
     color: var(--tc-white) !important;
 }
 
-.text-tc-gray-ligth {
-    color: var(--tc-gray-ligth) !important;
+.text-tc-gray-light {
+    color: var(--tc-gray-light) !important;
 }
 
 .text-tc-red {
@@ -83,12 +87,57 @@ body {
 .tc-btn {
     background-color: var(--tc-green) !important;
     color: var(--tc-white) !important;
-    border: 0 !important;
-    transition: 200ms !important;
 }
 
 .tc-btn:hover {
     filter: brightness(0.9) !important;
+}
+
+.tc-btn-ghost-red {
+    color: var(--tc-red);
+    border: none;
+}
+
+.tc-btn-ghost-red:hover,
+.tc-btn-ghost-red:focus,
+.tc-btn-ghost-red:active {
+    background-color: rgba(242, 95, 92, .2);
+    color: var(--tc-red);
+}
+
+.tc-btn-outline-green {
+    border: 2px solid var(--tc-green);
+    color: var(--tc-green);
+}
+
+.tc-btn-outline-green:hover,
+.tc-btn-outline-green:focus,
+.tc-btn-outline-green:active {
+    border: 2px solid var(--tc-green);
+    background-color: var(--tc-green);
+    color: var(--tc-white);
+}
+
+.tc-btn-outline-green:focus,
+.tc-btn:focus {
+    box-shadow: 0 0 0 .25rem rgba(114, 176, 29, .5);
+}
+
+.tc-btn-outline-red {
+    border: 2px solid var(--tc-red);
+    color: var(--tc-red);
+}
+
+.tc-btn-outline-red:hover,
+.tc-btn-outline-red:focus,
+.tc-btn-outline-red:active {
+    border: 2px solid var(--tc-red);
+    background-color: var(--tc-red);
+    color: var(--tc-white);
+}
+
+.tc-btn-outline-red:focus {
+    box-shadow: 0 0 0 .25rem rgba(242, 95, 92, .5);
 }
 
 input:focus {
@@ -97,7 +146,7 @@ input:focus {
 }
 
 input::placeholder {
-    color: var(--tc-light-text) !important;
+    color: var(--tc-gray-light) !important;
 }
 
 .filter svg {
