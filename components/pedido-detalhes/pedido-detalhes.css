@@ -11,10 +11,6 @@
 }
 
 .btn-accept {
-    background-color: var(--tc-green) !important;
-    border-radius: 0.5rem;
-    text-align: center;
-    color: var(--tc-white);
     max-width: 40rem;
     align-self: center;
     width: 100%;
