@@ -152,3 +152,7 @@ input::placeholder {
 .filter svg {
     stroke: var(--tc-black);
 }
+
+.tc-nav .nav-link {
+    color: rgba(252, 255, 252, .9) !important;
+}
