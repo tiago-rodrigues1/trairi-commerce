@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('denuncias', function (Blueprint $table) {
             $table->id();
+            $table->string('descricao', 300);
+            $table->dateTime('data_hora');
+            $table->foreignId('usuario_id')->constrained();
+            $table->foreignId('produto_');
+            //a chave estrangeira será sempre algo + "_id"?
             $table->timestamps();
         });
     }
