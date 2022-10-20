@@ -95,9 +95,9 @@ body {
     color: var(--tc-white) !important;
 }
 
-/* .tc-btn:hover {
+.tc-btn:hover {
     filter: brightness(0.9) !important;
-} */
+}
 
 .tc-btn-ghost-red {
     color: var(--tc-red);
