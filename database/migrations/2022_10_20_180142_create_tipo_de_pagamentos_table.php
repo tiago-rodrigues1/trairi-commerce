@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('produtos', function (Blueprint $table) {
+        Schema::create('tipo_de_pagamentos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 100);
-            $table->string('disponibilidade', 45);
-            $table->float('valor');
-            $table->float('taxa_entrega');
-            $table->string('descricao', 300);
-            $table->foreignId('categoria_id')->constrained();
-            $table->foreignId('anunciante_id')->constrained();
-            
+            $table->string('descricao', 45);
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produtos');
+        Schema::dropIfExists('tipo_de_pagamentos');
     }
 };

@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('possuis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anunciante_id')->constrained();
-            $table->foreignId('canalDeAtendimento_id')->constrained();
+            $table->foreignId('canal_de_atendimento_id')->constrained();
+            $table->string('user', 100);
             $table->timestamps();
         });
     }

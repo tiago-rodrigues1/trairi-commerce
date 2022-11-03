@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('aceitas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anunciante_id')->constrained();
+            $table->foreignId('tipo_de_pagamento_id')->constrained();
             $table->timestamps();
         });
     }

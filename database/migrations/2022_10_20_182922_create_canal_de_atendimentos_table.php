@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('canal_de_atendimentos', function (Blueprint $table) {
             $table->id();
             $table->string('plataforma', 45);
-            $table->string('user', 100);
+            $table->string('link', 300);
+            $table->string('icone', 100);
             $table->timestamps();
         });
     }
