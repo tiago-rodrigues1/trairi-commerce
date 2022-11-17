@@ -1,0 +1,200 @@
+:root {
+    --tc-black: #0D0A0B;
+    --tc-green: #72B01D;
+    --tc-green-dark: #4F7914;
+    --tc-white: #FCFFFC;
+    --tc-gray: #f7f7f7;
+    --tc-gray-light: rgba(13, 10, 11, 0.35);
+    --tc-red: #F25F5C;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    /* outline: solid 1px red; */
+}
+
+html {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--tc-white);
+    color: var(--tc-black);
+}
+
+.tc-light-text {
+    color: rgba(13, 10, 11, .5);
+}
+
+.bg-tc-black {
+    background-color: var(--tc-black) !important;
+}
+
+.bg-tc-gray {
+    background-color: var(--tc-gray) !important;
+}
+
+.bg-tc-green {
+    background-color: var(--tc-green) !important;
+}
+
+.bg-tc-green-dark {
+    background-color: var(--tc-green-dark) !important;
+}
+
+.bg-tc-white {
+    background-color: var(--tc-white) !important;
+}
+
+.bg-tc-gray-light {
+    background-color: var(--tc-gray-light) !important;
+}
+
+.bg-tc-red {
+    background-color: var(--tc-red) !important;
+}
+
+.text-tc-black {
+    color: var(--tc-black) !important;
+}
+
+.text-tc-gray {
+    color: var(--tc-gray) !important;
+}
+
+.text-tc-green {
+    color: var(--tc-green) !important;
+}
+
+.text-tc-green-dark {
+    color: var(--tc-green-dark) !important;
+}
+
+.text-tc-white {
+    color: var(--tc-white) !important;
+}
+
+.text-tc-gray-light {
+    color: var(--tc-gray-light) !important;
+}
+
+.text-tc-red {
+    color: var(--tc-red) !important;
+}
+
+.tc-btn {
+    background-color: var(--tc-green) !important;
+    color: var(--tc-white) !important;
+}
+
+.tc-btn:hover {
+    filter: brightness(0.9) !important;
+}
+
+.tc-btn-ghost-red {
+    color: var(--tc-red);
+    border: none;
+}
+
+.tc-btn-ghost-red:hover,
+.tc-btn-ghost-red:focus,
+.tc-btn-ghost-red:active {
+    background-color: rgba(242, 95, 92, .2);
+    color: var(--tc-red);
+}
+
+.tc-btn-outline-green {
+    border: 2px solid var(--tc-green);
+    color: var(--tc-green);
+}
+
+.tc-btn-outline-green:hover,
+.tc-btn-outline-green:focus,
+.tc-btn-outline-green:active {
+    border: 2px solid var(--tc-green);
+    background-color: var(--tc-green);
+    color: var(--tc-white);
+}
+
+.tc-btn-outline-green:focus,
+.tc-btn:focus {
+    box-shadow: 0 0 0 .25rem rgba(114, 176, 29, .5);
+}
+
+.tc-btn-outline-red {
+    border: 2px solid var(--tc-red);
+    color: var(--tc-red);
+}
+
+.tc-btn-outline-red:hover,
+.tc-btn-outline-red:focus,
+.tc-btn-outline-red:active {
+    border: 2px solid var(--tc-red);
+    background-color: var(--tc-red);
+    color: var(--tc-white);
+}
+
+.tc-btn-outline-red:focus {
+    box-shadow: 0 0 0 .25rem rgba(242, 95, 92, .5);
+}
+
+.tc-dashed-btn {
+    border: 2px dashed var(--tc-green);
+}
+
+.tc-dashed-btn:hover {
+    background-color: rgba(114, 176, 29, .25);
+}
+
+input:focus,
+textarea:focus {
+    border: solid 1px var(--tc-green) !important;
+    box-shadow: none !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-color: var(--tc-green);
+    border-color: var(--tc-green);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--tc-gray-light) !important;
+}
+
+.filter svg {
+    stroke: var(--tc-black);
+}
+
+.tc-nav .nav-link {
+    color: rgba(252, 255, 252, .9) !important;
+}
+
+button:hover {
+    filter: brightness(.9) !important;
+    transition: 200ms !important;
+}
+
+.star {
+    stroke: var(--tc-gray-light);
+}
+
+@media (min-width: 768px) {
+    .h-md-auto {
+        height: auto !important;
+    }
+}
