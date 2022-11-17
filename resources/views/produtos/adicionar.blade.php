@@ -5,10 +5,10 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Adicionar produto</title>
 
-	<link rel="stylesheet" href="styles/bootstrap.min.css">
-	<link rel="stylesheet" href="styles/globals.css">
+	<link rel="stylesheet" href="/styles/bootstrap.min.css">
+	<link rel="stylesheet" href="/styles/globals.css">
 </head>
 
 <body>
@@ -118,7 +118,7 @@
 			<button class="btn tc-btn mt-3">Adicionar</button>
 		</form>
 	</main>
-	<script src="scripts/bootstrap.bundle.min.js"></script>
+	<script src="/scripts/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

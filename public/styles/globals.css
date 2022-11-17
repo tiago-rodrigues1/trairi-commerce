@@ -155,7 +155,8 @@ body {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
     border: solid 1px var(--tc-green) !important;
     box-shadow: none !important;
 }

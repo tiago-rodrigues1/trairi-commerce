@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="./styles/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles/globals.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/globals.css">
 </head>
 
 <body>
@@ -139,7 +139,7 @@
             </div>
             <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 pt-4">
                 <article class="card p-0 mx-2 my-2">
-                    <img src="../images/pizza.jpg" alt="Pizza" class="card-img-top">
+                    <img src="/images/pizza.jpg" alt="Pizza" class="card-img-top">
             
                     <main class="p-4 bg-tc-gray vstack gap-3 card-body">
                         <section class="hstack align-items-center justify-content-between">
@@ -168,7 +168,7 @@
                     </main>
                 </article>
                 <article class="card p-0 mx-2 my-2">
-                    <img src="../images/pizza.jpg" alt="Pizza" class="card-img-top">
+                    <img src="/images/pizza.jpg" alt="Pizza" class="card-img-top">
             
                     <main class="p-4 bg-tc-gray vstack gap-3 card-body">
                         <section class="hstack align-items-center justify-content-between">
@@ -197,7 +197,7 @@
                     </main>
                 </article>
                 <article class="card p-0 mx-2 my-2">
-                    <img src="../images/pizza.jpg" alt="Pizza" class="card-img-top">
+                    <img src="/images/pizza.jpg" alt="Pizza" class="card-img-top">
             
                     <main class="p-4 bg-tc-gray vstack gap-3 card-body">
                         <section class="hstack align-items-center justify-content-between">
@@ -233,7 +233,7 @@
         </section>
     </main>
 
-    <script src="./scripts/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
