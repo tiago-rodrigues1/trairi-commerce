@@ -9,7 +9,7 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    public function cliente() {
+    public function usuario() {
         return $this->belongsTo(Usuario::class);
     }
 

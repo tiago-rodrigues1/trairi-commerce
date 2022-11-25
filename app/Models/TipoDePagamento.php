@@ -11,7 +11,7 @@ class TipoDePagamento extends Model
 
     protected $fillable = ['descricao'];
 
-    public function anunciantes(){
+    public function anunciantes() {
         return $this->belongsToMany(Anunciante::class, 'aceitas')->withTimestamps();
     }
 }
