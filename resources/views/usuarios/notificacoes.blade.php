@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <x-navmenu />
+    <x-nav-menu />
     <main class="p-4 w-100">
         <section class="hstack align-items-center justify-content-between">
             <div>

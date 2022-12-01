@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <x-navmenu />
+    <x-nav-menu />
 
     <main class="d-flex flex-column flex-lg-row max-w-100">
         <!-- <filters> -->
