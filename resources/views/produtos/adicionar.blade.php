@@ -47,7 +47,8 @@
 				<label class="form-label" for="deliveryPrice">Taxa de entrega</label>
 				<input class="form-control" type="text" name="deliveryPrice" id="deliveryPrice">
 			</div>
-			<div class="row row-cols-2 g-2 m-0">
+			<div class="row row-cols-1 g-2 m-0">
+			<label class="p-0 form-label" for="form-check">Métodos de pagamento</label>
 				<div class="form-check">
 					<input class="form-check-input" type="checkbox" name="payment" id="debito">
 					<label class="form-check-label" for="debito">Débito</label>

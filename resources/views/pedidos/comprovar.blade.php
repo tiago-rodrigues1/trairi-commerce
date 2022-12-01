@@ -11,8 +11,12 @@
     <link rel="stylesheet" href="/styles/globals.css">
 </head>
 
-<body class="p-4 text-tc-black">
-    <header class="text-tc-green-dark">
+<body class="vstack">
+    <x-navmenu />
+
+    <form class="vstack py-md-5 align-items-center justify-content-center rounded-3">
+        <div class="bg-tc-gray h-100 h-md-auto col-12 col-md-10 col-xl-6 p-4 rounded-3">
+            <header class="text-tc-green-dark">
         <h1 class="fs-1">Comprove sua compra</h1 class="fs-1">
         <p class="tc-light-text small">Pedido feito dia 04/07/2022 às 19:33</p>
     </header>
@@ -87,6 +91,8 @@
             <button class="btn tc-btn-ghost-red">Não reconheço este pedido</button>
         </section>
     </main>
+        </div>
+    </form>
 
     <script src="/scripts/bootstrap.bundle.min.js"></script>
 </body>
