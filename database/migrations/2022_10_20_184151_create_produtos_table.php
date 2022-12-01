@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('descricao', 300);
             $table->foreignId('categoria_id')->constrained();
             $table->foreignId('anunciante_id')->constrained();
+            $table->boolean('bloqueado')->default(false);
             
             $table->timestamps();
         });

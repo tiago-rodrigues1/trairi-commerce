@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('telefone', 11);
             $table->string('endereco', 200);
             $table->enum('genero', ['feminino', 'masculino', 'não declarado']);
+            $table->boolean('admin')->default(false);
+            $table->boolean('bloqueado')->default(false);
             $table->timestamps();
         });
     }
