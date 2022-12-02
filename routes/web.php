@@ -29,3 +29,7 @@ Route::get('/produtos/adicionar', function () {
 Route::get('/usuarios/notificacoes', function () {
     return view('usuarios/notificacoes');
 });
+
+Route::get('/templates/filtro', function () {
+    return view('templates/filtro');
+});
