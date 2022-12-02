@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class nav-menu extends Component {
+class NavMenu extends Component {
     public $isAuthenticated;
     
     public function __construct($isAuthenticated) {
