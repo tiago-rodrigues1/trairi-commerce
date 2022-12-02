@@ -26,6 +26,6 @@ Route::get('/produtos/adicionar', function () {
     return view('produtos/adicionar');
 });
 
-Route::get('/notificacoes', function () {
-    return view('notificacoes');
+Route::get('/usuarios/notificacoes', function () {
+    return view('usuarios/notificacoes');
 });

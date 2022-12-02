@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <x-nav-menu />
+    <x-nav-menu isAuthenticated=0 />
 
     <main class="d-flex flex-column flex-lg-row max-w-100">
         <!-- <filters> -->

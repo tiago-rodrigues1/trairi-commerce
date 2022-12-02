@@ -12,7 +12,7 @@
 </head>
 
 <body class="vstack">
-    <x-nav-menu />
+    <x-nav-menu isAuthenticated=0 />
 
     <form class="vstack py-md-5 align-items-center justify-content-center rounded-3">
         <div class="bg-tc-gray h-100 h-md-auto col-12 col-md-10 col-xl-6 p-4 rounded-3">
