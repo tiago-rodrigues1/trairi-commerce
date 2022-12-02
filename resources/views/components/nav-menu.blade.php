@@ -47,7 +47,7 @@
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <form class="modal-content" id="login">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -64,8 +64,61 @@
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="button" class="btn tc-btn w-100">Entrar</button>
-                <span class="py-2">Não está cadastrado ? <a class="text-tc-green" href="#">Cadastra-se</a></span>
+                <span class="py-2">Não está cadastrado ? <a class="text-tc-green trocar" href="#" data-id="cadastro">Cadastre-se</a></span>
             </div>
-        </div>
+        </form>
+
+        <form class="modal-content" id="cadastro" action="/usuario/cadastrar" method="post">
+            {{ csrf_field() }}
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="pb-4">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="email" name="email" id="email">
+                </div>
+                <div class="pb-4">
+                    <label class="form-label" for="password">Senha</label>
+                    <input class="form-control" type="password" name="password" id="password">
+                </div>
+                <div class="pb-4">
+                    <label class="form-label" for="name">Nome</label>
+                    <input class="form-control" type="text" name="name" id="name">
+                </div>
+                <div class="pb-4">
+                    <label class="form-label" for="birthday">Nascimento</label>
+                    <input class="form-control" type="date" name="birthday" id="birthday">
+                </div>
+                <div class="pb-4">
+                    <label class="form-label" for="tel">Telefone</label>
+                    <input class="form-control" type="text" name="tel" id="tel">
+                </div>
+                <div class="pb-4">
+                    <label class="form-label" for="address">Endereço</label>
+                    <input class="form-control" type="text" name="address" id="address">
+                </div>
+                <fieldset>
+				    <legend class="fs-5">Gênero</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="genderMasc" value="1" checked>
+                        <label class="form-check-label" for="genderMasc">
+                            Masculino
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="genderFem" value="2">
+                        <label class="form-check-label" for="genderFem">
+                            Feminino
+                        </label>
+				</div>
+			</fieldset>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" class="btn tc-btn w-100">Cadastrar</button>
+                <span class="py-2">Já tem uma conta ? <a class="text-tc-green trocar" href="#" data-id="login">Faça login</a></span>
+            </div>
+        </form>
     </div>
 </div>
