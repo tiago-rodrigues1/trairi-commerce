@@ -4,24 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
-use Illuminate\Support\Facades\Hash;
-use Carbon\Carbon;
 
 class UsuarioController extends Controller
 {
     
-    public function cadastrar(Request $request)
-    {
-        $u = new Usuario([
-            'email' => $request->email,
-            'senha' => Hash::make($request->password),
-            'nome' => $request->name,
-            'nascimento' => Carbon::now(),//$request->birthday,
-            'telefone' => $request->tel,
-            'endereco' => $request->address,
-            'genero' => $request->gender
+    public function cadastrar(Request $request) {
+        $request->validate([
+            'email' => 'required|email|max:300|unique:usuarios',
+            'senha' => 'required|string|min:8'
         ]);
-        $u->save();
+
+        $u = Usuario::salvar($request->except('_token'));
+        if ($u != null) {
+            // autenticar
+            session()->put('usuario', $u);
+        }
+        else {
+            // mensagem de erro
+        }
+        return redirect('/');
+    }
+
+    public function logar(Request $request) {
+        $u = Usuario::autenticar($request->except('_token'));
+        if ($u != null) {
+            session()->put('usuario', $u);
+        }
         return redirect('/');
     }
 
