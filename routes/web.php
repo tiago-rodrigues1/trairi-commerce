@@ -29,6 +29,8 @@ Route::get('/produtos/adicionar', function () {
 
 Route::post('/usuario/cadastrar', [UsuarioController::class, 'cadastrar']);
 
+Route::post('/usuario/logar', [UsuarioController::class, 'logar']);
+
 Route::get('/usuarios/notificacoes', function () {
     return view('usuarios/notificacoes');
 });
