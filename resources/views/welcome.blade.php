@@ -60,8 +60,7 @@
     </main>
     <script src="/scripts/jquery.min.js"></script>
     <script src="/scripts/bootstrap.bundle.min.js"></script>
-    {{-- $errors->any() --}}
-    @if (true)
+    @if ($errors->any())
         <script>
             toast = new bootstrap.Toast(document.getElementById('error'));
             toast.show()

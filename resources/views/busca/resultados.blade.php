@@ -11,25 +11,13 @@
     ];
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('templates.base')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+@section('Trairi Commerce')
 
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/globals.css">
-</head>
-
-<body>
-    <x-nav-menu isAuthenticated=0 />
-
+@section('content')
     <main class="d-flex flex-column flex-lg-row max-w-100">
-        <!-- <filters> -->
-        <x-filter :filters="$filters"/>
+        <x-filter :filters="$filters" />
 
         <section class="d-lg-none hstack bg-tc-gray justify-content-between align-items-center py-3 px-4">
             <div class="hstack gap-3">
@@ -58,7 +46,6 @@
                 </svg>
             </div>
         </section>
-        <!-- </filters> -->
         <section class="col-12 col-lg-9 col-xl-10 px-4 px-lg-5 pt-4">
             <div class="w-100 d-flex align-items-center justify-content-center">
                 <div class="vstack">
@@ -88,6 +75,4 @@
             </div>
         </section>
     </main>
-    <script src="/scripts/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@endsection
