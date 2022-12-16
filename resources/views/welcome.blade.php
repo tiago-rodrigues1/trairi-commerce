@@ -12,7 +12,25 @@
 </head>
 
 <body>
-	<x-nav-menu isAuthenticated=0 />
+    @if ($errors->any())
+    <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
+        <div id="error" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+            <strong class="me-auto">Erro</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    @endif
+
+	<x-nav-menu isAuthenticated="{{ (session()->has('usuario')) ? 1 : 0 }}" />
 	
     <main class="p-5 vstack gap-5">
         <section class="col-12 col-lg-9 col-xl-10">
@@ -43,6 +61,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="/scripts/bootstrap.bundle.min.js"></script>
     <script src="/scripts/script.js"></script>
+    @if ($errors->any())
+    <script>
+        toast = new bootstrap.Toast(document.getElementById('error'));
+        toast.show()
+    </script>
+    @endif
 </body>
 
 </html>

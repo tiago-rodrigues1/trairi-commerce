@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pedidos</a>
                     </li>
+                    <li>
+                        Olá {{ session()->get('usuario')->nome }}
+                    </li>
                 @endif
             </ul>
             <form class="d-flex col-12 col-lg-5 mb-2" role="search">
@@ -47,7 +50,8 @@
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="modal-content" id="login">
+        <form class="modal-content" id="login" action="/usuario/logar" method="post">
+            {{ csrf_field() }}
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -58,12 +62,12 @@
                     <input class="form-control" type="email" name="email" id="email">
                 </div>
                 <div>
-                    <label class="form-label" for="password">Senha</label>
-                    <input class="form-control" type="password" name="password" id="password">
+                    <label class="form-label" for="senha">Senha</label>
+                    <input class="form-control" type="password" name="senha" id="senha">
                 </div>
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
-                <button type="button" class="btn tc-btn w-100">Entrar</button>
+                <button type="submit" class="btn tc-btn w-100">Entrar</button>
                 <span class="py-2">Não está cadastrado ? <a class="text-tc-green trocar" href="#" data-id="cadastro">Cadastre-se</a></span>
             </div>
         </form>
@@ -80,35 +84,35 @@
                     <input class="form-control" type="email" name="email" id="email">
                 </div>
                 <div class="pb-4">
-                    <label class="form-label" for="password">Senha</label>
-                    <input class="form-control" type="password" name="password" id="password">
+                    <label class="form-label" for="senha">Senha</label>
+                    <input class="form-control" type="password" name="senha" id="senha">
                 </div>
                 <div class="pb-4">
-                    <label class="form-label" for="name">Nome</label>
-                    <input class="form-control" type="text" name="name" id="name">
+                    <label class="form-label" for="nome">Nome</label>
+                    <input class="form-control" type="text" name="nome" id="nome">
                 </div>
                 <div class="pb-4">
-                    <label class="form-label" for="birthday">Nascimento</label>
-                    <input class="form-control" type="date" name="birthday" id="birthday">
+                    <label class="form-label" for="nascimento">Nascimento</label>
+                    <input class="form-control" type="date" name="nascimento" id="nascimento">
                 </div>
                 <div class="pb-4">
-                    <label class="form-label" for="tel">Telefone</label>
-                    <input class="form-control" type="text" name="tel" id="tel">
+                    <label class="form-label" for="telefone">Telefone</label>
+                    <input class="form-control" type="text" name="telefone" id="telefone">
                 </div>
                 <div class="pb-4">
-                    <label class="form-label" for="address">Endereço</label>
-                    <input class="form-control" type="text" name="address" id="address">
+                    <label class="form-label" for="endereco">Endereço</label>
+                    <input class="form-control" type="text" name="endereco" id="endereco">
                 </div>
                 <fieldset>
 				    <legend class="fs-5">Gênero</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="genderMasc" value="1" checked>
+                        <input class="form-check-input" type="radio" name="genero" id="genderMasc" value="masculino" checked>
                         <label class="form-check-label" for="genderMasc">
                             Masculino
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="genderFem" value="2">
+                        <input class="form-check-input" type="radio" name="genero" id="genderFem" value="feminino">
                         <label class="form-check-label" for="genderFem">
                             Feminino
                         </label>
