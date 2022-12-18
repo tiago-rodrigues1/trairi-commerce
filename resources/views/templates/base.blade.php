@@ -36,7 +36,7 @@
 
     @yield('content')
 
-    <script src="/scripts/jquery.min.js"></script>
+    <script src="/scripts/jquery/jquery.min.js"></script>
     <script src="/scripts/bootstrap.bundle.min.js"></script>
     @if ($errors->any())
         <script>

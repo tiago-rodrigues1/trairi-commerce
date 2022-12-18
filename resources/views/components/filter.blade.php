@@ -29,4 +29,4 @@
 </form>
 
 <script src="/scripts/collapse.js"></script>
-<script src="/scripts/jquery.min.js"></script>
+<script src="/scripts/jquery/jquery.min.js"></script>
