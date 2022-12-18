@@ -47,9 +47,11 @@
         </div>
     </div>
 </nav>
+
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
+        {{-- LOGIN FORM --}}
         <form class="modal-content" id="login" action="/usuario/logar" method="post">
             {{ csrf_field() }}
             <div class="modal-header">
@@ -59,19 +61,21 @@
             <div class="modal-body">
                 <div class="pb-4">
                     <label class="form-label" for="email">Email</label>
-                    <input class="form-control" type="email" name="email" id="email">
+                    <input class="form-control" type="email" name="email" id="email" placeholder="exemplo@email.exemplo" required>
                 </div>
                 <div>
                     <label class="form-label" for="senha">Senha</label>
-                    <input class="form-control" type="password" name="senha" id="senha">
+                    <input class="form-control" type="password" name="senha" id="senha" placeholder="Senha cadastrada" required>
                 </div>
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Entrar</button>
-                <span class="py-2">Não está cadastrado ? <a class="text-tc-green trocar" href="#" data-id="cadastro">Cadastre-se</a></span>
+                <span class="py-2">Não está cadastrado ? <a class="text-tc-green trocar" href="#"
+                        data-id="cadastro">Cadastre-se</a></span>
             </div>
         </form>
 
+        {{-- CADASTRO FORM --}}
         <form class="modal-content" id="cadastro" action="/usuario/cadastrar" method="post">
             {{ csrf_field() }}
             <div class="modal-header">
@@ -80,52 +84,68 @@
             </div>
             <div class="modal-body">
                 <div class="pb-4">
+                    <label class="form-label" for="nome">Nome</label>
+                    <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome Completo" required>
+                </div>
+                <div class="pb-4">
                     <label class="form-label" for="email">Email</label>
-                    <input class="form-control" type="email" name="email" id="email">
+                    <input class="form-control" type="email" name="email" id="email" placeholder="exemplo@email.exemplo" required>
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="senha">Senha</label>
-                    <input class="form-control" type="password" name="senha" id="senha">
+                    <input class="form-control" type="password" name="senha" id="senha" placeholder="Min. 8 dígitos" minlength="8" required>
                 </div>
                 <div class="pb-4">
-                    <label class="form-label" for="nome">Nome</label>
-                    <input class="form-control" type="text" name="nome" id="nome">
+                    <label class="form-label" for="senha">Confirme sua senha</label>
+                    <input class="form-control" type="password" name="confirmacaoSenha" id="confirmacaoSenha" placeholder="Digite sua senha novamente" required>
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="nascimento">Nascimento</label>
-                    <input class="form-control" type="date" name="nascimento" id="nascimento">
+                    <input class="form-control" type="date" name="nascimento" id="nascimento" required>
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="telefone">Telefone</label>
-                    <input class="form-control" type="text" name="telefone" id="telefone">
+                    <input class="form-control" type="text" name="telefone" id="telefone" placeholder="(dd) xxxxx-xxxx" required
+                        data-mask="(00) 00000-0000" minlength="11">
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="endereco">Endereço</label>
-                    <input class="form-control" type="text" name="endereco" id="endereco">
+                    <input class="form-control" type="text" name="endereco" id="endereco" required>
                 </div>
                 <fieldset>
-				    <legend class="fs-5">Gênero</legend>
+                    <legend class="fw-normal fs-6">Gênero</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genderMasc" value="masculino" checked>
+                        <input class="form-check-input" type="radio" name="genero" id="genderMasc"
+                            value="masculino" checked>
                         <label class="form-check-label" for="genderMasc">
                             Masculino
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genderFem" value="feminino">
+                        <input class="form-check-input" type="radio" name="genero" id="genderFem"
+                            value="feminino">
                         <label class="form-check-label" for="genderFem">
                             Feminino
                         </label>
-				</div>
-			</fieldset>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genero" id="genderOther"
+                            value="não declarado">
+                        <label class="form-check-label" for="genderOther">
+                            Não declarado
+                        </label>
+                    </div>
+                </fieldset>
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Cadastrar</button>
-                <span class="py-2">Já tem uma conta ? <a class="text-tc-green trocar" href="#" data-id="login">Faça login</a></span>
+                <span class="py-2">Já tem uma conta ? <a class="text-tc-green trocar" href="#"
+                        data-id="login">Faça login</a></span>
             </div>
         </form>
     </div>
 </div>
 
-<script src="/scripts/jquery.min.js"></script>
+<script src="/scripts/jquery/jquery.min.js"></script>
+<script src="/scripts/jquery/plugins/jquery.mask.min.js"></script>
 <script src="/scripts/switchModal.js"></script>
