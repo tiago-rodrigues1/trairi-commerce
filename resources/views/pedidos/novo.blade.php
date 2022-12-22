@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('templates.base')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TC | Fazer pedido</title>
+@section('title', 'TC | Novo pedido')
 
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/globals.css">
-</head>
-
-<body class="vstack">
-    <x-nav-menu isAuthenticated=0 />
-
+@section('content')
     <form class="vstack py-md-5 align-items-center justify-content-center rounded-3">
         <div class="bg-tc-gray h-100 h-md-auto col-12 col-md-10 col-xl-6 p-4 rounded-3">
             <header class="vstack gap-3 pb-3">
@@ -74,8 +63,4 @@
             </main>
         </div>
     </form>
-
-    <script src="/scripts/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+@endsection

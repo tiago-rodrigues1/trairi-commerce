@@ -1,37 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('templates.base')
 
+<<<<<<< HEAD
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Home</title>
+=======
+@section('title', 'Trairi Commerce')
+>>>>>>> 2a95274191958cf53c354ad65c77a555d8217432
 
-	<link rel="stylesheet" href="/styles/bootstrap.min.css">
-	<link rel="stylesheet" href="/styles/globals.css">
-</head>
-
-<body>
-    @if ($errors->any())
-    <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
-        <div id="error" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-            <strong class="me-auto">Erro</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div>
-    @endif
-
-	<x-nav-menu isAuthenticated="{{ (session()->has('usuario')) ? 1 : 0 }}" />
-	
+@section('content')
     <main class="p-5 vstack gap-5">
         <section class="col-12 col-lg-9 col-xl-10">
             <h1 class="fs-3 pb-4">Produtos mais vendidos</h1>
@@ -58,15 +37,4 @@
             </div>
         </section>
     </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script src="/scripts/bootstrap.bundle.min.js"></script>
-    <script src="/scripts/script.js"></script>
-    @if ($errors->any())
-    <script>
-        toast = new bootstrap.Toast(document.getElementById('error'));
-        toast.show()
-    </script>
-    @endif
-</body>
-
-</html>
+@endsection
