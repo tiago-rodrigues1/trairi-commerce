@@ -23,6 +23,10 @@ Route::get('/busca/resultados', function () {
     return view('busca/resultados');
 });
 
+Route::get('/produtos/listar', function() {
+    return view('produtos/listar');
+});
+
 Route::get('/produtos/adicionar', function () {
     return view('produtos/adicionar');
 });
