@@ -1,6 +1,6 @@
-<form class="vstack col-3 col-xl-2 pt-4 ps-5 d-none d-lg-block">
+<form class="vstack col-3 col-xl-2 pt-4 ps-4 d-none d-lg-block">
     {{ csrf_field() }}
-    <h4 class="">Filtros</h4>
+    <h4>Filtros</h4>
     <ul class="vstack filter-container h-100 w-100 p-0">
         @foreach ($filters as $filter)
             <li class="py-3 d-flex flex-column justify-content-between border-bottom"
