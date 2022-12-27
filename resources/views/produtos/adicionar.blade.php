@@ -67,7 +67,10 @@
                 </div>
                 <button class="btn btn-sm tc-dashed-btn w-100 text-tc-green">+</button>
             </div>
-            <button class="btn tc-btn mt-3">Adicionar</button>
+            <div class="vstack gap-3">
+                <button class="btn tc-btn mt-3">Adicionar</button>
+                <a href="/produtos/listar" class="btn tc-btn-ghost-green">Voltar para catálogo</a>
+            </div>
         </form>
     </main>
 @endsection
