@@ -64,7 +64,7 @@
                     </select>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 pt-4">
+            <div class="m-0 row row-cols-1 row-cols-md-3 row-cols-xl-4 pt-4">
                 <x-cardproduto />
                 <x-cardproduto />
                 <x-cardproduto />
