@@ -111,6 +111,18 @@ body {
     color: var(--tc-red);
 }
 
+.tc-btn-ghost-green {
+    color: var(--tc-green);
+    border: none;
+}
+
+.tc-btn-ghost-green:hover,
+.tc-btn-ghost-green:focus,
+.tc-btn-ghost-green:active {
+    background-color: rgba(114, 176, 29, .2);
+    color: var(--tc-green);
+}
+
 .tc-btn-outline-green {
     border: 2px solid var(--tc-green);
     color: var(--tc-green);
