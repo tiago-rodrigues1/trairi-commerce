@@ -1,6 +1,7 @@
 <article class="card p-0 mx-2 my-2">
     <img src="/images/pizza.jpg" alt="Pizza" class="card-img-top">
-
+    <button class="border-0 p-0 m-0" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Abrir</button>
+    <x-produto-detalhes />
     <main class="p-3 bg-tc-gray vstack gap-3 card-body">
         <section class="vstack gap-3">
             <h4>Pizza de calabresa</h4>
