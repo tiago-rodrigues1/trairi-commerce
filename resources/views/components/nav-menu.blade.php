@@ -50,8 +50,8 @@
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        {{-- LOGIN FORM --}}
+    <div class="modal-dialog modal-lg">
+        {{--* LOGIN FORM --}}
         <form class="modal-content" id="login" action="/usuario/logar" method="post">
             {{ csrf_field() }}
             <div class="modal-header">
@@ -60,12 +60,12 @@
             </div>
             <div class="modal-body">
                 <div class="pb-4">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-control" type="email" name="email" id="email" placeholder="exemplo@email.exemplo" required>
+                    <label class="form-label" for="emailLogin">Email</label>
+                    <input class="form-control" type="email" name="email" id="emailLogin" placeholder="exemplo@email.exemplo" required>
                 </div>
                 <div>
-                    <label class="form-label" for="senha">Senha</label>
-                    <input class="form-control" type="password" name="senha" id="senha" placeholder="Senha cadastrada" required>
+                    <label class="form-label" for="senhaLogin">Senha</label>
+                    <input class="form-control" type="password" name="senha" id="senhaLogin" placeholder="Senha cadastrada" required>
                 </div>
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
@@ -75,7 +75,7 @@
             </div>
         </form>
 
-        {{-- CADASTRO FORM --}}
+        {{-- * CADASTRO FORM --}}
         <form class="modal-content" id="cadastro" action="/usuario/cadastrar" method="post">
             {{ csrf_field() }}
             <div class="modal-header">
