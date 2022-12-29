@@ -83,6 +83,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <fieldset>
+                    <legend class="fw-normal fs-6">Cadastrar como</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipoCadastro" id="cadastroCliente"
+                            value="anunciante" checked>
+                        <label class="form-check-label" for="cadastroCliente">
+                            Cliente
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline pb-2">
+                        <input class="form-check-input" type="radio" name="tipoCadastro" id="cadastroAnunciante"
+                            value="cliente">
+                        <label class="form-check-label" for="cadastroAnunciante">
+                            Anunciante <small>Prestador ou comerciante</small>
+                        </label>
+                    </div>
+                </fieldset>
                 <div class="pb-4">
                     <label class="form-label" for="nome">Nome</label>
                     <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome Completo" required>
@@ -101,16 +118,32 @@
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="nascimento">Nascimento</label>
-                    <input class="form-control" type="date" name="nascimento" id="nascimento" required>
+                    <input data-mask="00/00/0000" class="form-control" type="date" name="nascimento" id="nascimento" required>
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="telefone">Telefone</label>
                     <input class="form-control" type="text" name="telefone" id="telefone" placeholder="(dd) xxxxx-xxxx" required
                         data-mask="(00) 00000-0000" minlength="11">
                 </div>
-                <div class="pb-4">
-                    <label class="form-label" for="endereco">Endereço</label>
-                    <input class="form-control" type="text" name="endereco" id="endereco" required>
+                <div class="pb-4 row">
+                    <div class="col-6">
+                        <label class="form-label" for="cep">CEP</label>
+                        <input data-mask="00000-000" class="form-control" type="text" name="cep" id="cep" required>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="cidade">Cidade</label>
+                        <input class="form-control" type="text" name="cidade" id="cidade" required>
+                    </div>
+                </div>
+                <div class="pb-4 row">
+                    <div class="col-6">
+                        <label class="form-label" for="bairro">Bairro</label>
+                        <input class="form-control" type="text" name="bairro" id="bairro" required>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="endereco">Endereço</label>
+                        <input class="form-control" type="text" name="endereco" id="endereco" required>
+                    </div>
                 </div>
                 <fieldset>
                     <legend class="fw-normal fs-6">Gênero</legend>
