@@ -11,7 +11,7 @@ class Usuario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email', 'senha', 'nome', 'nascimento', 'telefone', 'endereco', 'genero'];
+    protected $fillable = ['email', 'senha', 'nome', 'nascimento', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'genero'];
 
     protected $hidden = ['senha'];
 
@@ -31,13 +31,22 @@ class Usuario extends Model
         return $this->hasOne(Cliente::class);
     }
 
-    public static function salvar($dados)
+    public static function salvar($dados, $dadosAnunciante = null)
     {
         $u = new Usuario($dados);
+
         try
         {
             $u->senha = Hash::make($u->senha);
             $u->save();
+
+            if ($dadosAnunciante) {
+                $cliente = new Cliente();
+                $u->cliente()->save($cliente);
+            } else {
+                $anunciante = new Anunciante($dadosAnunciante);
+                $u->anunciante()->save($anunciante);
+            }
         }
         catch(\Exception $e)
         {

@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('nome_fantasia', 200);
             $table->string('descricao', 300);
-            $table->string('telefone_comercial', 11);
-            $table->string('end_comercial', 200);
+            $table->string('telefone', 11);
+            $table->string('cidade', 100);
+            $table->string('cep', 8);
+            $table->string('bairro', 100);
+            $table->string('endereco', 200);
             $table->string('funcionamento', 100);
             $table->string('cpf_cnpj', 14);
             $table->foreignId('usuario_id')->constrained();

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('nome', 200);
             $table->dateTime('nascimento');
             $table->string('telefone', 11);
+            $table->string('cidade', 100);
+            $table->string('cep', 8);
+            $table->string('bairro', 100);
             $table->string('endereco', 200);
             $table->enum('genero', ['feminino', 'masculino', 'não declarado']);
             $table->boolean('admin')->default(false);
