@@ -86,15 +86,15 @@
                 <fieldset>
                     <legend class="fw-normal fs-6">Cadastrar como</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoCadastro" id="cadastroCliente"
-                            value="anunciante" checked>
+                        <input class="tipo_cadastro_input form-check-input" type="radio" name="tipoCadastro" id="cadastroCliente"
+                            value="cliente" checked>
                         <label class="form-check-label" for="cadastroCliente">
                             Cliente
                         </label>
                     </div>
                     <div class="form-check form-check-inline pb-2">
-                        <input class="form-check-input" type="radio" name="tipoCadastro" id="cadastroAnunciante"
-                            value="cliente">
+                        <input class="tipo_cadastro_input form-check-input" type="radio" name="tipoCadastro" id="cadastroAnunciante"
+                            value="anunciante">
                         <label class="form-check-label" for="cadastroAnunciante">
                             Anunciante <small>Prestador ou comerciante</small>
                         </label>
@@ -169,6 +169,50 @@
                         </label>
                     </div>
                 </fieldset>
+                <fieldset id="camposAnunciante" style="display: none;">
+                    <legend class="fw-semibold fs-5 py-3">Seção para anunciantes</legend>
+                    <div class="pb-4">
+                        <label class="form-label" for="nome_fantasia">Nome Fantasia</label>
+                        <input class="form-control" type="text" name="anunciante.nome_fantasia" id="nome_fantasia" placeholder="Nome Completo" required>
+                    </div>
+                    <div class="pb-4">
+                        <label class="form-label" for="anunciante.descricao">Descrição</label>
+                        <textarea class="form-control" type="text" name="anunciante.descricao" id="anunciante.descricao" placeholder="Descrição sobre seu estabelecimento" required></textarea>
+                    </div>
+                    <div class="pb-4">
+                        <label class="form-label" for="anunciante.telefone">Telefone</label>
+                        <input class="form-control" type="text" name="anunciante.telefone" id="anunciante.telefone" placeholder="(dd) xxxxx-xxxx" required
+                            data-mask="(00) 00000-0000" minlength="11">
+                    </div>
+                    <div class="pb-4 row">
+                        <div class="col-6">
+                            <label class="form-label" for="anunciante.cep">CEP</label>
+                            <input data-mask="00000-000" class="form-control" type="text" name="anunciante.cep" id="anunciante.cep" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label" for="anunciante.cidade">Cidade</label>
+                            <input class="form-control" type="text" name="anunciante.cidade" id="anunciante.cidade" required>
+                        </div>
+                    </div>
+                    <div class="pb-4 row">
+                        <div class="col-6">
+                            <label class="form-label" for="anunciante.bairro">Bairro</label>
+                            <input class="form-control" type="text" name="anunciante.bairro" id="anunciante.bairro" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label" for="anunciante.endereco">Endereço</label>
+                            <input class="form-control" type="text" name="anunciante.endereco" id="anunciante.endereco" required>
+                        </div>
+                    </div>
+                    <div class="pb-4">
+                        <label class="form-label" for="anunciante.funcionamento">Funcionamento</label>
+                        <input class="form-control" type="text" name="anunciante.funcionamento" id="anunciante.funcionamento" placeholder="Horário de funcionamento do seu estabelecimento" required>
+                    </div>
+                    <div class="pb-4">
+                        <label class="form-label" for="cpf_cnpj">CPF/CNPJ</label>
+                        <input class="form-control" type="text" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" required>
+                    </div>
+                </fieldset>
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Cadastrar</button>
@@ -179,6 +223,4 @@
     </div>
 </div>
 
-<script src="/scripts/jquery/jquery.min.js"></script>
-<script src="/scripts/jquery/plugins/jquery.mask.min.js"></script>
-<script src="/scripts/switchModal.js"></script>
+<script src="/scripts/home.js"></script>
