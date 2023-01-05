@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <script src="/scripts/jquery/jquery.min.js"></script>
     @if ($errors->any())
         <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
             <div id="error" class="toast bg-tc-red text-tc-white" role="alert" aria-live="assertive"
@@ -36,8 +37,8 @@
 
     @yield('content')
 
-    <script src="/scripts/jquery/jquery.min.js"></script>
     <script src="/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/jquery/plugins/jquery.mask.min.js"></script>
     @if ($errors->any())
         <script>
             toast = new bootstrap.Toast(document.getElementById('error'));
