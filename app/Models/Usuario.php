@@ -40,7 +40,7 @@ class Usuario extends Model
             $u->senha = Hash::make($u->senha);
             $u->save();
 
-            if ($dadosAnunciante) {
+            if ($dadosAnunciante == null) {
                 $cliente = new Cliente();
                 $u->cliente()->save($cliente);
             } else {
@@ -50,8 +50,11 @@ class Usuario extends Model
         }
         catch(\Exception $e)
         {
+            echo $e->getMessage();
             $u = null;
         }
+
+        dd($u);
         
         return $u;
     }
@@ -73,5 +76,38 @@ class Usuario extends Model
         }
 
         return $u;
+    }
+
+    public function getAcesso()
+    {
+        if ($this->admin)
+        {
+            return 'admin';
+        }
+        elseif ($this->anunciante != null)
+        {
+            return 'anunciante';
+        }
+        return 'cliente';
+    }
+
+    public static function cadastrar($nome, $senha, $email, $nascimento, $telefone, $endereco, $genero) {
+
+    }
+
+    public function fazerBusca($termo) {
+
+    }
+
+    public function denunciarProduto($p, $descricao) {
+
+    }
+
+    public function denunciarUsuario($u, $descricao) {
+
+    }
+
+    public function abrirChamado($descricao) {
+
     }
 }

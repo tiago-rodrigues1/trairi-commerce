@@ -14,9 +14,15 @@ class Autorizacao
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $admin, $cliente, $anunciante)
     {
-        return $next($request);
-
+        if (session()->has('usuario'))
+        {
+            if (session()->get('acesso') == 'admin' && $admin == true ||
+                    session()->get('acesso') == 'cliente' && $cliente == true ||
+                    session()->get('acesso') == 'anunciante' && $anunciante == true)
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

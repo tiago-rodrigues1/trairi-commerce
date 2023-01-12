@@ -18,4 +18,12 @@ class Pedido extends Model
     public function produtos() {
         return $this->belongsToMany(Produto::class, 'contems')->withPivot('quantidade')->withTimestamps();
     }
+
+    public function addProduto ($p) {
+
+    }
+
+    public function removerProduto($p) {
+        
+    }
 }

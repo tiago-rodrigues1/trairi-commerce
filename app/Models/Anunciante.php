@@ -31,5 +31,20 @@ class Anunciante extends Model
         return $this->belongsToMany(Cliente::class, 'cliente_avalia_anunciantes')->withPivot('estrelas', 'comentario')->withTimestamps();
     }
 
+    public function criarProduto($nome, $disponibilidade, $valor, $taxa, $descricao, $categoria) {
+
+    }
+
+    public function excluirProduto($p) {
+
+    }
+
+    public function finalizarProduto($p) {
+        
+    }
+
+    public function atualizarEstado($p, $status) {
+        
+    }
 
 }

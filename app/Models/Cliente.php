@@ -29,5 +29,27 @@ class Cliente extends Model
         return $this->belongsToMany(Produto::class, 'favoritas')->withTimestamps();
     }
 
-    
+    public function enviarPedido($p) {
+
+    }
+
+    public function comprovarFinalizacao($p, $estrelas) {
+
+    }
+
+    public function favoritarProduto($p) {
+
+    }
+
+    public function avaliarAnunciante($p, $estrelas, $comentario) {
+
+    }
+
+    public function avaliarProduto($p, $estrelas, $comentario) {
+
+    }
+
+    public function editarAvaliacao ($a, $estrelas, $comentario) {
+        
+    }
 }
