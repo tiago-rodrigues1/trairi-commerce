@@ -118,7 +118,7 @@
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="nascimento">Nascimento</label>
-                    <input data-mask="00/00/0000" class="form-control" type="date" name="nascimento" id="nascimento" required>
+                    <input class="form-control" type="date" name="nascimento" id="nascimento" required>
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="telefone">Telefone</label>
