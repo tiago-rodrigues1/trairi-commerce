@@ -24,7 +24,20 @@ class UsuarioController extends Controller
             'genero' => 'required'
         ]);
 
-        $u = Usuario::salvar($request->except('_token'));
+        if ($request->tipoCadastro == 'cliente')
+        {
+            $u = Usuario::salvar($request->except('_token'));
+        }
+        else
+        {
+            /*$request->validate([
+                '' => ''
+            ]);*/
+
+            $u = Usuario::salvar($request->except('_token'), $request->except('_token')['anunciante']);
+        }
+
+        
         if ($u != null) {
             // autenticar
             session()->put('usuario', $u);

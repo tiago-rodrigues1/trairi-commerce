@@ -21,13 +21,28 @@ $(document).ready(function () {
         }
     }
     
-    $('#cpf_cnpj').mask('000.000.000-000', options);
+    $('#anunciante_cpf_cnpj').mask('000.000.000-000', options);
 
     $(".tipo_cadastro_input").change(function () {
         if ($(this).val() == "anunciante") {
             $("#camposAnunciante").show();
+            $("#camposAnunciante").find('input').attr('required', 'required');
+            $("#camposAnunciante").find('textarea').attr('required', 'required');
         } else {
+            $("#camposAnunciante").find('input').removeAttr('required');
+            $("#camposAnunciante").find('textarea').removeAttr('required');
             $("#camposAnunciante").hide();
         }
+    });
+
+    $('#cadastro').on('submit', function(e){
+        e.preventDefault();
+        
+        $('#cep').unmask();
+        $('#telefone').unmask();
+        $('#anunciante_cep').unmask();
+        $('#anunciante_telefone').unmask();
+        $('#anunciante_cpf_cnpj').unmask();
+        $(this).unbind('submit').submit();
     });
 });

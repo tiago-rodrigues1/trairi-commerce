@@ -53,8 +53,6 @@ class Usuario extends Model
             echo $e->getMessage();
             $u = null;
         }
-
-        dd($u);
         
         return $u;
     }

@@ -28,7 +28,7 @@
                         <a class="nav-link" href="#">Pedidos</a>
                     </li>
                     <li>
-                        Olá {{ session()->get('usuario')->nome }}
+                        Olá {{ session()->get('usuario')->nome }}, {{ session()->get('acesso') }}
                     </li>
                 @endif
             </ul>
@@ -172,45 +172,45 @@
                 <fieldset id="camposAnunciante" style="display: none;">
                     <legend class="fw-semibold fs-5 py-3">Seção para anunciantes</legend>
                     <div class="pb-4">
-                        <label class="form-label" for="nome_fantasia">Nome Fantasia</label>
-                        <input class="form-control" type="text" name="anunciante.nome_fantasia" id="nome_fantasia" placeholder="Nome Completo" required>
+                        <label class="form-label" for="anunciante_nome_fantasia">Nome Fantasia</label>
+                        <input class="form-control" type="text" name="anunciante[nome_fantasia]" id="anunciante_nome_fantasia" placeholder="Nome Completo">
                     </div>
                     <div class="pb-4">
-                        <label class="form-label" for="anunciante.descricao">Descrição</label>
-                        <textarea class="form-control" type="text" name="anunciante.descricao" id="anunciante.descricao" placeholder="Descrição sobre seu estabelecimento" required></textarea>
+                        <label class="form-label" for="anunciante_descricao">Descrição</label>
+                        <textarea class="form-control" type="text" name="anunciante[descricao]" id="anunciante_descricao" placeholder="Descrição sobre seu estabelecimento"></textarea>
                     </div>
                     <div class="pb-4">
-                        <label class="form-label" for="anunciante.telefone">Telefone</label>
-                        <input class="form-control" type="text" name="anunciante.telefone" id="anunciante.telefone" placeholder="(dd) xxxxx-xxxx" required
+                        <label class="form-label" for="anunciante_telefone">Telefone</label>
+                        <input class="form-control" type="text" name="anunciante[telefone]" id="anunciante_telefone" placeholder="(dd) xxxxx-xxxx"
                             data-mask="(00) 00000-0000" minlength="11">
                     </div>
                     <div class="pb-4 row">
                         <div class="col-6">
-                            <label class="form-label" for="anunciante.cep">CEP</label>
-                            <input data-mask="00000-000" class="form-control" type="text" name="anunciante.cep" id="anunciante.cep" required>
+                            <label class="form-label" for="anunciante_cep">CEP</label>
+                            <input data-mask="00000-000" class="form-control" type="text" name="anunciante[cep]" id="anunciante_cep">
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="anunciante.cidade">Cidade</label>
-                            <input class="form-control" type="text" name="anunciante.cidade" id="anunciante.cidade" required>
+                            <label class="form-label" for="anunciante_cidade">Cidade</label>
+                            <input class="form-control" type="text" name="anunciante[cidade]" id="anunciante_cidade">
                         </div>
                     </div>
                     <div class="pb-4 row">
                         <div class="col-6">
-                            <label class="form-label" for="anunciante.bairro">Bairro</label>
-                            <input class="form-control" type="text" name="anunciante.bairro" id="anunciante.bairro" required>
+                            <label class="form-label" for="anunciante_bairro">Bairro</label>
+                            <input class="form-control" type="text" name="anunciante[bairro]" id="anunciante_bairro">
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="anunciante.endereco">Endereço</label>
-                            <input class="form-control" type="text" name="anunciante.endereco" id="anunciante.endereco" required>
+                            <label class="form-label" for="anunciante_endereco">Endereço</label>
+                            <input class="form-control" type="text" name="anunciante[endereco]" id="anunciante_endereco">
                         </div>
                     </div>
                     <div class="pb-4">
-                        <label class="form-label" for="anunciante.funcionamento">Funcionamento</label>
-                        <input class="form-control" type="text" name="anunciante.funcionamento" id="anunciante.funcionamento" placeholder="Horário de funcionamento do seu estabelecimento" required>
+                        <label class="form-label" for="anunciante_funcionamento">Funcionamento</label>
+                        <input class="form-control" type="text" name="anunciante[funcionamento]" id="anunciante_funcionamento" placeholder="Horário de funcionamento do seu estabelecimento">
                     </div>
                     <div class="pb-4">
-                        <label class="form-label" for="cpf_cnpj">CPF/CNPJ</label>
-                        <input class="form-control" type="text" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" required>
+                        <label class="form-label" for="anunciante_cpf_cnpj">CPF/CNPJ</label>
+                        <input class="form-control" type="text" name="anunciante[cpf_cnpj]" id="anunciante_cpf_cnpj" placeholder="CPF ou CNPJ">
                     </div>
                 </fieldset>
             </div>
