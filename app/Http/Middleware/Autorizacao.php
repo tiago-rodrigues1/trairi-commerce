@@ -18,9 +18,9 @@ class Autorizacao
     {
         if (session()->has('usuario'))
         {
-            if (session()->get('acesso') == 'admin' && $admin == true ||
-                    session()->get('acesso') == 'cliente' && $cliente == true ||
-                    session()->get('acesso') == 'anunciante' && $anunciante == true)
+            if (session()->get('acesso') == 'admin' && $admin == 'true' ||
+                    session()->get('acesso') == 'cliente' && $cliente == 'true' ||
+                    session()->get('acesso') == 'anunciante' && $anunciante == 'true')
             return $next($request);
         }
         return redirect('/');
