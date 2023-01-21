@@ -83,7 +83,7 @@ class Usuario extends Model
         {
             return 'admin';
         }
-        elseif ($u->anunciante != null)
+        elseif (isset($u->anunciante))
         {
             return 'anunciante';
         }
