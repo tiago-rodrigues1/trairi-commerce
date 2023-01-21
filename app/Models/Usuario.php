@@ -64,8 +64,6 @@ class Usuario extends Model
         try {
             $u = DB::table('usuarios')->where('email', $email)->first();
 
-            $u->acesso = Usuario::getAcesso($u);
-
             $isSenhasIguais = Hash::check($senha, $u->senha);
 
             if (!$isSenhasIguais) {
