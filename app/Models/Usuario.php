@@ -78,7 +78,7 @@ class Usuario extends Model
         return $u;
     }
 
-    private static function getAcesso($u) {
+    public static function getAcesso($u) {
         if ($u->admin)
         {
             return 'admin';
