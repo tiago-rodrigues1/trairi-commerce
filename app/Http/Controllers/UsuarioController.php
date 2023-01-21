@@ -58,4 +58,10 @@ class UsuarioController extends Controller
         return redirect('/');
     }
 
+    public function deslogar() {
+        session()->forget(['usuario', 'acesso']);
+
+        return redirect('/');
+    }
+
 }

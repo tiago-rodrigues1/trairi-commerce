@@ -27,8 +27,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pedidos</a>
                     </li>
-                    <li>
-                        Olá {{ session()->get('usuario')->nome }}, {{ session()->get('acesso') }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/usuario/deslogar">Sair</a>
                     </li>
                 @endif
             </ul>

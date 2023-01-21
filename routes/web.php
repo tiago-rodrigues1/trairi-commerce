@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 
+/*
+    autorizacao params: $admin, $cliente, $anunciante
+*/
+
 Route::middleware('autorizacao:false,true,false')->group(function(){
     
     Route::get('/pedidos/listar', function () {
@@ -46,3 +50,5 @@ Route::get('/busca/resultados', function () {
 Route::post('/usuario/cadastrar', [UsuarioController::class, 'cadastrar']);
 
 Route::post('/usuario/logar', [UsuarioController::class, 'logar']);
+
+Route::get('/usuario/deslogar', [UsuarioController::class, 'deslogar']);
