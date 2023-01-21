@@ -53,7 +53,7 @@ class UsuarioController extends Controller
         $u = Usuario::autenticar($request->except('_token'));
         if ($u != null) {
             session()->put('usuario', $u);
-            session()->put('acesso', $u->getAcesso());
+            session()->put('acesso', $u->acesso);
         }
         return redirect('/');
     }
