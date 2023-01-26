@@ -63,10 +63,9 @@
                     <label class="form-label" for="emailLogin">Email</label>
                     <input class="form-control" type="email" name="email" id="emailLogin" placeholder="exemplo@email.exemplo" required>
                 </div>
-                <div>
-                    <label class="form-label" for="senhaLogin">Senha</label>
-                    <input class="form-control" type="password" name="senha" id="senhaLogin" placeholder="Senha cadastrada" required>
-                </div>
+                <x-password-input name="senha" id="senhaLogin" placeholder="Senha cadastrada" required>
+                    Senha
+                </x-password-input>
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Entrar</button>
@@ -109,12 +108,14 @@
                     <input class="form-control" type="email" name="email" id="email" placeholder="exemplo@email.exemplo" required>
                 </div>
                 <div class="pb-4">
-                    <label class="form-label" for="senha">Senha</label>
-                    <input class="form-control" type="password" name="senha" id="senha" placeholder="Min. 8 dígitos" minlength="8" required>
+                    <x-password-input name="senha" id="senha" placeholder="Min. 8 dígitos" minlength="8" required>
+                        Senha
+                    </x-password-input>
                 </div>
                 <div class="pb-4">
-                    <label class="form-label" for="senha">Confirme sua senha</label>
-                    <input class="form-control" type="password" name="confirmacaoSenha" id="confirmacaoSenha" placeholder="Digite sua senha novamente" required>
+                    <x-password-input  name="confirmacaoSenha" id="confirmacaoSenha" placeholder="Digite sua senha novamente" required>
+                        Confirmar senha
+                    </x-password-input>
                 </div>
                 <div class="pb-4">
                     <label class="form-label" for="nascimento">Nascimento</label>
