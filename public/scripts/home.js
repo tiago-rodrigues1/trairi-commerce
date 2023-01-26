@@ -45,4 +45,20 @@ $(document).ready(function () {
         $('#anunciante_cpf_cnpj').unmask();
         $(this).unbind('submit').submit();
     });
+
+    $('.showPassword').click(function() {
+        var targetInput = $(this).data('target');
+        
+        var newType = "";
+        var iconSrc = "";
+
+        if ($(targetInput).attr('type') == "text") {
+            newType = "password";
+        } else {
+            newType = "text";
+        }
+
+        $(targetInput).attr('type', newType);
+        $(this).children().toggle("fast");
+    });
 });
