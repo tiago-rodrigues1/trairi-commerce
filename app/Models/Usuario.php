@@ -62,7 +62,7 @@ class Usuario extends Model
         $senha = $dados['senha'];
 
         try {
-            $u = DB::table('usuarios')->where('email', $email)->first();
+            $u = Usuario::where('email', $email)->first();
 
             $isSenhasIguais = Hash::check($senha, $u->senha);
 
@@ -76,12 +76,12 @@ class Usuario extends Model
         return $u;
     }
 
-    public static function getAcesso($u) {
-        if ($u->admin)
+    public function getAcesso() {
+        if ($this->admin)
         {
             return 'admin';
         }
-        elseif (isset($u->anunciante))
+        elseif (isset($this->anunciante))
         {
             return 'anunciante';
         }

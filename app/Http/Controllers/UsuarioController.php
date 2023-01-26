@@ -41,7 +41,7 @@ class UsuarioController extends Controller
         if ($u != null) {
             // autenticar
             session()->put('usuario', $u);
-            session()->put('acesso', Usuario::getAcesso($u));
+            session()->put('acesso', $u->getAcesso());
         }
         else {
             // mensagem de erro
@@ -53,13 +53,13 @@ class UsuarioController extends Controller
         $u = Usuario::autenticar($request->except('_token'));
         if ($u != null) {
             session()->put('usuario', $u);
-            session()->put('acesso', Usuario::getAcesso($u));
+            session()->put('acesso', $u->getAcesso());
         }
         return redirect('/');
     }
 
     public function deslogar() {
-        session()->forget(['usuario', 'acesso']);
+        session()->flush();
 
         return redirect('/');
     }
