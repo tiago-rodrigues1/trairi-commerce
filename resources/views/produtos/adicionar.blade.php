@@ -22,7 +22,7 @@
                 </div>
             </fieldset>
             <div>
-                <label class="form-label" for="title">Título do produto</label>
+                <label class="form-label" for="title">Título</label>
                 <input class="form-control" type="text" name="title" id="title">
             </div>
             <div>
@@ -61,14 +61,16 @@
                 </div>
             </div>
             <div class="vstack gap-4">
-                <div>
+                <div class="fileInputs-container">
                     <label class="form-label" for="imagens">Fotos</label>
-                    <input type="file" class="form-control" id="imagens">
+                    <input type="file" class="form-control" name="imagens" id="imagens">
                 </div>
-                <button class="btn btn-sm tc-dashed-btn w-100 text-tc-green">+</button>
+                <button type="button" class="add btn btn-sm tc-dashed-btn w-100 text-tc-green">
+                    <img src="/icons/plus.svg" alt="Ícone de sinal de mais. Para adicionar imagem do produto ou serviço">
+                </button>
             </div>
             <div class="vstack gap-3">
-                <button class="btn tc-btn mt-3">Adicionar</button>
+                <button type="submit" class="btn tc-btn mt-3">Adicionar</button>
                 <a href="/produtos/listar" class="btn tc-btn-ghost-green">Voltar para catálogo</a>
             </div>
         </form>

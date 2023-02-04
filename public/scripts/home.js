@@ -23,15 +23,15 @@ $(document).ready(function () {
     
     $('#anunciante_cpf_cnpj').mask('000.000.000-000', options);
 
-    $(".tipo_cadastro_input").change(function () {
+    $('.tipo_cadastro_input').change(function () {
         if ($(this).val() == "anunciante") {
-            $("#camposAnunciante").show();
-            $("#camposAnunciante").find('input').attr('required', 'required');
-            $("#camposAnunciante").find('textarea').attr('required', 'required');
+            $('#camposAnunciante').show();
+            $('#camposAnunciante').find('input').attr('required', 'required');
+            $('#camposAnunciante').find('textarea').attr('required', 'required');
         } else {
-            $("#camposAnunciante").find('input').removeAttr('required');
-            $("#camposAnunciante").find('textarea').removeAttr('required');
-            $("#camposAnunciante").hide();
+            $('#camposAnunciante').find('input').removeAttr('required');
+            $('#camposAnunciante').find('textarea').removeAttr('required');
+            $('#camposAnunciante').hide();
         }
     });
 
@@ -43,6 +43,8 @@ $(document).ready(function () {
         $('#anunciante_cep').unmask();
         $('#anunciante_telefone').unmask();
         $('#anunciante_cpf_cnpj').unmask();
+
+        $(this).find('button[type=submit]').attr('disabled', 'disabled').html('Aguarde...');
         $(this).unbind('submit').submit();
     });
 
@@ -50,7 +52,6 @@ $(document).ready(function () {
         var targetInput = $(this).data('target');
         
         var newType = "";
-        var iconSrc = "";
 
         if ($(targetInput).attr('type') == "text") {
             newType = "password";
@@ -60,5 +61,26 @@ $(document).ready(function () {
 
         $(targetInput).attr('type', newType);
         $(this).children().toggle("fast");
+    });
+
+    $('.add').click(function() {
+        let cont = 0;
+
+        $('.fileInputs-container').append(
+            `
+            <div class="mt-3 d-flex align-items-center gap-2 position-relative" id="inpt_${++cont}">
+                <input type="file" class="form-control" name="imagens">
+                <button type="button" class="remove btn ps-2 border-0 position-absolute top-50 start-100 translate-middle-y" data-target="#inpt_${cont}">
+                    <img src="/icons/x.svg" alt="Ícone de X vermelho, que representa remoção de imagem">
+                </button>
+            </div>
+            `
+        );
+
+        $('.remove').click(function() {
+            var idToRemove = $(this).data('target');
+    
+            $(idToRemove).remove();
+        });
     });
 });
