@@ -50,12 +50,20 @@ class UsuarioController extends Controller
     }
 
     public function logar(Request $request) {
+        $request->validate([
+            'email' => 'required|email|max:300',
+            'senha' => 'required|string',
+        ]);
+
         $u = Usuario::autenticar($request->except('_token'));
         if ($u != null) {
             session()->put('usuario', $u);
             session()->put('acesso', $u->getAcesso());
+            return redirect('/');
+        } else {
+            return redirect('/')->withErrors(['msg' => 'Erro de autenticação']);
         }
-        return redirect('/');
+        
     }
 
     public function deslogar() {
