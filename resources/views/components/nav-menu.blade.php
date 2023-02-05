@@ -12,7 +12,18 @@
                 </li>
                 <li class="nav-item">
                     @if ($isAuthenticated)
-                        <a class="nav-link" href="#">Sua conta</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Minha conta
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/usuario/perfil">Perfil</a></li>
+                                @if (session()->get('acesso') == 'anunciante')
+                                    <li><a class="dropdown-item" href="/produtos/listar">Catálogo</a></li>
+                                @endif
+                                <li><a class="dropdown-item" href="#">Favoritos</a></li>
+                            </ul>
+                        </li>
                     @else
                         <a class="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                             style="cursor: pointer;">Fazer login</a>
