@@ -27,13 +27,13 @@
                     <label for="nascimento">Data de nascimento</label>
                 </div>
                 <div class="form-floating col-6">
-                    <input type="text" class="form-control" name="telefone" id="perfil_telefone" value="{{$u->telefone}}" readonly>
+                    <input type="text" class="form-control" data-mask="(00) 00000-0000" name="telefone" id="perfil_telefone" value="{{$u->telefone}}" readonly>
                     <label for="telefone">Telefone</label>
                 </div>
             </div>
             <div class="row p-0 mt-0 gx-2 mb-3">
                 <div class="form-floating col-6">
-                    <input type="text" class="form-control" name="cep" id="perfil_cep" value="{{$u->cep}}" readonly>
+                    <input type="text" class="form-control" data-mask="00000-000" name="cep" id="perfil_cep" value="{{$u->cep}}" readonly>
                     <label for="cep">CEP</label>
                 </div>
                 <div class="form-floating col-6">
@@ -72,6 +72,51 @@
                     </label>
                 </div>
             </fieldset>
+            @if (session()->get('acesso') == "anunciante")
+                <fieldset>
+                    <legend class="fw-semibold fs-5 py-3">Dados de anunciante</legend>
+                    <div class="mb-3 form-floating">
+                        <input class="form-control" type="text" name="anunciante[nome_fantasia]" id="perfil_anunciante_nome_fantasia" value="{{$u->anunciante->nome_fantasia}}" readonly required>
+                        <label for="perfil_anunciante_nome_fantasia">Nome Fantasia</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <textarea class="form-control" name="anunciante[descricao]" id="perfil_anunciante_descricao" readonly required style="min-height: 10rem !important">{{$u->anunciante->descricao}}</textarea> 
+                        <label for="perfil_anunciante_descricao">Descrição</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input class="form-control" type="text" name="anunciante[telefone]" id="perfil_anunciante_telefone" data-mask="(00) 00000-0000" value="{{$u->anunciante->telefone}}" readonly required>
+                        <label for="perfil_anunciante_telefone">Telefone</label>
+                    </div>
+                    <div class="mb-3 row p-0 mt-0 gx-2">
+                        <div class="form-floating col-6">
+                            <input data-mask="00000-000" class="form-control cep" type="text" name="anunciante[cep]" id="perfil_anunciante_cep" value="{{$u->anunciante->cep}}" readonly required>
+                            <label for="perfil_anunciante_cep">CEP</label>
+                        </div>
+                        <div class="form-floating col-6">
+                            <input class="form-control" type="text" name="anunciante[cidade]" id="perfil_anunciante_cidade" value="{{$u->anunciante->cidade}}" readonly required>
+                            <label for="perfil_anunciante_cidade">Cidade</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 row p-0 mt-0 gx-2">
+                        <div class="form-floating col-6">
+                            <input class="form-control" type="text" name="anunciante[bairro]" id="perfil_anunciante_bairro" value="{{$u->anunciante->bairro}}" readonly required>
+                            <label for="perfil_anunciante_bairro">Bairro</label>
+                        </div>
+                        <div class="form-floating col-6">
+                            <input class="form-control" type="text" name="anunciante[endereco]" id="perfil_anunciante_endereco" value="{{$u->anunciante->endereco}}" readonly required>
+                            <label for="perfil_anunciante_endereco">Endereço</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input class="form-control" type="text" name="anunciante[funcionamento]" id="perfil_anunciante_funcionamento" value="{{$u->anunciante->funcionamento}}" readonly required>
+                        <label for="perfil_anunciante_funcionamento">Funcionamento</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input class="form-control" type="text" name="anunciante[cpf_cnpj]" id="perfil_anunciante_cpf_cnpj" value="{{$u->anunciante->cpf_cnpj}}" readonly required>
+                        <label for="perfil_anunciante_cpf_cnpj">CPF/CNPJ</label>
+                    </div>
+                </fieldset>
+            @endif
         </form>
     </main>
 @endsection
