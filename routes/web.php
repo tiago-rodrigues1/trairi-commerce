@@ -21,10 +21,13 @@ Route::middleware('autorizacao:false,true,false')->group(function(){
         return view('pedidos/novo');
     });
 
-    Route::get('/usuarios/notificacoes', function () {
-        return view('usuarios/notificacoes');
+    Route::get('/usuario/notificacoes', function () {
+        return view('usuario/notificacoes');
     });
     
+    Route::get('/usuario/perfil', function() {
+        return view('/usuario/perfil');
+    });
 });
 
 Route::middleware('autorizacao:false,false,true')->group(function(){
@@ -37,6 +40,13 @@ Route::middleware('autorizacao:false,false,true')->group(function(){
         return view('produtos/adicionar');
     });
     
+    Route::get('/usuario/notificacoes', function () {
+        return view('usuario/notificacoes');
+    });
+
+    Route::get('/usuario/perfil', function() {
+        return view('/usuario/perfil');
+    });
 });
 
 Route::get('/', function () {
