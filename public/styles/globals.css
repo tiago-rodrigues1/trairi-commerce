@@ -206,6 +206,14 @@ button:hover {
     stroke: var(--tc-gray-light);
 }
 
+.produto {
+    transition: transform 300ms;
+}
+
+.produto:hover {
+    transform: scale(1.05);
+}
+
 @media (min-width: 768px) {
     .h-md-auto {
         height: auto !important;
