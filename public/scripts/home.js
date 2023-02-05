@@ -83,4 +83,10 @@ $(document).ready(function () {
             $(idToRemove).remove();
         });
     });
+
+    $('.allow-edit').click(function() {
+        var form = $(this).data('formtarget');
+
+        $(`${form} input[readonly]`).removeAttr('readonly');
+    });
 });
