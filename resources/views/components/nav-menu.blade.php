@@ -140,7 +140,7 @@
                 <div class="pb-4 row">
                     <div class="col-6">
                         <label class="form-label" for="cep">CEP</label>
-                        <input data-mask="00000-000" class="form-control" type="text" name="cep" id="cep" required>
+                        <input data-mask="00000-000" class="form-control cep" type="text" name="cep" id="cep" required>
                     </div>
                     <div class="col-6">
                         <label class="form-label" for="cidade">Cidade</label>
@@ -185,7 +185,7 @@
                     <legend class="fw-semibold fs-5 py-3">Seção para anunciantes</legend>
                     <div class="pb-4">
                         <label class="form-label" for="anunciante_nome_fantasia">Nome Fantasia</label>
-                        <input class="form-control" type="text" name="anunciante[nome_fantasia]" id="anunciante_nome_fantasia" placeholder="Nome Completo">
+                        <input class="form-control" type="text" name="anunciante[nome_fantasia]" id="anunciante_nome_fantasia" placeholder="Nome de uso comercial">
                     </div>
                     <div class="pb-4">
                         <label class="form-label" for="anunciante_descricao">Descrição</label>
@@ -199,7 +199,7 @@
                     <div class="pb-4 row">
                         <div class="col-6">
                             <label class="form-label" for="anunciante_cep">CEP</label>
-                            <input data-mask="00000-000" class="form-control" type="text" name="anunciante[cep]" id="anunciante_cep">
+                            <input data-mask="00000-000" class="form-control cep" type="text" name="anunciante[cep]" id="anunciante_cep">
                         </div>
                         <div class="col-6">
                             <label class="form-label" for="anunciante_cidade">Cidade</label>
