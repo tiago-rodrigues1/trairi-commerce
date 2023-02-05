@@ -3,16 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 
-/*
-    autorizacao params: $admin, $cliente, $anunciante
-*/
+/* Rotas de cliente */
 
-Route::middleware('autorizacao:false,true,false')->group(function(){
-    
-    Route::get('/pedidos/listar', function () {
-        return view('pedidos/listar');
-    });
-
+Route::middleware('autorizacao:false,true,false')->group(function() {
     Route::get('/pedidos/comprovar', function () {
         return view('pedidos/comprovar');
     });
@@ -20,17 +13,11 @@ Route::middleware('autorizacao:false,true,false')->group(function(){
     Route::get('/pedidos/novo', function () {
         return view('pedidos/novo');
     });
-
-    Route::get('/usuario/notificacoes', function () {
-        return view('usuario/notificacoes');
-    });
-    
-    Route::get('/usuario/perfil', function() {
-        return view('/usuario/perfil');
-    });
 });
 
-Route::middleware('autorizacao:false,false,true')->group(function(){
+/* Rotas de anunciante */
+
+Route::middleware('autorizacao:false,false,true')->group(function() {
     
     Route::get('/produtos/listar', function() {
         return view('produtos/listar');
@@ -39,15 +26,24 @@ Route::middleware('autorizacao:false,false,true')->group(function(){
     Route::get('/produtos/adicionar', function () {
         return view('produtos/adicionar');
     });
-    
+});
+
+/* Rotas de cliente e anunciante */
+Route::middleware('autorizacao:false,true,true')->group(function() {
+    Route::get('/usuario/perfil', function() {
+        return view('/usuario/perfil');
+    });
+
     Route::get('/usuario/notificacoes', function () {
         return view('usuario/notificacoes');
     });
 
-    Route::get('/usuario/perfil', function() {
-        return view('/usuario/perfil');
+    Route::get('/pedidos/listar', function () {
+        return view('pedidos/listar');
     });
 });
+
+/* Rotas abertas */
 
 Route::get('/', function () {
     return view('welcome');
