@@ -35,7 +35,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#cadastro').on('submit', function(e){
+    $('#cadastro, #perfilform').on('submit', function(e){
         e.preventDefault();
         
         $('#cep').unmask();
@@ -87,6 +87,29 @@ $(document).ready(function () {
     $('.allow-edit').click(function() {
         var form = $(this).data('formtarget');
 
-        $(`${form} input[readonly]`).removeAttr('readonly');
+        $(`${form} input[readonly], textarea`).removeAttr('readonly');
+        $(`${form} input[type=radio]`).removeAttr('disabled');
+        $(form).append(`
+            <button type="submit" class="btn tc-btn mt-3">Salvar</button>
+            <a class="btn tc-btn-ghost-red" href="/usuario/perfil">Cancelar</button>
+        `);
+    });
+
+    $('.cep').focusout(function() {
+        var inputId = $(this).attr('id');
+        var cep = $(this).val();
+        var apiUrl = `https://brasilapi.com.br/api/cep/v1/${cep}`;
+
+        $.ajax({
+            url: apiUrl,
+            dataType: "json",
+            success: function(data) {
+                if (inputId == "cep") {
+                    $('#cidade').val(data.city);
+                } else if (inputId == "anunciante_cep") {
+                    $('#anunciante_cidade').val(data.city);
+                }
+            }
+        });
     });
 });
