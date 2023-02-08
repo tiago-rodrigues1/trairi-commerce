@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ProdutoController;
 
 /* Rotas de cliente */
 
@@ -26,6 +27,8 @@ Route::middleware('autorizacao:false,false,true')->group(function() {
     Route::get('/produtos/adicionar', function () {
         return view('produtos/adicionar');
     });
+
+    Route::post('/produtos/cadastrar', [ProdutoController::class, 'cadastrar']);
 });
 
 /* Rotas de cliente e anunciante */
