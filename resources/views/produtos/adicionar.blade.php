@@ -4,7 +4,8 @@
 
 @section('content')
     <main class="p-4 vstack align-items-center justify-content-center">
-        <form class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4">
+        <form class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4" enctype="multipart/form-data" method="post" action="/produto/cadastrar">
+            {{csrf_field()}}
             <h1 class="fs-2 text-tc-green">Adicionar ao catálogo</h1>
             <fieldset>
                 <legend class="fs-5">Você deseja adicionar um</legend>
