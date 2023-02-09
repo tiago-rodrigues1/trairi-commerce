@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\Categoria;
 
 class ProdutoController extends Controller {
     public function cadastrar(Request $request) {
@@ -18,5 +19,10 @@ class ProdutoController extends Controller {
         ]);
 
         $p = Produto::salvar($request->except('_token'));
+    }
+
+    public function render() {
+        $categorias = Categoria::orderBy('nome')->get();
+        return view('produtos/adicionar', compact('categorias'));
     }
 }
