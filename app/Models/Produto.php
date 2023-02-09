@@ -12,8 +12,20 @@ class Produto extends Model
     protected $fillable = ['nome', 'disponibilidade', 'valor', 'taxa_entrega', 'descricao'];
 
     public static function salvar($dados) {
-        $p = new Produto($dados);
-        $p->save();
+        try {
+            $c = Categoria::find($dados['categoria_id']);
+
+            $p = new Produto($dados);
+            $p->disponibilidade = true;
+            $p->anunciante()->associate(session()->get('usuario')->anunciante);
+            $p->categoria()->associate($c);
+            $p->save();
+            ProdutoImagem::salvar($dados['imagens'], $p);
+
+            return true;
+        } catch (\Exception $ex) {
+            return false;
+        }
     }
 
     public function anunciante() {
