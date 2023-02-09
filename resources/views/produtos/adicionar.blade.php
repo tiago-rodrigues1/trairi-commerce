@@ -23,12 +23,16 @@
                 </div>
             </fieldset>
             <div>
-                <label class="form-label" for="nome">Título</label>
-                <input class="form-control" type="text" name="nome" id="nome">
+                <label class="form-label" for="produto_nome">Título</label>
+                <input class="form-control" type="text" name="nome" id="produto_nome">
             </div>
             <div>
                 <label class="form-label" for="categoria">Categoria</label>
-                <input class="form-control" type="text" name="categoria" id="categoria">
+                <select name="categoria_id" id="categoria" class="form-select">
+                    @foreach ($categorias as $categoria)
+                        <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+                    @endforeach
+                </select>
             </div>
             <div>
                 <label class="form-label" for="descricao">Descrição</label>
