@@ -15,7 +15,7 @@ class ProdutoController extends Controller {
             'categoria_id' => 'required',
             'valor' => 'required|numeric',
             'taxa_entrega' => 'required|numeric',
-            'imagens' => 'required|image|mimes:jpg,png,jpeg,svg,webp|max:1000',
+            'imagens.*' => 'required|image|mimes:jpg,png,jpeg,svg,webp|max:1000',
         ]);
 
         $p = Produto::salvar($request->except('_token'));
