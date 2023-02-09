@@ -68,9 +68,9 @@ $(document).ready(function () {
 
         $('.fileInputs-container').append(
             `
-            <div class="mt-3 d-flex align-items-center gap-2 position-relative" id="inpt_${++cont}">
-                <input type="file" class="form-control" name="imagens">
-                <button type="button" class="remove btn ps-2 border-0 position-absolute top-50 start-100 translate-middle-y" data-target="#inpt_${cont}">
+            <div class="mt-3 d-flex align-items-center gap-2 position-relative" id="divinpt_${++cont}">
+                <input type="file" class="form-control" name="imagens[]" id="inpt_${cont}">
+                <button type="button" class="remove btn ps-2 border-0 position-absolute top-50 start-100 translate-middle-y" data-target="#divinpt_${cont}">
                     <img src="/icons/x.svg" alt="Ícone de X vermelho, que representa remoção de imagem">
                 </button>
             </div>

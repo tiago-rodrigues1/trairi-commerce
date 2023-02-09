@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('valor');
             $table->float('taxa_entrega');
             $table->string('descricao', 300);
+            $table->boolean('is_servico')->default(false);
             $table->foreignId('categoria_id')->constrained();
             $table->foreignId('anunciante_id')->constrained();
             $table->boolean('bloqueado')->default(false);
