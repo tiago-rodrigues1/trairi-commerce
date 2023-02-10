@@ -4,16 +4,11 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class CardProdutoCatalogo extends Component
-{
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
+class CardProdutoCatalogo extends Component {
+    public $produto;
+
+    public function __construct($produto) {
+        $this->produto = $produto;
     }
 
     /**
@@ -21,8 +16,7 @@ class CardProdutoCatalogo extends Component
      *
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
-    public function render()
-    {
+    public function render() {
         return view('components.card-produto-catalogo');
     }
 }
