@@ -19,10 +19,17 @@ class ProdutoController extends Controller {
         ]);
 
         $p = Produto::salvar($request->except('_token'));
+
+        return redirect('/produtos/listar');
     }
 
-    public function render() {
+    public function renderAdicionar() {
         $categorias = Categoria::orderBy('nome')->get();
         return view('produtos/adicionar', compact('categorias'));
+    }
+
+    public function renderListar() {
+        $produtos = session()->get('usuario')->anunciante->produtos()->orderBy('nome')->get();
+        return view('produtos/listar', compact('produtos'));
     }
 }
