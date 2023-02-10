@@ -19,12 +19,9 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
 /* Rotas de anunciante */
 
 Route::middleware('autorizacao:false,false,true')->group(function() {
-    
-    Route::get('/produtos/listar', function() {
-        return view('produtos/listar');
-    });    
+    Route::get('/produtos/listar', [ProdutoController::class, 'renderListar']);
 
-    Route::get('/produtos/adicionar', [ProdutoController::class, 'render']);
+    Route::get('/produtos/adicionar', [ProdutoController::class, 'renderAdicionar']);
 
     Route::post('/produtos/cadastrar', [ProdutoController::class, 'cadastrar']);
 });
