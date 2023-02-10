@@ -63,19 +63,23 @@ $(document).ready(function () {
         $(this).children().toggle("fast");
     });
 
+    let cont = 0;
     $('.add').click(function() {
-        let cont = 0;
 
-        $('.fileInputs-container').append(
-            `
-            <div class="mt-3 d-flex align-items-center gap-2 position-relative" id="inpt_${++cont}">
-                <input type="file" class="form-control" name="imagens">
-                <button type="button" class="remove btn ps-2 border-0 position-absolute top-50 start-100 translate-middle-y" data-target="#inpt_${cont}">
-                    <img src="/icons/x.svg" alt="Ícone de X vermelho, que representa remoção de imagem">
-                </button>
-            </div>
-            `
-        );
+        if (cont < 4) {
+            $('.fileInputs-container').append(
+                `
+                <div class="mt-3 d-flex align-items-center gap-2 position-relative" id="divinpt_${++cont}">
+                    <input type="file" class="form-control" name="imagens[]" id="inpt_${cont}">
+                    <button type="button" class="remove btn ps-2 border-0 position-absolute top-50 start-100 translate-middle-y" data-target="#divinpt_${cont}">
+                        <img src="/icons/x.svg" alt="Ícone de X vermelho, que representa remoção de imagem">
+                    </button>
+                </div>
+                `
+            );
+
+            console.log(cont)
+        }
 
         $('.remove').click(function() {
             var idToRemove = $(this).data('target');
@@ -106,8 +110,12 @@ $(document).ready(function () {
             success: function(data) {
                 if (inputId == "cep") {
                     $('#cidade').val(data.city);
+                    $('#bairro').val(data.neighborhood || "");
+                    $('#endereco').val(data.street || "");
                 } else if (inputId == "anunciante_cep") {
                     $('#anunciante_cidade').val(data.city);
+                    $('#anunciante_bairro').val(data.neighborhood || "");
+                    $('#anunciante_endereco').val(data.street || "");
                 }
             }
         });

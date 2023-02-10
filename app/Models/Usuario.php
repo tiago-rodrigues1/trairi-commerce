@@ -88,10 +88,6 @@ class Usuario extends Model
         return 'cliente';
     }
 
-    public static function cadastrar($nome, $senha, $email, $nascimento, $telefone, $endereco, $genero) {
-
-    }
-
     public function fazerBusca($termo) {
 
     }

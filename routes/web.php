@@ -24,9 +24,7 @@ Route::middleware('autorizacao:false,false,true')->group(function() {
         return view('produtos/listar');
     });    
 
-    Route::get('/produtos/adicionar', function () {
-        return view('produtos/adicionar');
-    });
+    Route::get('/produtos/adicionar', [ProdutoController::class, 'render']);
 
     Route::post('/produtos/cadastrar', [ProdutoController::class, 'cadastrar']);
 });
