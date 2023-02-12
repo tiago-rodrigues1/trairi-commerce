@@ -52,7 +52,7 @@ $filters = [
                     <h3>
                         Seu catálogo
                     </h3>
-                    <h6 class="m-0">12 resultados encontrados</h6>
+                    <h6 class="m-0">{{ count($produtos) }} resultados encontrados</h6>
                 </div>
                 <div class="hstack gap-3 align-items-end">
                     <a class="btn tc-btn" href="/produtos/adicionar">Novo</a>
@@ -67,7 +67,7 @@ $filters = [
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center pt-5">
+            <div class="d-flex pt-5">
                 @forelse ($produtos as $produto)
                     <x-product-section :sectionTitle="null">
                         <x-card-produto-catalogo :produto="$produto" />
