@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 
 class Usuario extends Model
 {
@@ -31,12 +31,10 @@ class Usuario extends Model
         return $this->hasOne(Cliente::class);
     }
 
-    public static function salvar($dados, $dadosAnunciante = null)
-    {
+    public static function salvar($dados, $dadosAnunciante = null) {
         $u = new Usuario($dados);
 
-        try
-        {
+        try {
             $u->senha = Hash::make($u->senha);
             $u->save();
 
@@ -47,9 +45,7 @@ class Usuario extends Model
                 $anunciante = new Anunciante($dadosAnunciante);
                 $u->anunciante()->save($anunciante);
             }
-        }
-        catch(\Exception $e)
-        {
+        } catch(\Exception $e) {
             echo $e->getMessage();
             $u = null;
         }
@@ -67,24 +63,23 @@ class Usuario extends Model
             $isSenhasIguais = Hash::check($senha, $u->senha);
 
             if (!$isSenhasIguais) {
-                $u = null;
+                throw new Exception("Senha incorreta!");
             }
         } catch (\Exception $e) {
-            $u = null;
+            echo $e->getMessage();
+            return $e;
         }
 
         return $u;
     }
 
     public function getAcesso() {
-        if ($this->admin)
-        {
+        if ($this->admin) {
             return 'admin';
-        }
-        elseif (isset($this->anunciante))
-        {
+        } elseif (isset($this->anunciante)) {
             return 'anunciante';
         }
+        
         return 'cliente';
     }
 
