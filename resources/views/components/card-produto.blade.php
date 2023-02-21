@@ -1,11 +1,11 @@
-<div class="col" data-bs-toggle="modal" data-bs-target="#detalheProduto" style="cursor: pointer;">
+<div class="col open" style="cursor: pointer;">
     <article class="card p-0 produto">
-        <img src="/images/pizza.jpg" alt="Pizza" class="card-img-top">
+        <img src="/storage/{{ $produto->imagens[0]->path }}" alt="Imagem de um {{ $produto->nome }}" class="card-img-top">
         <main class="p-3 bg-tc-gray vstack gap-3 card-body">
             <section class="vstack gap-3">
-                <h4>Pizza de calabresa</h4>
+                <h4>{{ $produto->nome }}</h4>
                 <div class="hstack align-items-center justify-content-between">
-                    <h5 class="fw-normal m-0 p-0">R$ 40,00</h5>
+                    <h5 class="fw-normal m-0 p-0">R$ {{ number_format($produto->valor, 2, ',') }}</h5>
                     <div class="hstack gap-2 align-items-center justify-content-center">
                         <span class="text-tc-green">5</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
@@ -19,8 +19,8 @@
                 </div>
             </section>
             <section class="vstack gap-2">
-                <span>Por Pizzaria Trairi</span>
-                <span>Santa Cruz</span>
+                <span>Por {{ $produto->anunciante->nome_fantasia }} </span>
+                <span>{{ $produto->anunciante->cidade }}</span>
             </section>
             <hr class="my-1">
             <section class="vstack gap-1">
@@ -42,5 +42,4 @@
             </section>
         </main>
     </article>
-    <x-produto-detalhes />
 </div>
