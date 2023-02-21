@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 
-class UsuarioController extends Controller
-{
+class UsuarioController extends Controller {
     
     public function cadastrar(Request $request) {
         $request->validate([
@@ -24,29 +23,24 @@ class UsuarioController extends Controller
             'genero' => 'required'
         ]);
 
-        if ($request->tipoCadastro == 'cliente')
-        {
+        if ($request->tipoCadastro == 'cliente') {
             $u = Usuario::salvar($request->except('_token'));
-        }
-        else
-        {
-            /*$request->validate([
-                '' => ''
-            ]);*/
+        } else {
+            // TODO: Add validate
 
             $u = Usuario::salvar($request->except('_token'), $request->except('_token')['anunciante']);
         }
 
         
         if ($u != null) {
-            // autenticar
             session()->put('usuario', $u);
             session()->put('acesso', $u->getAcesso());
+
+            return redirect('/')->with(['status' => ['type' => 'success', 'msg' => 'Cadastro feito com sucesso!']]);
         }
         else {
-            // mensagem de erro
+            return redirect('/')->withErrors(['msg' => 'Não foi possível realizar seu cadastro. Por favor, tente novamente']);
         }
-        return redirect('/');
     }
 
     public function logar(Request $request) {
@@ -56,12 +50,13 @@ class UsuarioController extends Controller
         ]);
 
         $u = Usuario::autenticar($request->except('_token'));
-        if ($u != null) {
+
+        if ($u instanceof Usuario) {
             session()->put('usuario', $u);
             session()->put('acesso', $u->getAcesso());
-            return redirect('/');
+            return redirect('/')->with(['status' => ['type' => 'success', 'msg' => 'Bem-vindo(a)!']]);
         } else {
-            return redirect('/')->withErrors(['msg' => 'Erro de autenticação']);
+            return redirect('/')->withErrors(['msg' => $u->getMessage()]);
         }
         
     }
@@ -70,6 +65,13 @@ class UsuarioController extends Controller
         session()->flush();
 
         return redirect('/');
+    }
+
+    public function renderPerfil() {
+        $u = session()->get('usuario');
+        $u->nascimento = explode(" ", $u->nascimento)[0];
+
+        return view('/usuario/perfil', compact('u'));
     }
 
 }
