@@ -20,7 +20,13 @@ class ProdutoController extends Controller {
 
         $p = Produto::salvar($request->except('_token'));
 
-        return redirect('/produtos/listar');
+        if ($p) {
+            $status = ['type' => 'success', 'msg' => 'Cadastro feito com sucesso!'];
+        } else {
+            $status = ['type' => 'error', 'msg' => 'Não foi possível cadastrar seu produto. Por favor, tente novamente'];
+        }
+
+        return redirect('/produtos/listar')->with(compact('status'));
     }
 
     public function renderAdicionar() {
@@ -31,5 +37,10 @@ class ProdutoController extends Controller {
     public function renderListar() {
         $produtos = session()->get('usuario')->anunciante->produtos()->orderBy('nome')->get();
         return view('produtos/listar', compact('produtos'));
+    }
+
+    public function renderWelcome() {
+        $produtos = Produto::orderBy('created_at')->get();
+        return view('welcome', compact('produtos'));
     }
 }
