@@ -20,10 +20,13 @@ class Produto extends Model
             $p->anunciante()->associate(session()->get('usuario')->anunciante);
             $p->categoria()->associate($c);
             $p->save();
+
             ProdutoImagem::salvar($dados['imagens'], $p);
 
             return true;
         } catch (\Exception $ex) {
+            echo $ex;
+            
             return false;
         }
     }
