@@ -67,14 +67,14 @@ $filters = [
                     </div>
                 </div>
             </div>
-            <div class="d-flex pt-5">
+            <div class="pt-5">
+                <x-product-section :sectionTitle="null">
                 @forelse ($produtos as $produto)
-                    <x-product-section :sectionTitle="null">
-                        <x-card-produto-catalogo :produto="$produto" />
-                    </x-product-section>
+                    <x-card-produto-catalogo :produto="$produto" />
                 @empty
                     <p>Não tem produtos</p>
                 @endforelse
+                </x-product-section>
             </div>
             {{-- <div class="hstack gap-3 align-items-center justify-content-center pt-5">
                 <span>1 de 2</span>
