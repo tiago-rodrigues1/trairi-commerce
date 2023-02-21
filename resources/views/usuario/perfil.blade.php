@@ -3,10 +3,6 @@
 @section('title', 'TC | Meu perfil')
 
 @section('content')
-    @php
-        $u = session()->get('usuario');
-        $u->nascimento = explode(" ", $u->nascimento)[0];
-    @endphp
     <main class="p-4 vstack align-items-center justify-content-center">
         <form action="" class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4" id="perfilform">
             <div class="hstack align-items-center justify-content-between">
@@ -79,6 +75,15 @@
                         <input class="form-control" type="text" name="anunciante[nome_fantasia]" id="perfil_anunciante_nome_fantasia" value="{{$u->anunciante->nome_fantasia}}" readonly required>
                         <label for="perfil_anunciante_nome_fantasia">Nome Fantasia</label>
                     </div>
+                    <fieldset class="pb-4">
+                        <legend class="fw-normal fs-6">Tipos de pagamento</legend>
+                        @foreach ($tipos_pagamento as $tipo_pagamento)
+                            <div class="form-check">
+                                <input class="form-check-input" name="anunciante[tipo_pagamento_id[]]" type="checkbox" value="{{ $tipo_pagamento->id }}" id="check_{{ $tipo_pagamento->id }}" checked disabled style="opacity: 1;">
+                                <label class="form-check-label" for="check_{{ $tipo_pagamento->id }}" style="opacity: 1;">{{ $tipo_pagamento->descricao }}</label>
+                            </div>
+                        @endforeach
+                    </fieldset>
                     <div class="mb-3 form-floating">
                         <textarea class="form-control" name="anunciante[descricao]" id="perfil_anunciante_descricao" readonly required style="min-height: 10rem !important">{{$u->anunciante->descricao}}</textarea> 
                         <label for="perfil_anunciante_descricao">Descrição</label>
