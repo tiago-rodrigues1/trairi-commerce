@@ -26,7 +26,7 @@ $(document).ready(function () {
     $('.tipo_cadastro_input').change(function () {
         if ($(this).val() == "anunciante") {
             $('#camposAnunciante').show();
-            $('#camposAnunciante').find('input').attr('required', 'required');
+            $('#camposAnunciante').find('input:not(type=checkbox)').attr('required', 'required');
             $('#camposAnunciante').find('textarea').attr('required', 'required');
         } else {
             $('#camposAnunciante').find('input').removeAttr('required');
@@ -44,8 +44,9 @@ $(document).ready(function () {
         $('#anunciante_telefone').unmask();
         $('#anunciante_cpf_cnpj').unmask();
 
-        $(this).find('button[type=submit]').attr('disabled', 'disabled').html('Aguarde...');
-        $(this).unbind('submit').submit();
+        console.log($(this).serializeArray());
+        // $(this).find('button[type=submit]').attr('disabled', 'disabled').html('Aguarde...');
+        // $(this).unbind('submit').submit();
     });
 
     $('.showPassword').click(function() {
@@ -92,7 +93,7 @@ $(document).ready(function () {
         var form = $(this).data('formtarget');
 
         $(`${form} input[readonly], textarea`).removeAttr('readonly');
-        $(`${form} input[type=radio]`).removeAttr('disabled');
+        $(`${form} input[type=radio], input[type=checkbox]`).removeAttr('disabled');
         $(form).append(`
             <button type="submit" class="btn tc-btn mt-3">Salvar</button>
             <a class="btn tc-btn-ghost-red" href="/usuario/perfil">Cancelar</button>
@@ -119,5 +120,23 @@ $(document).ready(function () {
                 }
             }
         });
+    });
+
+    $('.quant_item').change(function() {
+        if ($(this).val() < 1) {
+            $(this).val(1);
+        }
+
+        var subtotal = 0;
+
+        $('.quant_item').each(function() {
+            subtotal += $(this).data('price') * Number($(this).val());
+        });
+
+        $('#subtotal').text(subtotal.toFixed(2).replace('.', ','));
+    });
+
+    $('.open').click(function() {
+        $('body').append()
     });
 });
