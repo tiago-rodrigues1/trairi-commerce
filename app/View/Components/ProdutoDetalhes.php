@@ -4,16 +4,10 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class ProdutoDetalhes extends Component
-{
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
+class ProdutoDetalhes extends Component {
+    public $produto;
+    public function __construct($produto) {
+        $this->produto = $produto;
     }
 
     /**
@@ -21,8 +15,7 @@ class ProdutoDetalhes extends Component
      *
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
-    public function render()
-    {
+    public function render() {
         return view('components.produto-detalhes');
     }
 }
