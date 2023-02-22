@@ -35,6 +35,13 @@ $(document).ready(function () {
         }
     });
 
+    $('#login').submit(function() {
+        $(this).find('button[type=submit]').attr('disabled', 'disabled').html(`
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Aguarde...
+        `);
+    });
+
     $('#cadastro, #perfilform').on('submit', function(e){
         e.preventDefault();
         
@@ -45,7 +52,10 @@ $(document).ready(function () {
         $('#anunciante_cpf_cnpj').unmask();
 
         console.log($(this).serializeArray());
-        // $(this).find('button[type=submit]').attr('disabled', 'disabled').html('Aguarde...');
+        $(this).find('button[type=submit]').attr('disabled', 'disabled').html(`
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Cadastrando...
+        `);
         // $(this).unbind('submit').submit();
     });
 
@@ -134,9 +144,5 @@ $(document).ready(function () {
         });
 
         $('#subtotal').text(subtotal.toFixed(2).replace('.', ','));
-    });
-
-    $('.open').click(function() {
-        $('body').append()
     });
 });
