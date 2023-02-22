@@ -5,8 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Autorizacao
-{
+class Autorizacao {
     /**
      * Handle an incoming request.
      *
@@ -14,15 +13,21 @@ class Autorizacao
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $admin, $cliente, $anunciante)
-    {
-        if (session()->has('usuario'))
-        {
-            if (session()->get('acesso') == 'admin' && $admin == 'true' ||
-                    session()->get('acesso') == 'cliente' && $cliente == 'true' ||
-                    session()->get('acesso') == 'anunciante' && $anunciante == 'true')
-            return $next($request);
+    public function handle(Request $request, Closure $next, $admin, $cliente, $anunciante) {
+        if (session()->has('usuario')) {
+            $tipoUsuario = session()->get('acesso');
+
+            $podeAcessarAdmin = $tipoUsuario == 'admin' && $admin == 'true';
+            $podeAcessarAnunciante = $tipoUsuario == 'anunciante' && $anunciante == 'true';
+            $podeAcessarCliente = $tipoUsuario == 'cliente' && $cliente == 'true';
+
+            if ($podeAcessarAdmin || $podeAcessarAnunciante ||  $podeAcessarCliente) {
+                return $next($request);
+            } else {
+                return redirect('/')->withErrors(['msg' => 'Você não tem permissão para acessar este recurso']);
+            }
         }
-        return redirect('/');
+
+        return redirect('/')->withErrors(['msg' => 'Você não está logado']);
     }
 }
