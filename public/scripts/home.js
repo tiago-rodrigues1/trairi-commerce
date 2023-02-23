@@ -145,4 +145,20 @@ $(document).ready(function () {
 
         $('#subtotal').text(subtotal.toFixed(2).replace('.', ','));
     });
+
+    $('.open').click(function() {
+        var id = $(this).data('produto_id');
+        var url = `/produtos/detalhar/${id}`;
+
+        $.get(url, function(data) {
+            $('body').append(data);
+            $(`#detalheProduto_${id}`).show();
+
+            $('.close').click(function() {
+                var target = $(this).data('target');
+
+                $(target).remove();
+            });
+        });
+    });
 });
