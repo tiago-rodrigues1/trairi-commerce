@@ -1,4 +1,4 @@
-<div class="col open" style="cursor: pointer;">
+<div class="col open" data-produto_id="{{ $produto->id }}" style="cursor: pointer;">
     <article class="card p-0 produto">
         <img src="/storage/{{ $produto->imagens[0]->path }}" alt="Imagem de um {{ $produto->nome }}" class="card-img-top">
         <main class="p-3 bg-tc-gray vstack gap-3 card-body">
