@@ -43,4 +43,12 @@ class ProdutoController extends Controller {
         $produtos = Produto::orderBy('created_at')->get();
         return view('welcome', compact('produtos'));
     }
+
+    public function renderDetalhar($id) {
+        $produto = Produto::find($id);
+
+        $html = view('components/produto-detalhes', compact('produto'))->render();
+
+        return $html;
+    }
 }
