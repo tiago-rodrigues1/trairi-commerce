@@ -1,4 +1,4 @@
-<div class="modal" id="detalheProduto_{{ $produto->id }}">
+<div class="modal w-100 h-100 bg-dark bg-opacity-25 fixed" id="detalheProduto_{{ $produto->id }}">
     <div class="modal-dialog overflow-y-scroll modal-xl">
         <div class="modal-content h-100">
             <div class="h-100 w-100 vstack p-4">
@@ -7,8 +7,8 @@
                         <div class="vstack">
                             <div class="hstack align-items-center justify-content-between">
                                 <h1 class="fs-4">{{ $produto->nome }}</h1>
-                                <button type="button" class="btn-close d-lg-none" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close close d-lg-none" 
+                                    aria-label="Close" data-target="#detalheProduto_{{ $produto->id }}"></button>
                             </div>
                             <div class="py-2 w-100 d-flex align-items-center gap-3">
                                 @for ($i = 0; $i < 5; $i++)
@@ -70,8 +70,8 @@
                     <section class="h-100 ps-lg-3 col-12 col-lg-4">
                         <div class="mt-3 mt-lg-0 hstack align-items-center justify-content-between">
                             <h4>R$ {{ number_format($produto->valor, 2, ',') }}</h4>
-                            <button type="button" class="btn-close d-none d-lg-block" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close close d-none d-lg-block"
+                                aria-label="Close" data-target="#detalheProduto_{{ $produto->id }}"></button>
                         </div>
                         <span>taxa de entrega</span>
                         <div class="mt-3">
