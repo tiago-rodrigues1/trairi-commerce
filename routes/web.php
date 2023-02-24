@@ -36,13 +36,13 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
     });
 
     Route::get('/pedidos/listar', [PedidoController::class, 'renderPedidoNovo']);
-
-    Route::get('/produtos/detalhar/{id}', [ProdutoController::class, 'renderDetalhar']);
 });
 
 /* Rotas abertas */
 
 Route::get('/', [ProdutoController::class, 'renderWelcome']);
+
+Route::get('/produtos/detalhar/{id}', [ProdutoController::class, 'renderDetalhar']);
 
 Route::get('/busca/resultados', function () {
     return view('busca/resultados');
