@@ -45,7 +45,7 @@ class ProdutoController extends Controller {
     }
 
     public function renderDetalhar($id) {
-        $produto = Produto::find($id);
+        $produto = Produto::findOrFail($id);
 
         $html = view('components/produto-detalhes', compact('produto'))->render();
 

@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 
-class Usuario extends Model
-{
+class Usuario extends Model {
     use HasFactory;
 
     protected $fillable = ['email', 'senha', 'nome', 'nascimento', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'genero'];
@@ -44,9 +43,14 @@ class Usuario extends Model
             } else {
                 $anunciante = new Anunciante($dadosAnunciante);
                 $u->anunciante()->save($anunciante);
+
+                $tiposDePagamento = TipoDePagamento::orderBy('id')->get();
+
+                foreach ($tiposDePagamento as $tipoDePagamento) {
+                    $tipoDePagamento->anunciantes()->attach($u->anunciante->id);
+                }
             }
         } catch(\Exception $e) {
-            echo $e->getMessage();
             $u = null;
         }
         
@@ -60,10 +64,14 @@ class Usuario extends Model
         try {
             $u = Usuario::where('email', $email)->first();
 
+            if ($u == null) {
+                throw new Exception('Email não encontrado');
+            }
+
             $isSenhasIguais = Hash::check($senha, $u->senha);
 
             if (!$isSenhasIguais) {
-                throw new Exception("Senha incorreta!");
+                throw new Exception('Senha incorreta!');
             }
         } catch (\Exception $e) {
             echo $e->getMessage();

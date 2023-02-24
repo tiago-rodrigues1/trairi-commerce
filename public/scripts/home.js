@@ -51,12 +51,12 @@ $(document).ready(function () {
         $('#anunciante_telefone').unmask();
         $('#anunciante_cpf_cnpj').unmask();
 
-        console.log($(this).serializeArray());
         $(this).find('button[type=submit]').attr('disabled', 'disabled').html(`
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         Cadastrando...
         `);
-        // $(this).unbind('submit').submit();
+        
+        $(this).unbind('submit').submit();
     });
 
     $('.showPassword').click(function() {

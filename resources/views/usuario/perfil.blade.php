@@ -77,7 +77,7 @@
                     </div>
                     <fieldset class="pb-4">
                         <legend class="fw-normal fs-6">Tipos de pagamento</legend>
-                        @foreach ($tipos_pagamento as $tipo_pagamento)
+                        @foreach ($u->anunciante->tiposDePagamento as $tipo_pagamento)
                             <div class="form-check">
                                 <input class="form-check-input" name="anunciante[tipo_pagamento_id[]]" type="checkbox" value="{{ $tipo_pagamento->id }}" id="check_{{ $tipo_pagamento->id }}" checked disabled style="opacity: 1;">
                                 <label class="form-check-label" for="check_{{ $tipo_pagamento->id }}" style="opacity: 1;">{{ $tipo_pagamento->descricao }}</label>

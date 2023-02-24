@@ -28,6 +28,7 @@
                             @foreach (session()->get('usuario.carrinho') as $index=>$produto)
                                 @php
                                     $subtotal += $produto->valor;
+                                    $modosPagamento = $produto ? $produto->anunciante->tiposDePagamento : null;
                                 @endphp
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
@@ -62,10 +63,13 @@
                 <div class="col-4 my-3">
                     <label class="form-label" for="modo-pagamento">Modo de pagamento</label>
                     <select class="form-select" aria-label="Selecionar modo de pagamento">
-                        <option selected>Selecione uma opção</option>
-                        <option value="1">Dinheiro</option>
-                        <option value="2">Pix</option>
-                        <option value="3">Cartão</option>
+                        @if (isset($modosPagamento))
+                            @foreach ($modosPagamento as $modoPagamento)
+                                <option value="{{ $modoPagamento->id }}">{{ $modoPagamento->descricao }}</option>
+                            @endforeach
+                        @else
+                            <option selected disabled>Escolha um produto</option>
+                        @endif
                     </select>
                 </div>
                 <div class="col-8 pb-3">
@@ -93,7 +97,6 @@
                         </li>
                     </ul>
                     <button class="btn tc-btn w-100 my-3" type="submit" {{ session()->has('usuario.carrinho') ? "" : "disabled" }}>Enviar</button>
-                    <a class="btn tc-btn-ghost-green w-100" href="/">Continuar comprando</button>
                 </section>
             </main>
         </div>
