@@ -24,7 +24,7 @@ class Anunciante extends Model
     }
 
     public function tiposDePagamento(){
-        return $this->belongsToMany(TiposDePagamento::class, 'aceitas')->withTimestamps();
+        return $this->belongsToMany(TipoDePagamento::class, 'aceitas')->withTimestamps();
     }
 
     public function clientes() {
