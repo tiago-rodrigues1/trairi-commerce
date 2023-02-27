@@ -4,7 +4,7 @@
 
 @section('content')
     <main class="p-4 vstack align-items-center justify-content-center">
-        <form class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4" enctype="multipart/form-data" method="post" action="/produtos/cadastrar">
+        <form class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4" enctype="multipart/form-data" method="post" action="/produtos/cadastrar" id="adicionarProduto">
             {{csrf_field()}}
             <h1 class="fs-2 text-tc-green">Adicionar ao catálogo</h1>
             <fieldset>
@@ -40,11 +40,11 @@
             </div>
             <div>
                 <label class="form-label" for="valor">Valor</label>
-                <input class="form-control" type="text" name="valor" id="valor">
+                <input class="form-control" type="text" name="valor" id="valor" data-mask="#.##0,00">
             </div>
             <div>
                 <label class="form-label" for="taxa_entrega">Taxa de entrega</label>
-                <input class="form-control" type="text" name="taxa_entrega" id="taxa_entrega">
+                <input class="form-control" type="text" name="taxa_entrega" id="taxa_entrega" data-mask="#.##0,00">
             </div>
             <div class="vstack gap-4">
                 <div class="fileInputs-container">
