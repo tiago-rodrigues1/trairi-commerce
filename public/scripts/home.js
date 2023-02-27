@@ -35,7 +35,11 @@ $(document).ready(function () {
         }
     });
 
-    $('#login').submit(function() {
+    $('#login, #adicionarProduto').submit(function() {
+
+        $('#valor').mask({reverse:true});
+        $('#taxa_entrega').mask({reverse:true});
+
         $(this).find('button[type=submit]').attr('disabled', 'disabled').html(`
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         Aguarde...
