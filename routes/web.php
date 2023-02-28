@@ -12,9 +12,11 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
         return view('pedidos/comprovar');
     });
 
-    Route::get('/pedidos/novo', [PedidoController::class, 'renderPedidoNovo']);
+    Route::get('/pedidos/items', [PedidoController::class, 'renderPedidoNovo']);
 
     Route::get('/pedidos/carrinho/{id}', [PedidoController::class, 'adicionarItem']);
+
+    Route::get('/pedidos/carrinho/remover/{id}', [PedidoController::class, 'removerItem']);
 });
 
 /* Rotas de anunciante */
@@ -35,7 +37,7 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
         return view('usuario/notificacoes');
     });
 
-    Route::get('/pedidos/listar', [PedidoController::class, 'renderPedidoNovo']);
+    // Route::get('/pedidos/listar', [PedidoController::class, 'renderPedidoNovo']);
 });
 
 /* Rotas abertas */
