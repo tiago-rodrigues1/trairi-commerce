@@ -9,7 +9,7 @@ class Anunciante extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome_fantasia', 'descricao', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'funcionamento', 'cpf_cnpj'];
+    protected $fillable = ['nome_fantasia', 'descricao', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'funcionamento', 'cpf_cnpj', 'taxa_de_entrega'];
 
     public function usuario() {
         return $this->belongsTo(Usuario::class);
@@ -24,7 +24,7 @@ class Anunciante extends Model
     }
 
     public function tiposDePagamento(){
-        return $this->belongsToMany(TiposDePagamento::class, 'aceitas')->withTimestamps();
+        return $this->belongsToMany(TipoDePagamento::class, 'aceitas')->withTimestamps();
     }
 
     public function clientes() {

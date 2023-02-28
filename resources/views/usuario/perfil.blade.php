@@ -89,6 +89,10 @@
                         <label for="perfil_anunciante_descricao">Descrição</label>
                     </div>
                     <div class="mb-3 form-floating">
+                        <input class="form-control" type="text" name="anunciante[taxa_de_entrega]" id="taxa_de_entrega" value="{{$u->anunciante->taxa_de_entrega}}" readonly required>
+                        <label for="taxa_de_entrega">Taxa de entrega</label>
+                    </div>
+                    <div class="mb-3 form-floating">
                         <input class="form-control" type="text" name="anunciante[telefone]" id="perfil_anunciante_telefone" data-mask="(00) 00000-0000" value="{{$u->anunciante->telefone}}" readonly required>
                         <label for="perfil_anunciante_telefone">Telefone</label>
                     </div>

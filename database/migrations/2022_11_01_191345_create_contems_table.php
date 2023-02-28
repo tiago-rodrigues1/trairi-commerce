@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('contems', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantidade');
             $table->foreignId('pedido_id')->constrained();
             $table->foreignId('produto_id')->constrained();
+            $table->integer('quantidade');
             $table->timestamps();
         });
     }
