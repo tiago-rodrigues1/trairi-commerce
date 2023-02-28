@@ -35,6 +35,22 @@ class PedidoController extends Controller {
     }
 
     public function novoPedido(Request $request) {
-        $pedido = new Pedido();
+        $request->validate([
+            'produto_id.*' => 'required',
+            'quantidade.*' => 'required|numeric',
+            'tipo_de_pagamento_id' => 'required',
+            'observacao' => 'max:500',
+            'cep_destino' => 'required|max:9',
+            'cidade_destino' => 'required|max:100',
+            'bairro_destino' => 'required|max:100',
+            'endereco_destino' => 'required|max:300'
+        ]);
+
+        $pedido = Pedido::salvar($request->except('_token'));
+
+        if ($pedido) {
+            $status = ['type' => 'success', 'msg' => 'Pedido feito com sucesso!'];
+            return redirect('/')->with(compact('status'));
+        }
     }
 }

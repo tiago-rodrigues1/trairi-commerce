@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model {
     use HasFactory;
 
-    protected $fillable = ['estado', 'data_hora', 'observaco'];
+    protected $fillable = ['tipo_de_pagamento_id', 'cep_destino', 'cidade_destino', 'bairro_destino', 'endereco_destino'];
 
     public function cliente() {
         return $this->belongsTo(Cliente::class);
@@ -19,9 +19,9 @@ class Pedido extends Model {
         return $this->belongsToMany(Produto::class, 'contems')->withPivot('quantidade')->withTimestamps();
     }
 
-    public function addProduto ($produto, $quantidade) {
+    public function addProduto ($produto_id, $quantidade) {
         try {
-            $this->produtos()->attach($produto->id, ['quantidade' => $quantidade]);
+            $this->produtos()->attach($produto_id, ['quantidade' => $quantidade]);
 
             return true;
         } catch (Exception $e) {
@@ -31,7 +31,28 @@ class Pedido extends Model {
         }
     }
 
-    public function removerProduto($p) {
-        
+    public static function salvar($dados) {
+        try {
+            $cliente = session()->get('usuario')->cliente;
+
+            $pedido = new Pedido($dados);
+            $pedido->estado = 'Pendente';
+
+            if ($dados['observacao']) {
+                $pedido->observacao = $dados['observacao'];
+            }
+
+            $pedido->cliente()->associate($cliente);
+            $pedido->save();
+
+            for ($i = 0; $i < count($dados['produto_id']); $i++) {
+                $pedido->addProduto($dados['produto_id'][$i], $dados['quantidade'][$i]);
+            }
+
+            return true;
+
+        } catch (Exception $e) {
+            dd($e);
+        }
     }
 }
