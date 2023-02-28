@@ -9,7 +9,7 @@ class Produto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'disponibilidade', 'valor', 'taxa_entrega', 'descricao'];
+    protected $fillable = ['nome', 'disponibilidade', 'valor', 'descricao'];
 
     public static function salvar($dados) {
         try {
