@@ -14,7 +14,6 @@ class ProdutoController extends Controller {
             'descricao' => 'required|string|max:300',
             'categoria_id' => 'required',
             'valor' => 'required|numeric',
-            'taxa_entrega' => 'required|numeric',
             'imagens.*' => 'required|image|mimes:jpg,png,jpeg,svg,webp|max:1000',
         ]);
 
