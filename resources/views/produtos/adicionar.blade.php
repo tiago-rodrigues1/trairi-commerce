@@ -4,13 +4,15 @@
 
 @section('content')
     <main class="p-4 vstack align-items-center justify-content-center">
-        <form class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4" enctype="multipart/form-data" method="post" action="/produtos/cadastrar" id="adicionarProduto">
-            {{csrf_field()}}
+        <form class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4" enctype="multipart/form-data"
+            method="post" action="/produtos/cadastrar" id="adicionarProduto">
+            {{ csrf_field() }}
             <h1 class="fs-2 text-tc-green">Adicionar ao catálogo</h1>
             <fieldset>
                 <legend class="fs-5">Você deseja adicionar um</legend>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="is_servico" id="itemTypeProduct" value="0" checked>
+                    <input class="form-check-input" type="radio" name="is_servico" id="itemTypeProduct" value="0"
+                        checked>
                     <label class="form-check-label" for="itemTypeProduct">
                         Produto
                     </label>
@@ -40,11 +42,11 @@
             </div>
             <div>
                 <label class="form-label" for="valor">Valor</label>
-                <input class="form-control" type="text" name="valor" id="valor" data-mask="#.##0,00">
+                <input class="form-control money" type="text" name="valor" id="valor">
             </div>
             <div>
                 <label class="form-label" for="taxa_entrega">Taxa de entrega</label>
-                <input class="form-control" type="text" name="taxa_entrega" id="taxa_entrega" data-mask="#.##0,00">
+                <input class="form-control money" type="text" name="taxa_entrega" id="taxa_entrega">
             </div>
             <div class="vstack gap-4">
                 <div class="fileInputs-container">
@@ -61,4 +63,29 @@
             </div>
         </form>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script>
+        $('.money').maskMoney({
+            prefix: 'R$ ',
+            allowNegative: false,
+            thousands: '.',
+            decimal: ',',
+            affixesStay: false
+        });
+
+        $('#adicionarProduto').on('submit', function(e) {
+            e.preventDefault();
+
+            $('.money').each(function() {
+                $(this).val($(this).maskMoney('unmasked')[0]);
+            });
+
+            $(this).find('button[type=submit]').attr('disabled', 'disabled').html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Aguarde...
+            `);
+
+            $(this).unbind('submit').submit();
+        });
+    </script>
 @endsection
