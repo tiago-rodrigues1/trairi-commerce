@@ -143,7 +143,10 @@ $(document).ready(function () {
             subtotal += $(this).data('price') * Number($(this).val());
         });
 
+        var total = subtotal + $('#frete').data('frete');
+
         $('#subtotal').text(subtotal.toFixed(2).replace('.', ','));
+        $('#total').text(`Total: ${total.toFixed(2).replace('.', ',')}`);
     });
 
     $('.open').click(function() {
