@@ -14,8 +14,19 @@ class PedidoController extends Controller {
 
     public function adicionarItem($id) {
         $produto = Produto::find($id);
-        session()->push('carrinho', $produto);
 
+        $GLOBALS['anunciante_id'] = $produto->anunciante->id;
+        
+        $result = array_filter(session()->get('carrinho', []), function($item) {
+            return $item->anunciante->id !== $GLOBALS['anunciante_id'];
+        });
+
+        if (count($result) > 0) {
+            $status = ['type' => 'error', 'msg' => 'Você só pode adicionar produtos de um mesmo anunciante'];
+            return redirect('/pedidos/items')->with(compact('status'));
+        } 
+        
+        session()->push('carrinho', $produto);
         return redirect('/pedidos/items');
     }
 
