@@ -8,6 +8,7 @@
         <div class="bg-tc-gray h-100 h-md-auto col-12 col-md-10 col-xl-7 p-4 rounded-3">
             <header class="vstack gap-3 pb-3">
                 <h1 class="fs-2 text-tc-green">Seu pedido</h1>
+                <h6 class="fs-normal small text-tc-green">Você só pode adicionar produtos de um mesmo anunciante</h6>
             </header>
             <main>
                 <div class="table-responsive mt-3">
