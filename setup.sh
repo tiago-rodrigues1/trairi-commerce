@@ -6,6 +6,8 @@ cp ./.env.example ./.env
 
 php artisan key:generate
 
+php artisan storage:link
+
 echo "Nome do APP: "
 read app_name
 
