@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('tipo_de_pagamento_id')->constrained();
             $table->foreignId('cliente_id')->constrained();
+            $table->foreignId('anunciante_id')->constrained();
             $table->string('estado', 45);
             $table->string('cep_destino', 9);
             $table->string('cidade_destino', 100);

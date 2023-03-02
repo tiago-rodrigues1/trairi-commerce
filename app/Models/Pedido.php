@@ -15,6 +15,10 @@ class Pedido extends Model {
         return $this->belongsTo(Cliente::class);
     }
 
+    public function anunciante() {
+        return $this->belongsTo(Anunciante::class);
+    }
+
     public function produtos() {
         return $this->belongsToMany(Produto::class, 'contems')->withPivot('quantidade')->withTimestamps();
     }

@@ -66,10 +66,15 @@ class PedidoController extends Controller {
     }
 
     public function renderHistoricoPedidos() {
-        if (session()->get('acesso') == 'cliente') {
+        $acesso = session()->get('acesso');
+
+        if ($acesso == 'cliente') {
             $pedidos = session()->get('usuario')->cliente->pedidos;
 
-            return view('pedidos/listar', compact('pedidos'));
+        } else if ($acesso == 'anunciante') {
+            $pedidos = session()->get('usuario')->anunciante->pedidos;
         }
+
+        return view('pedidos/listar', compact('pedidos'));
     }
 }
