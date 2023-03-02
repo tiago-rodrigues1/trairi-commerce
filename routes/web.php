@@ -35,11 +35,11 @@ Route::middleware('autorizacao:false,false,true')->group(function() {
 Route::middleware('autorizacao:false,true,true')->group(function() {
     Route::get('/usuario/perfil', [UsuarioController::class, 'renderPerfil']);
 
+    Route::get('/pedidos/listar', [PedidoController::class, 'renderHistoricoPedidos']);
+
     Route::get('/usuario/notificacoes', function () {
         return view('usuario/notificacoes');
     });
-
-    // Route::get('/pedidos/listar', [PedidoController::class, 'renderPedidoNovo']);
 });
 
 /* Rotas abertas */
