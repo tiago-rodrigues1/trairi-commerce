@@ -64,4 +64,12 @@ class PedidoController extends Controller {
             return redirect('/')->with(compact('status'));
         }
     }
+
+    public function renderHistoricoPedidos() {
+        if (session()->get('acesso') == 'cliente') {
+            $pedidos = session()->get('usuario')->cliente->pedidos;
+
+            return view('pedidos/listar', compact('pedidos'));
+        }
+    }
 }
