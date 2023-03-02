@@ -24,9 +24,10 @@ $(document).ready(function () {
     $('#anunciante_cpf_cnpj').mask('000.000.000-000', options);
 
     $('.tipo_cadastro_input').change(function () {
+        console.log("oi")
         if ($(this).val() == "anunciante") {
             $('#camposAnunciante').show();
-            $('#camposAnunciante').find('input:not(type=checkbox)').attr('required', 'required');
+            $('#camposAnunciante').find('input:not([type=checkbox])').attr('required', 'required');
             $('#camposAnunciante').find('textarea').attr('required', 'required');
         } else {
             $('#camposAnunciante').find('input').removeAttr('required');
