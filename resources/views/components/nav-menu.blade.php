@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pedidos</a>
+                        <a class="nav-link" href="/pedidos/listar">Pedidos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/usuario/deslogar">Sair</a>
