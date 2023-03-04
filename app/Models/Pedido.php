@@ -15,6 +15,10 @@ class Pedido extends Model {
         return $this->belongsTo(Cliente::class);
     }
 
+    public function anunciante() {
+        return $this->belongsTo(Anunciante::class);
+    }
+
     public function produtos() {
         return $this->belongsToMany(Produto::class, 'contems')->withPivot('quantidade')->withTimestamps();
     }
@@ -42,17 +46,22 @@ class Pedido extends Model {
                 $pedido->observacao = $dados['observacao'];
             }
 
+            $anunciante = Produto::findOrfail($dados['produto_id'][0])->anunciante;
+
             $pedido->cliente()->associate($cliente);
+            $pedido->anunciante()->associate($anunciante);
             $pedido->save();
 
             for ($i = 0; $i < count($dados['produto_id']); $i++) {
                 $pedido->addProduto($dados['produto_id'][$i], $dados['quantidade'][$i]);
             }
 
+            session()->forget('carrinho');
+
             return true;
 
         } catch (Exception $e) {
-            dd($e);
+            return false;
         }
     }
 }

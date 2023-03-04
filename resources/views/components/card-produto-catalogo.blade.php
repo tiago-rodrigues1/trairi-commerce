@@ -1,4 +1,4 @@
-<article class="card p-0 mx-2 my-2">
+<article class="card p-0 col m-2">
     <img src="/storage/{{ $produto->imagens[0]->path }}" alt="Pizza" class="card-img-top">
 
     <main class="p-3 bg-tc-gray vstack gap-3 card-body">
