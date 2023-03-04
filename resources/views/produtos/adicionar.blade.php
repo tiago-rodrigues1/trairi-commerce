@@ -44,10 +44,6 @@
                 <label class="form-label" for="valor">Valor</label>
                 <input class="form-control money" type="text" name="valor" id="valor">
             </div>
-            <div>
-                <label class="form-label" for="taxa_entrega">Taxa de entrega</label>
-                <input class="form-control money" type="text" name="taxa_entrega" id="taxa_entrega">
-            </div>
             <div class="vstack gap-4">
                 <div class="fileInputs-container">
                     <label class="form-label" for="imagens">Fotos</label>
