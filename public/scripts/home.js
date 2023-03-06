@@ -24,7 +24,6 @@ $(document).ready(function () {
     $('#anunciante_cpf_cnpj').mask('000.000.000-000', options);
 
     $('.tipo_cadastro_input').change(function () {
-        console.log("oi")
         if ($(this).val() == "anunciante") {
             $('#camposAnunciante').show();
             $('#camposAnunciante').find('input:not([type=checkbox])').attr('required', 'required');
@@ -89,8 +88,6 @@ $(document).ready(function () {
                 </div>
                 `
             );
-
-            console.log(cont)
         }
 
         $('.remove').click(function() {
