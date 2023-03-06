@@ -85,9 +85,17 @@
                         <div class="pt-2 vstack gap-1">
                             <h6>Aceitamos</h6>
                             <div class="w-100 hstack align-items-center gap-3">
-                                <span class="px-2 py-1 badge bg-tc-green">Dinheiro</span>
-                                <span class="px-2 py-1 badge bg-primary">PIX</span>
-                                <span class="px-2 py-1 badge bg-danger">Cartões</span>
+                                @foreach ($produto->anunciante->tiposDePagamento as $tipo_pagamento)
+                                    @if ($tipo_pagamento->id == 1)
+                                        <span class="px-2 py-1 badge bg-tc-green"> {{ $tipo_pagamento->descricao}}</span>
+                                    @elseif ($tipo_pagamento->id == 2)
+                                        <span class="px-2 py-1 badge bg-danger"> {{ $tipo_pagamento->descricao}}</span>
+                                    @elseif ($tipo_pagamento->id == 3)
+                                        <span class="px-2 py-1 badge bg-primary"> {{ $tipo_pagamento->descricao}}</span>
+                                    @elseif ($tipo_pagamento->id == 4)
+                                        <span class="px-2 py-1 badge bg-primary"> {{ $tipo_pagamento->descricao}}</span>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                         <a class="mt-4 btn tc-btn w-100" href="/pedidos/carrinho/{{ $produto->id }}">Adicionar ao
