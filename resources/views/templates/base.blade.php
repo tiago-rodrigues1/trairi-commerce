@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/globals.css">
+    
+    @yield('extraLinks')
 </head>
 
 <body>
