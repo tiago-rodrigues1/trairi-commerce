@@ -26,18 +26,25 @@
             <section class="vstack gap-1">
                 <h6>Aceitamos</h6>
                 <div class="w-100 hstack align-items-center justify-content-evenly">
-                    <span
-                        class="d-flex align-items-center justify-content-center badge bg-success bg-opacity-50 p-2 rounded-2">
-                        dinheiro
-                    </span>
-                    <span
-                        class="d-flex align-items-center justify-content-center badge bg-danger bg-opacity-50 p-2 rounded-2">
-                        pix
-                    </span>
-                    <span
-                        class="d-flex align-items-center justify-content-center badge bg-primary bg-opacity-50 p-2 rounded-2">
-                        cartões
-                    </span>
+                    @foreach ($produto->anunciante->tiposDePagamento as $tipo_pagamento)
+                        @if ($tipo_pagamento->id == 1)
+                            <span
+                                class="d-flex align-items-center justify-content-center badge bg-success bg-opacity-50 p-2 rounded-2">
+                                {{ $tipo_pagamento->descricao }}
+                            </span>
+                        @elseif ($tipo_pagamento->id == 2)
+                            <span
+                                class="d-flex align-items-center justify-content-center badge bg-danger bg-opacity-50 p-2 rounded-2">
+                                {{ $tipo_pagamento->descricao }}
+                            </span>
+                        @elseif ($tipo_pagamento->id == 3 || $tipo_pagamento->id == 4)
+                            <span
+                                class="d-flex align-items-center justify-content-center badge bg-primary bg-opacity-50 p-2 rounded-2">
+                                Cartão
+                            </span>
+                            @break
+                        @endif
+                    @endforeach
                 </div>
             </section>
         </main>
