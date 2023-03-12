@@ -17,7 +17,7 @@
         </div>
         <hr class="my-1">
         <section class="hstack align-items-center justify-content-between">
-            <button class="btn tc-btn">Editar</button>
+            <a class="btn tc-btn" href="/produtos/editar/{{ $produto->id }}">Editar</a>
             <button class="btn tc-btn-outline-red">Excluir</button>
         </section>
     </main>

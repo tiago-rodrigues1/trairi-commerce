@@ -5,6 +5,8 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\PedidoController;
 
+use function Termwind\render;
+
 /* Rotas de cliente */
 
 Route::middleware('autorizacao:false,true,false')->group(function() {
@@ -25,10 +27,11 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
 
 Route::middleware('autorizacao:false,false,true')->group(function() {
     Route::get('/produtos/listar', [ProdutoController::class, 'renderListar']);
-
     Route::get('/produtos/adicionar', [ProdutoController::class, 'renderAdicionar']);
+    Route::get('/produtos/editar/{id}', [ProdutoController::class, 'renderEditar']);
 
     Route::post('/produtos/cadastrar', [ProdutoController::class, 'cadastrar']);
+    Route::post('/produtos/editar/{id}', [ProdutoController::class, 'editar']);
 });
 
 /* Rotas de cliente e anunciante */
