@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -57,5 +58,27 @@ class Produto extends Model
 
     public function imagens() {
         return $this->hasMany(ProdutoImagem::class);
+    }
+
+    public static function atualizar($produtoId, $dados) {
+        try {
+            $produto = Produto::findOrFail($produtoId);
+            $produto->update($dados);
+
+            if (isset($dados['imagens'])) {
+                $manterImagens = isset($dados['mantem']) ? $dados['mantem'] : null;
+
+                $resultado = ProdutoImagem::editar($produto, $dados['imagens'], $manterImagens);
+
+                if (!$resultado) {
+                    throw new Exception();
+                }
+            }
+            
+            return true;
+        } catch (\Exception $e) {
+            dd($e);
+            return false;
+        }
     }
 }
