@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand fs-3 text-tc-white" href="/">Trairi Commerce</a>
         <div class="d-flex gap-4 align-items-center">
-            <a href="/pedidos/items" class="nav-link d-lg-none">
+            <a href="/pedidos/carrinho" class="nav-link d-lg-none">
                 <img src="/icons/shopping-cart.svg" alt="Ícone de carrinho">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -61,7 +61,7 @@
                     </svg>
                 </button>
             </form>
-            <a href="/pedidos/items" class="nav-link ps-4 pe-2 d-none d-lg-inline">
+            <a href="/pedidos/carrinho" class="nav-link ps-4 pe-2 d-none d-lg-inline">
                 <img src="/icons/shopping-cart.svg" alt="Ícone de carrinho">
             </a>
         </div>
