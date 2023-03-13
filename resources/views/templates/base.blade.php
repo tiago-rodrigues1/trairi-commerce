@@ -39,6 +39,7 @@
 
     <script src="/scripts/bootstrap.bundle.min.js"></script>
     <script src="/scripts/jquery/plugins/jquery.mask.min.js"></script>
+    <script src="/scripts/main.js"></script>
     @if ($errors->any() || session('status'))
         <script>
             toast = new bootstrap.Toast(document.getElementById('mytoast'));
