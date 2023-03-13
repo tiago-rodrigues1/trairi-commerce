@@ -74,39 +74,6 @@ $(document).ready(function () {
         $(this).children().toggle("fast");
     });
 
-    let cont = 0;
-    $('.add').click(function() {
-
-        if (cont < 4) {
-            $('.fileInputs-container').append(
-                `
-                <div class="mt-3 d-flex align-items-center gap-2 position-relative" id="divinpt_${++cont}">
-                    <input type="file" class="form-control" name="imagens[]" id="inpt_${cont}">
-                    <button type="button" class="remove btn ps-2 border-0 position-absolute top-50 start-100 translate-middle-y" data-target="#divinpt_${cont}">
-                        <img src="/icons/x.svg" alt="Ícone de X vermelho, que representa remoção de imagem">
-                    </button>
-                </div>
-                `
-            );
-        }
-
-        $('.remove').click(function() {
-            var idToRemove = $(this).data('target');
-    
-            $(idToRemove).remove();
-        });
-    });
-
-    $('.allow-edit').click(function() {
-        var form = $(this).data('formtarget');
-
-        $(`${form} input[readonly], textarea`).removeAttr('readonly');
-        $(`${form} input[type=radio], input[type=checkbox]`).removeAttr('disabled');
-        $(form).append(`
-            <button type="submit" class="btn tc-btn mt-3">Salvar</button>
-            <a class="btn tc-btn-ghost-red" href="/usuario/perfil">Cancelar</button>
-        `);
-    });
 
     $('.cep').focusout(function() {
         var inputId = $(this).attr('id');
@@ -128,23 +95,6 @@ $(document).ready(function () {
                 }
             }
         });
-    });
-
-    $('.quant_item').change(function() {
-        if ($(this).val() < 1) {
-            $(this).val(1);
-        }
-
-        var subtotal = 0;
-
-        $('.quant_item').each(function() {
-            subtotal += $(this).data('price') * Number($(this).val());
-        });
-
-        var total = subtotal + $('#frete').data('frete');
-
-        $('#subtotal').text(subtotal.toFixed(2).replace('.', ','));
-        $('#total').text(`Total: ${total.toFixed(2).replace('.', ',')}`);
     });
 
     $('.open').click(function() {

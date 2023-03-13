@@ -264,5 +264,3 @@
         </form>
     </div>
 </div>
-
-<script src="/scripts/home.js"></script>

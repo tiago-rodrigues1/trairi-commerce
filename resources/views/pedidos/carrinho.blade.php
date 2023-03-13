@@ -115,4 +115,5 @@
             </main>
         </div>
     </form>
+    <script src="/scripts/pages/carrinho.js"></script>
 @endsection
