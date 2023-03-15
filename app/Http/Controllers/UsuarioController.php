@@ -27,16 +27,16 @@ class UsuarioController extends Controller {
             $u = Usuario::salvar($request->except('_token'));
         } else {
             $request->validate([
-                'anunciante[nome_fantasia]' => 'required|max:200',
-                'anunciante[cpf_cnpj]' => 'required|max:14|unique:anunciantes',
-                'anunciante[taxa_de_entrega]' => 'decimal:2',
-                'anunciante[descricao]' => 'required|max:300',
-                'anunciante[telefone]' => 'required|max:11',
-                'anunciante[cep]' => 'required|max:8',
-                'anunciante[cidade]' => 'required|max:100',
-                'anunciante[bairro]' => 'required|max:100',
-                'anunciante[endereco]' => 'required|max:200',
-                'anunciante[funcionamento]' => 'required|max:100'
+                'anunciante.nome_fantasia' => 'required|max:200',
+                'anunciante.cpf_cnpj' => 'required|max:14|unique:anunciantes',
+                'anunciante.taxa_de_entrega' => 'numeric',
+                'anunciante.descricao' => 'required|max:300',
+                'anunciante.telefone' => 'required|max:11',
+                'anunciante.cep' => 'required|max:8',
+                'anunciante.cidade' => 'required|max:100',
+                'anunciante.bairro' => 'required|max:100',
+                'anunciante.endereco' => 'required|max:200',
+                'anunciante.funcionamento' => 'required|max:100'
             ]);
             $u = Usuario::salvar($request->except('_token'), $request->except('_token')['anunciante']);
         }

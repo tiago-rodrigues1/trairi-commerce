@@ -1,4 +1,4 @@
-<article class="card p-0 mx-2 my-2">
+<article class="card p-0 col m-2">
     <img src="/storage/{{ $produto->imagens[0]->path }}" alt="Pizza" class="card-img-top">
 
     <main class="p-3 bg-tc-gray vstack gap-3 card-body">
@@ -17,7 +17,7 @@
         </div>
         <hr class="my-1">
         <section class="hstack align-items-center justify-content-between">
-            <button class="btn tc-btn">Editar</button>
+            <a class="btn tc-btn" href="/produtos/editar/{{ $produto->id }}">Editar</a>
             <button class="btn tc-btn-outline-red">Excluir</button>
         </section>
     </main>

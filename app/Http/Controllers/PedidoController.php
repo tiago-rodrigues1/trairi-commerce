@@ -7,9 +7,9 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller {
-    public function renderPedidoNovo() {
+    public function renderCarrinho() {
         $u = session()->get('usuario');
-        return view('pedidos/novo', compact('u'));
+        return view('pedidos/carrinho', compact('u'));
     }
 
     public function adicionarItem($id) {
@@ -23,11 +23,11 @@ class PedidoController extends Controller {
 
         if (count($result) > 0) {
             $status = ['type' => 'error', 'msg' => 'Você só pode adicionar produtos de um mesmo anunciante'];
-            return redirect('/pedidos/items')->with(compact('status'));
+            return redirect('/pedidos/carrinho')->with(compact('status'));
         } 
         
         session()->push('carrinho', $produto);
-        return redirect('/pedidos/items');
+        return redirect('/pedidos/carrinho');
     }
 
     public function removerItem($id) {
@@ -42,7 +42,7 @@ class PedidoController extends Controller {
             }
         });
         
-        return redirect('/pedidos/items');
+        return redirect('/pedidos/carrinho');
     }
 
     public function novoPedido(Request $request) {
@@ -61,7 +61,23 @@ class PedidoController extends Controller {
 
         if ($pedido) {
             $status = ['type' => 'success', 'msg' => 'Pedido feito com sucesso!'];
-            return redirect('/')->with(compact('status'));
+        } else {
+            $status = ['type' => 'error', 'msg' => 'Não foi possível enviar seu pedido'];
         }
+
+        return redirect('/')->with(compact('status'));
+    }
+
+    public function renderHistoricoPedidos() {
+        $acesso = session()->get('acesso');
+
+        if ($acesso == 'cliente') {
+            $pedidos = session()->get('usuario')->cliente->pedidos;
+
+        } else if ($acesso == 'anunciante') {
+            $pedidos = session()->get('usuario')->anunciante->pedidos;
+        }
+
+        return view('pedidos/listar', compact('pedidos'));
     }
 }

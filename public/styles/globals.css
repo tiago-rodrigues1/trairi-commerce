@@ -214,8 +214,20 @@ button:hover {
     transform: scale(1.05);
 }
 
+.small-text {
+    font-size: 12px;
+}
+
+.form-switch .form-check-input:focus {
+    background-image: url('/icons/ellipse_switcher.svg') !important;
+}
+
 @media (min-width: 768px) {
     .h-md-auto {
         height: auto !important;
+    }
+
+    .small-text {
+        font-size: 14px;
     }
 }

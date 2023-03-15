@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Mail\NovoPedido;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class Pedido extends Model {
     use HasFactory;
@@ -13,6 +15,10 @@ class Pedido extends Model {
 
     public function cliente() {
         return $this->belongsTo(Cliente::class);
+    }
+
+    public function anunciante() {
+        return $this->belongsTo(Anunciante::class);
     }
 
     public function produtos() {
@@ -42,17 +48,23 @@ class Pedido extends Model {
                 $pedido->observacao = $dados['observacao'];
             }
 
+            $anunciante = Produto::findOrfail($dados['produto_id'][0])->anunciante;
+
             $pedido->cliente()->associate($cliente);
+            $pedido->anunciante()->associate($anunciante);
             $pedido->save();
 
             for ($i = 0; $i < count($dados['produto_id']); $i++) {
                 $pedido->addProduto($dados['produto_id'][$i], $dados['quantidade'][$i]);
             }
 
-            return true;
+            session()->forget('carrinho');
 
+            Mail::to($pedido->anunciante->usuario->email)->send(new NovoPedido($pedido));
+
+            return true;
         } catch (Exception $e) {
-            dd($e);
+            return false;
         }
     }
 }

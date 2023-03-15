@@ -128,4 +128,5 @@
             @endif
         </form>
     </main>
+    <script src="/scripts/pages/perfil.js"></script>
 @endsection

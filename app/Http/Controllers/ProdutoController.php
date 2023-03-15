@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\ProdutoImagem;
 use App\Models\Categoria;
 
 class ProdutoController extends Controller {
@@ -23,6 +24,26 @@ class ProdutoController extends Controller {
             $status = ['type' => 'success', 'msg' => 'Cadastro feito com sucesso!'];
         } else {
             $status = ['type' => 'error', 'msg' => 'Não foi possível cadastrar seu produto. Por favor, tente novamente'];
+        }
+
+        return redirect('/produtos/listar')->with(compact('status'));
+    }
+
+    public function editar(Request $request) {
+        $request->validate([
+            'disponibilidade' => 'boolean',
+            'nome' => 'string|max:100',
+            'descricao' => 'string|max:300',
+            'valor' => 'numeric',
+            'imagens.*' => 'image|mimes:jpg,png,jpeg,svg,webp|max:1000',
+        ]);
+
+        $resultado = Produto::atualizar($request->id, $request->all());
+
+        if ($resultado) {
+            $status = ['type' => 'success', 'msg' => 'Produto atualizado com sucesso!'];
+        } else {
+            $status = ['type' => 'error', 'msg' => 'Não foi possível atualizar seu produto. Por favor, tente novamente'];
         }
 
         return redirect('/produtos/listar')->with(compact('status'));
@@ -49,5 +70,12 @@ class ProdutoController extends Controller {
         $html = view('components/produto-detalhes', compact('produto'))->render();
 
         return $html;
+    }
+
+    public function renderEditar($id) {
+        $produto = Produto::findOrFail($id);
+        $categorias = Categoria::orderBy('nome')->get();
+
+        return view('/produtos/editar', compact('produto', 'categorias'));
     }
 }
