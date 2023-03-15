@@ -14,4 +14,8 @@ class TipoDePagamento extends Model
     public function anunciantes() {
         return $this->belongsToMany(Anunciante::class, 'aceitas')->withTimestamps();
     }
+
+    public function pedidos() {
+        return $this->hasMany(Pedido::class);
+    }
 }

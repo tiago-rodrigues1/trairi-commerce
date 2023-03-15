@@ -25,6 +25,10 @@ class Pedido extends Model {
         return $this->belongsToMany(Produto::class, 'contems')->withPivot('quantidade')->withTimestamps();
     }
 
+    public function tipoDePagamento() {
+        return $this->belongsTo(TipoDePagamento::class);
+    }
+
     public function addProduto ($produto_id, $quantidade) {
         try {
             $this->produtos()->attach($produto_id, ['quantidade' => $quantidade]);
@@ -40,6 +44,7 @@ class Pedido extends Model {
     public static function salvar($dados) {
         try {
             $cliente = session()->get('usuario')->cliente;
+            $tipoPagamento = TipoDePagamento::findOrFail($dados['tipo_de_pagamento_id']);
 
             $pedido = new Pedido($dados);
             $pedido->estado = 'Pendente';
@@ -52,6 +57,7 @@ class Pedido extends Model {
 
             $pedido->cliente()->associate($cliente);
             $pedido->anunciante()->associate($anunciante);
+            $pedido->tipoDePagamento()->associate($tipoPagamento);
             $pedido->save();
 
             for ($i = 0; $i < count($dados['produto_id']); $i++) {
@@ -64,6 +70,7 @@ class Pedido extends Model {
 
             return true;
         } catch (Exception $e) {
+            dd($e);
             return false;
         }
     }
