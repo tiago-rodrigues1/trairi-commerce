@@ -5,8 +5,6 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\PedidoController;
 
-use function Termwind\render;
-
 /* Rotas de cliente */
 
 Route::middleware('autorizacao:false,true,false')->group(function() {
@@ -35,7 +33,7 @@ Route::middleware('autorizacao:false,false,true')->group(function() {
 Route::middleware('autorizacao:false,true,true')->group(function() {
     Route::get('/usuario/perfil', [UsuarioController::class, 'renderPerfil']);
 
-    Route::get('/pedidos/listar', [PedidoController::class, 'renderHistoricoPedidos']);
+    Route::get('/pedidos/listar', [PedidoController::class, 'renderHistoricoPedidos'])->name('pedidos.listar');
 
     Route::get('/usuario/notificacoes', function () {
         return view('usuario/notificacoes');
