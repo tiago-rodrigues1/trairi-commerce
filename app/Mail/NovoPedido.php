@@ -45,10 +45,9 @@ class NovoPedido extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.novo-pedido',
+            markdown: 'emails.novo-pedido',
             with: [
-                'anunciante' => $this->pedido->anunciante,
-                'cliente' => $this->pedido->cliente,
+                'url' => route('pedidos.listar'),
                 'pedido' => $this->pedido
             ]
         );
