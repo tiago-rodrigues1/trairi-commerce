@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Mail\NovoPedido;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class Pedido extends Model {
     use HasFactory;
@@ -58,8 +60,9 @@ class Pedido extends Model {
 
             session()->forget('carrinho');
 
-            return true;
+            Mail::to($pedido->anunciante->usuario->email)->send(new NovoPedido($pedido));
 
+            return true;
         } catch (Exception $e) {
             return false;
         }
