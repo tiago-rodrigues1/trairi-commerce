@@ -28,7 +28,7 @@ class UsuarioController extends Controller {
         } else {
             $request->validate([
                 'anunciante.nome_fantasia' => 'required|max:200',
-                'anunciante.cpf_cnpj' => 'required|max:14|unique:anunciantes',
+                'anunciante.cpf_cnpj' => 'required|max:14|unique:anunciantes,cpf_cnpj',
                 'anunciante.taxa_de_entrega' => 'numeric',
                 'anunciante.descricao' => 'required|max:300',
                 'anunciante.telefone' => 'required|max:11',
@@ -38,6 +38,7 @@ class UsuarioController extends Controller {
                 'anunciante.endereco' => 'required|max:200',
                 'anunciante.funcionamento' => 'required|max:100'
             ]);
+            
             $u = Usuario::salvar($request->except('_token'), $request->except('_token')['anunciante']);
         }
 
