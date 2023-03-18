@@ -80,4 +80,12 @@ class PedidoController extends Controller {
 
         return view('pedidos/listar', compact('pedidos'));
     }
+
+    public function renderDetalharPedido($pedido_id) {
+        $pedido = Pedido::findOrFail($pedido_id);
+
+        $html = view('components.pedido-detalhes', compact('pedido'))->render();
+
+        return $html;
+    }
 }
