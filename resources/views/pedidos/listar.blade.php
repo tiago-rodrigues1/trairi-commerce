@@ -24,7 +24,13 @@
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <span class=""
                         style="color: var(--{{ $estadoColorSetup[$pedido->estado] }});">{{ $pedido->estado }}</span>
-                    <button type="button" class="btn tc-btn col-6 col-md-3">Detalhar</button>
+                    <button 
+                        type="button" 
+                        class="detalhar btn tc-btn col-6 col-md-3" 
+                        data-pedido_id="{{ $pedido->id }}" 
+                        data-subtotal="{{ $soma }}">
+                            Detalhar
+                        </button>
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
@@ -66,7 +72,7 @@
                     </ul>
                     <div class="d-flex flex-column align-items-center">
                         <span class="text-black-50">PEDIDO</span>
-                        <span>Nº {{ $pedido->id }}</span>
+                        <span>#{{ $pedido->id }}</span>
                     </div>
                 </div>
             </article>
@@ -74,4 +80,6 @@
             <p>Não tem pedidos</p>
         @endforelse
     </section>
+
+    <script src="/scripts/pages/pedidos.js"></script>
 @endsection
