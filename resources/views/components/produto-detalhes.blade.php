@@ -101,8 +101,9 @@
                                 @endforeach
                             </div>
                         </div>
-                        <a class="mt-5 btn tc-btn w-100" href="/pedidos/carrinho/{{ $produto->id }}">Adicionar ao
-                            carrinho</a>
+                        @if (session()->get('acesso') == 'cliente')
+                            <a class="mt-5 btn tc-btn w-100" href="/pedidos/carrinho/{{ $produto->id }}">Adicionar ao carrinho</a>
+                        @endif
                     </div>
                 </section>
                 <section class="mt-5">

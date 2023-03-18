@@ -34,6 +34,7 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
     Route::get('/usuario/perfil', [UsuarioController::class, 'renderPerfil']);
 
     Route::get('/pedidos/listar', [PedidoController::class, 'renderHistoricoPedidos'])->name('pedidos.listar');
+    Route::get('/pedidos/detalhar/{pedido_id}', [PedidoController::class, 'renderDetalharPedido']);
 
     Route::get('/usuario/notificacoes', function () {
         return view('usuario/notificacoes');

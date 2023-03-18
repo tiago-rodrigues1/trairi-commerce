@@ -2,9 +2,11 @@
     <div class="container-fluid">
         <a class="navbar-brand fs-3 text-tc-white" href="/">Trairi Commerce</a>
         <div class="d-flex gap-4 align-items-center">
-            <a href="/pedidos/carrinho" class="nav-link d-lg-none">
-                <img src="/icons/shopping-cart.svg" alt="Ícone de carrinho">
-            </a>
+            @if (session()->get('acesso') == 'cliente')
+                <a href="/pedidos/carrinho" class="nav-link d-lg-none">
+                    <img src="/icons/shopping-cart.svg" alt="Ícone de carrinho">
+                </a>   
+            @endif
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,9 +63,11 @@
                     </svg>
                 </button>
             </form>
-            <a href="/pedidos/carrinho" class="nav-link ps-4 pe-2 d-none d-lg-inline">
-                <img src="/icons/shopping-cart.svg" alt="Ícone de carrinho">
-            </a>
+            @if (session()->get('acesso') == 'cliente')
+                <a href="/pedidos/carrinho" class="nav-link ps-4 pe-2 d-none d-lg-inline">
+                    <img src="/icons/shopping-cart.svg" alt="Ícone de carrinho">
+                </a>
+            @endif
         </div>
     </div>
 </nav>
