@@ -50,7 +50,7 @@ $filters = [
                     <h3>
                         @yield('pageLabel')
                     </h3>
-                    <h6 class="m-0">@yield('resultsCount') resultados encontrados</h6>
+                    <h6 class="m-0 fw-normal">@yield('resultsCount') resultados encontrados</h6>
                 </div>
                 <div class="hstack gap-3 align-items-end">
                     @if (session()->get('acesso') == 'anunciante')
