@@ -78,4 +78,12 @@ class ProdutoController extends Controller {
 
         return view('/produtos/editar', compact('produto', 'categorias'));
     }
+
+    public function excluir($id) {
+        $produtoImagem = ProdutoImagem::where('produto_id', $id)->delete();
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
+
+        return view('/produtos/listar')->with('msg', 'Produto excluído com sucesso!');
+    }
 }

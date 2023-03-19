@@ -18,7 +18,11 @@
         <hr class="my-1">
         <section class="hstack align-items-center justify-content-between">
             <a class="btn tc-btn" href="/produtos/editar/{{ $produto->id }}">Editar</a>
-            <button class="btn tc-btn-outline-red">Excluir</button>
+            <form action="/produtos/excluir/{{ $produto->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn tc-btn-outline-red">Excluir</button>
+            </form>
         </section>
     </main>
 </article>
