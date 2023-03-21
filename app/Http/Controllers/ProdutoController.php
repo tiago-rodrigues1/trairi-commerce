@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ExcluirProdutoException;
 use Illuminate\Http\Request;
 use App\Models\Produto;
-use App\Models\ProdutoImagem;
 use App\Models\Categoria;
 
 class ProdutoController extends Controller {
@@ -80,10 +80,18 @@ class ProdutoController extends Controller {
     }
 
     public function excluir($id) {
-        $produtoImagem = ProdutoImagem::where('produto_id', $id)->delete();
         $produto = Produto::findOrFail($id);
-        $produto->delete();
 
-        return view('/produtos/listar')->with('msg', 'Produto excluído com sucesso!');
+        $resultado = Produto::deletar($produto);
+
+        if ($resultado instanceof ExcluirProdutoException) {
+            $status = ['type' => 'error', 'msg' => $resultado->getMessage()];
+        } else if ($resultado == true) {
+            $status = ['type' => 'success', 'msg' => 'Produto deletado com sucesso!'];
+        } else {
+            $status = ['type' => 'error', 'msg' => 'Não foi possível deletar seu produto. Por favor, tente novamente'];
+        }
+
+        return redirect('/produtos/listar')->with(compact('status'));
     }
 }
