@@ -26,6 +26,13 @@ class ProdutoImagem extends Model {
         }
     }
 
+    public static function deletar($imagens) {
+        foreach($imagens as $imagem) {
+            Storage::delete('public/'.$imagem->path);
+            $imagem->delete();
+        }
+    }
+
     public static function editar($produto, $novasImagens, $manterImagens = null) {
         $imagensProduto = $produto->imagens;
 
