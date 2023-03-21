@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Exception;
+use App\Exceptions\ExcluirProdutoException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -77,7 +78,29 @@ class Produto extends Model
             
             return true;
         } catch (\Exception $e) {
-            dd($e);
+            return false;
+        }
+    }
+
+    public static function deletar($produto) {
+        try {
+            if (count($produto->pedidos) > 0) {
+                foreach($produto->pedidos as $pedido) {
+                    if ($pedido->estado == 'Pendente' || $pedido->estado == 'Aceito') {
+                        throw new ExcluirProdutoException('Não é possível excluir produtos com pedidos em aberto. Finalize ou cancele o pedido.');
+                    } else {
+                        $pedido->produtos()->detach($produto->id);
+                    }
+                }
+            }
+
+            ProdutoImagem::deletar($produto->imagens);
+            $produto->delete();
+
+            return true;
+        } catch (ExcluirProdutoException $ep) {
+            return $ep;
+        } catch (Exception $e) {
             return false;
         }
     }
