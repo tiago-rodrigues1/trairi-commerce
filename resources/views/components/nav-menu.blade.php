@@ -51,8 +51,8 @@
                     </li>
                 @endif
             </ul>
-            <form class="d-flex col-12 col-lg-5 mb-2" role="search">
-                <input class="form-control me-2 bg-tc-white" type="search" placeholder="O que você procura ?"
+            <form class="d-flex col-12 col-lg-5 mb-2" role="search" method="GET" action="/busca/resultados">
+                <input class="form-control me-2 bg-tc-white" type="text" name="termo" placeholder="O que você procura ?"
                     aria-label="Search">
                 <button class="btn bg-tc-green-dark px-4 border-0" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
