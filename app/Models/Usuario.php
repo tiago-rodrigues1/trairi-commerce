@@ -92,7 +92,18 @@ class Usuario extends Model {
     }
 
     public function fazerBusca($termo) {
+        $resultados = [];
 
+        try {
+            $resultados = Produto::where('nome', 'like', '%'.$termo.'%')->get();
+        } catch (Exception $e) {
+            $resultados = null;
+        } finally {
+            $busca = new Busca(['termo' => $termo]);
+            $this->buscas()->save($busca);
+
+            return $resultados;
+        }
     }
 
     public function denunciarProduto($p, $descricao) {

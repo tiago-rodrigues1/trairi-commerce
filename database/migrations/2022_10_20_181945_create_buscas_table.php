@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('buscas', function (Blueprint $table) {
             $table->id();
-            $table->integer('codigo');
+            // $table->integer('codigo');
             $table->string('termo', 100);
             $table->foreignId('usuario_id')->constrained();
             $table->timestamps();

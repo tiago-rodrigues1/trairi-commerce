@@ -46,7 +46,7 @@ $filters = [
         </section>
         <section class="w-100 px-4 px-lg-5 pt-4 flex-1">
             <div class="w-100 d-flex align-items-center justify-content-center">
-                <div class="vstack">
+                <div class="vstack justify-content-between">
                     <h3>
                         @yield('pageLabel')
                     </h3>

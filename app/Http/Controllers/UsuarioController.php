@@ -85,4 +85,17 @@ class UsuarioController extends Controller {
         return view('/usuario/perfil', compact('u'));
     }
 
+    public function buscar() {
+        $u = session()->get('usuario');
+        $termo = request('termo');
+
+        $resultados = $u->fazerBusca($termo);
+
+        if (is_null($resultados)) {
+            return redirect('/')->withErrors(['msg' => 'Não foi possível realizar busca. Por favor, tente novamente']);
+        }
+
+        return view('/busca/resultados', compact('termo', 'resultados'));
+    }
+
 }

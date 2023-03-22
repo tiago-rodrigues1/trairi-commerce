@@ -48,9 +48,7 @@ Route::get('/', [ProdutoController::class, 'renderWelcome']);
 
 Route::get('/produtos/detalhar/{id}', [ProdutoController::class, 'renderDetalhar']);
 
-Route::get('/busca/resultados', function () {
-    return view('busca/resultados');
-});
+Route::get('/busca/resultados', [UsuarioController::class, 'buscar']);
 
 Route::post('/usuario/cadastrar', [UsuarioController::class, 'cadastrar']);
 

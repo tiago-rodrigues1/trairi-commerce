@@ -9,7 +9,7 @@ class Busca extends Model
 {
     use HasFactory;
 
-    protected $fillable =  ['data_hora', 'termo'];
+    protected $fillable = ['termo'];
 
     public function usuario() {
         return $this->belongsTo(Usuario::class);
