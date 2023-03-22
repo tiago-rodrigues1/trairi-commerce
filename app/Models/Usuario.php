@@ -99,6 +99,9 @@ class Usuario extends Model {
         } catch (Exception $e) {
             $resultados = null;
         } finally {
+            $busca = new Busca(['termo' => $termo]);
+            $this->buscas()->save($busca);
+
             return $resultados;
         }
     }
