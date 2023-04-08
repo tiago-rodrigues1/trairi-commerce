@@ -110,6 +110,17 @@ $(document).ready(function () {
 
                 $(target).remove();
             });
+
+            $('.favoritar').click(function() {
+                $(this).toggleClass('favoritado');
+                $.ajax({
+                    url: `/usuario/favoritar/${id}`,
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+            });
         });
     });
 });
