@@ -28,8 +28,9 @@
                         <li><a class="dropdown-item" href="/usuario/perfil">Perfil</a></li>
                         @if (session()->get('acesso') == 'anunciante')
                             <li><a class="dropdown-item" href="/produtos/listar">Catálogo</a></li>
+                        @else
+                            <li><a class="dropdown-item" href="/usuario/favoritos">Favoritos</a></li>
                         @endif
-                        <li><a class="dropdown-item" href="#">Favoritos</a></li>
                     </ul>
                 </li>
             @else
