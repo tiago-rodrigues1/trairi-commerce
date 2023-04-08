@@ -16,6 +16,9 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
     Route::get('/pedidos/carrinho/{id}', [PedidoController::class, 'adicionarItem']);
     Route::get('/pedidos/carrinho/remover/{id}', [PedidoController::class, 'removerItem']);
     Route::post('/pedidos/novo', [PedidoController::class, 'novoPedido']);
+
+    Route::post('/usuario/favoritar/{id}', [UsuarioController::class, 'favoritarProduto']);
+    Route::get('/usuario/favoritos', [UsuarioController::class, 'renderFavoritos']);
 });
 
 /* Rotas de anunciante */
