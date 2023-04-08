@@ -222,6 +222,15 @@ button:hover {
     background-image: url('/icons/ellipse_switcher.svg') !important;
 }
 
+.favoritado {
+    border-color: var(--tc-green) !important;
+}
+
+.favoritado svg {
+    stroke: var(--tc-green);
+    fill: var(--tc-green);
+}
+
 @media (min-width: 768px) {
     .h-md-auto {
         height: auto !important;

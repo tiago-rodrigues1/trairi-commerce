@@ -52,20 +52,21 @@
                             @endif
                         </div>
                     </div>
-
                     <div class="h-100">
                         <div class="mt-3 d-flex align-items-center justify-content-between">
                             <h4 class="m-0">R$ {{ number_format($produto->valor, 2, ',') }}</h4>
-                            <button type="button" class="p-1 bg-transparent rounded-3 border"
-                                style="border-color: #DDDDDD; font-size: 0;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="#DDDDDD" stroke="#DDDDDD" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
-                                    <path
-                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                                    </path>
-                                </svg>
-                            </button>
+                            @if (session()->has('usuario') && session()->get('acesso') != 'anunciante')
+                                <button type="button" class="{{ session()->get('usuario')->cliente->produtosFavoritados->contains($produto->id) ? 'favoritado' : '' }} p-1 bg-transparent rounded-3 border favoritar"
+                                    style="border-color: #DDDDDD; font-size: 0;" role="favoritar" data-produto_id="{{ $produto->id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="#DDDDDD" stroke="#DDDDDD" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                                        <path
+                                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            @endif
                         </div>
                         <span>Taxa de entrega: R$
                             {{ number_format($produto->anunciante->taxa_de_entrega, 2, ',') }}</span>
