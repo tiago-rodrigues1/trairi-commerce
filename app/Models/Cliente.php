@@ -38,7 +38,25 @@ class Cliente extends Model
     }
 
     public function favoritarProduto($p) {
+        try {
+            $this->produtosFavoritados()->attach($p);
+            session()->put('usuario', $this->usuario);
 
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function desfavoritarProduto($p) {
+        try {
+            $this->produtosFavoritados()->detach($p);
+            session()->put('usuario', $this->usuario);
+
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     public function avaliarAnunciante($p, $estrelas, $comentario) {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Cliente;
+use App\Models\Produto;
 
 class UsuarioController extends Controller {
     
@@ -96,6 +98,30 @@ class UsuarioController extends Controller {
         }
 
         return view('/busca/resultados', compact('termo', 'resultados'));
+    }
+
+    public function favoritarProduto(Request $request, $id) {
+        $p = Produto::findOrFail($id);
+        $id_cliente = session()->get('usuario')->cliente->id;
+        $c = Cliente::findOrFail($id_cliente);
+
+        $isFavoritado = $c->produtosFavoritados->contains($id);
+
+        if ($isFavoritado) {
+            $c->desfavoritarProduto($p);
+        } else {
+            $c->favoritarProduto($p);
+        }
+
+        return redirect('/produtos/detalhar/'.$id);
+    }
+
+    public function renderFavoritos() {
+        $id = session()->get('usuario')->cliente->id;
+        $c = Cliente::findOrFail($id);
+        $favoritos = $c->produtosFavoritados;
+
+        return view('usuario/favoritos', compact('favoritos'));
     }
 
 }
