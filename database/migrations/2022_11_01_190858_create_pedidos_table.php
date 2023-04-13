@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->foreignId('tipo_de_pagamento_id')->constrained();
             $table->foreignId('cliente_id')->constrained();
             $table->foreignId('anunciante_id')->constrained();
-            $table->string('estado', 45);
+            $table->enum('estado', ['Pendente', 'Aceito', 'Recusado', 'Em andamento', 'Cancelado', 'Finalizado', 'Comprovado'])->default('Pendente');
             $table->string('cep_destino', 9);
             $table->string('cidade_destino', 100);
             $table->string('bairro_destino', 100);
