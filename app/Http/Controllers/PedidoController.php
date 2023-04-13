@@ -72,10 +72,10 @@ class PedidoController extends Controller {
         $acesso = session()->get('acesso');
 
         if ($acesso == 'cliente') {
-            $pedidos = session()->get('usuario')->cliente->pedidos;
+            $pedidos = session()->get('usuario')->cliente->pedidos()->orderByDesc('created_at')->get();
 
         } else if ($acesso == 'anunciante') {
-            $pedidos = session()->get('usuario')->anunciante->pedidos;
+            $pedidos = session()->get('usuario')->anunciante->pedidos()->orderByDesc('created_at')->get();
         }
 
         return view('pedidos/listar', compact('pedidos'));
@@ -87,5 +87,19 @@ class PedidoController extends Controller {
         $html = view('components.pedido-detalhes', compact('pedido'))->render();
 
         return $html;
+    }
+
+    public function atualizarPedido(Request $request, $pedido_id) {
+        $pedido = Pedido::findOrFail($pedido_id);
+
+        $novoEstado = $request->acao;
+
+        if ($pedido->atualizar($novoEstado)) {
+            $status = ['type' =>'success','msg' => 'Pedido atualizado com sucesso!'];
+        } else {
+            $status = ['type' =>'error','msg' => 'Não foi possível atualizar o pedido!'];
+        }
+
+        return redirect('/pedidos/listar/')->with(compact('status'));
     }
 }

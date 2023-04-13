@@ -8,10 +8,12 @@
 @php
     $estadoColorSetup = [
         'Pendente' => 'bs-orange',
-        'Aceito' => 'bs-blue',
+        'Aceito' => 'bs-primary',
         'Recusado' => 'tc-red',
         'Cancelado' => 'tc-red',
         'Finalizado' => 'tc-green',
+        'Comprovado' => 'tc-green',
+        'Em andamento' => 'bs-warning'
     ];
     
     $soma = 0;
