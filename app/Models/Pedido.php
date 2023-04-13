@@ -74,4 +74,16 @@ class Pedido extends Model {
             return false;
         }
     }
+
+    public function atualizar ($novoEstado) {
+        try {
+            $this->estado = $novoEstado;
+
+            $this->save();
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
