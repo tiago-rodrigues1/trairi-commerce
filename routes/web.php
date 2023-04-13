@@ -43,6 +43,8 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
     Route::get('/usuario/notificacoes', function () {
         return view('usuario/notificacoes');
     });
+
+    Route::post('/pedidos/atualizar/{pedido_id}', [PedidoController::class, 'atualizarPedido']);
 });
 
 /* Rotas abertas */
