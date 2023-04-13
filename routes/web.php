@@ -43,6 +43,10 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
     Route::get('/usuario/notificacoes', function () {
         return view('usuario/notificacoes');
     });
+
+    Route::get('/usuario/perfilAnunciante', function (){
+        return view('usuario/perfilAnunciante');
+    });
 });
 
 /* Rotas abertas */
