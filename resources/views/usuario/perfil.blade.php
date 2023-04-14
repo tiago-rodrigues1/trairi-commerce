@@ -75,6 +75,28 @@
                         <input class="form-control" type="text" name="anunciante[nome_fantasia]" id="perfil_anunciante_nome_fantasia" value="{{$u->anunciante->nome_fantasia}}" readonly required>
                         <label for="perfil_anunciante_nome_fantasia">Nome Fantasia</label>
                     </div>
+
+                    <legend class="fw-normal fs-6">Canais de atendimento</legend>
+                        <div class="mb-3 form-floating">
+                            <input class="form-control" type="text" name="" id="" value="" readonly required>
+                            <label for="">Instagram</label>
+                        </div>
+                        
+                        <div class="mb-3 form-floating">
+                            <input class="form-control" type="text" name="" id="" value="" readonly required>
+                            <label for="">Facebook</label>
+                        </div>
+
+                        <div class="mb-3 form-floating">
+                            <input class="form-control" type="text" name="" id="" value="" readonly required>
+                            <label for="">Whatsapp</label>
+                        </div>
+
+                        <div class="mb-3 form-floating">
+                            <input class="form-control" type="text" name="" id="" value="" readonly required>
+                            <label for="">Email</label>
+                        </div>
+
                     <fieldset class="pb-4">
                         <legend class="fw-normal fs-6">Tipos de pagamento</legend>
                         @foreach ($u->anunciante->tiposDePagamento as $tipo_pagamento)
@@ -84,6 +106,7 @@
                             </div>
                         @endforeach
                     </fieldset>
+                    
                     <div class="mb-3 form-floating">
                         <textarea class="form-control" name="anunciante[descricao]" id="perfil_anunciante_descricao" readonly required style="min-height: 10rem !important">{{$u->anunciante->descricao}}</textarea> 
                         <label for="perfil_anunciante_descricao">Descrição</label>
