@@ -6,45 +6,46 @@
 
     <main class="p-4 vstack align-items-center justify-content-center">
 
-        <section class="vstack pt-6">
-                    <div class="hstack  gap-4 p-4">
+        <section class="vstack gap-4 p-4">
+                    <div class="hstack gap-4">
                         <img src="/images/perfil.jpg" alt="" class="rounded-circle"
                             style="width: 8rem; height: 8rem;">
                         <div class="vstack">
                             <div>
-                                <span><b>Tak Empresa</b></span>
+                                <h3><b>Tak Empresa</b></h3>
                             </div>
                             <p>Veio no capricho! Super aprovado!</p>
+                            <span>Localização: Avenida 25 de março</span>
                         </div>
                     </div>
-                    <div class="vstack  bg-tc-gray border rounded-3  align-items-center gap-3 p-3">
+                    <div class="vstack bg-tc-gray border rounded-3  align-items-center gap-2 p-2">
                         <span><b>Canais de atendimento</b> </span>
-                        <div class="gap-4 p-2 hstack align-items-center justify-content-center">
-                            <div class=" gap-1">
+                        <div class="gap-4 p-2 hstack justify-content-center">
+                            <div class=" ">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
-                                    style="width: 2rem; height: 2rem;">
-                                    <span></span>
+                                    style="width: 2.5rem; height: 2.5rem;">
+                                    <span>Instagram:</span>
                                     <span>cleitin_junior23</span>
                             </div>
 
-                            <div class=" gap-1 ">
+                            <div class="  ">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
-                                    style="width: 2rem; height: 2rem;">
+                                    style="width: 2.5rem; height: 2.5rem;">
                                     <span>Facebook:</span>
                                     <span>cleitin_junior23</span>
                             </div>
                         </div>
                         <div class="gap-4 p-2 hstack align-items-center justify-content-center">
-                            <div class=" gap-1">
+                            <div class=" ">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
-                                    style="width: 2rem; height: 2rem;">
+                                    style="width: 2.5rem; height: 2.5rem;">
                                     <span>Whatsapp:</span>
                                     <span>cleitin_junior23</span>
                             </div>
 
-                            <div class="  gap-1">
+                            <div class=" ">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
-                                    style="width: 2rem; height: 2rem;">
+                                    style="width: 2.5rem; height: 2.5rem;">
                                     <span>Email:</span>
                                     <span>cleitin_junior23</span>
                             </div>
