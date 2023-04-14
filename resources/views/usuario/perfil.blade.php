@@ -88,12 +88,12 @@
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="" id="" value="" readonly required>
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="" id="" value="" readonly required>
                             <label for="">Whatsapp</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="" id="" value="" readonly required>
+                            <input class="form-control" type="email" name="" id="" value="" readonly required>
                             <label for="">Email</label>
                         </div>
 
