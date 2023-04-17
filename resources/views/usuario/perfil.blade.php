@@ -78,9 +78,10 @@
 
                     <legend class="fw-normal fs-6">Canais de atendimento</legend>
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="" id="" value="" readonly required>
-                            <label for="">Instagram</label>
+                            <input class="form-control" type="text" name="" placeholder="name@example.com" value=" " readonly required>
+                            <label for="instagram">Instagram</label>
                         </div>
+                        
                         
                         <div class="mb-3 form-floating">
                             <input class="form-control" type="text" name="" id="" value="" readonly required>
