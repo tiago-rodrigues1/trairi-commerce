@@ -259,8 +259,32 @@
                             id="anunciante_funcionamento"
                             placeholder="Horário de funcionamento do seu estabelecimento">
                     </div>
+
+                    <legend class="fw-semibold fs-5 py-3">Canais de atendimento</legend>
+
+                        <div class="pb-4">
+                            <label class="form-label" for="instagram">Instagram</label>
+                            <input class="form-control" type="text" name="" id="instagram" placeholder="@Nome_exemplo" value="">
+                        </div>
+                        
+                        
+                        <div class="pb-4">
+                            <label for="">Facebook</label>
+                            <input class="form-control" type="text" name="" id="" value="" placeholder="@Nome" readonly required>
+                        </div>
+
+                        <div class="pb-4">
+                            <label for="">Whatsapp</label>
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="" id="" value="" placeholder="(dd) xxxxx-xxxx" readonly required>
+                        </div>
+
+                        <div class="pb-4">
+                            <label for="">Email</label>
+                            <input class="form-control" type="email" name="" id="" value="" placeholder="exemplo@email.exemplo" readonly required>
+                        </div>
                 </fieldset>
             </div>
+
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Cadastrar</button>
                 <span class="py-2">Já tem uma conta ? <a class="text-tc-green trocar" href="#"
