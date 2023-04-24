@@ -44,9 +44,7 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
         return view('usuario/notificacoes');
     });
 
-    Route::get('/usuario/perfilAnunciante', function (){
-        return view('usuario/perfilAnunciante');
-    });
+    Route::get('/usuario/perfilAnunciante/{id}', [UsuarioController::class, 'renderPerfilAnunciante']);
 });
 
 /* Rotas abertas */

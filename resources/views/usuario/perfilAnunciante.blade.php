@@ -24,14 +24,12 @@
                             <div class=" ">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
                                     style="width: 2.5rem; height: 2.5rem;">
-                                    <span>Instagram:</span>
                                     <span>cleitin_junior23</span>
                             </div>
 
                             <div class="  ">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
                                     style="width: 2.5rem; height: 2.5rem;">
-                                    <span>Facebook:</span>
                                     <span>cleitin_junior23</span>
                             </div>
                         </div>
@@ -39,19 +37,23 @@
                             <div class=" ">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
                                     style="width: 2.5rem; height: 2.5rem;">
-                                    <span>Whatsapp:</span>
                                     <span>cleitin_junior23</span>
                             </div>
 
                             <div class=" ">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
                                     style="width: 2.5rem; height: 2.5rem;">
-                                    <span>Email:</span>
                                     <span>cleitin_junior23</span>
                             </div>
                         </div>
 
                     </div>
+
+                    <x-product-section sectionTitle="Produtos">
+                        @foreach ($produtos as $produto)
+                            <x-card-produto :produto="$produto" />
+                        @endforeach
+                    </x-product-section>
                 </section>
         
         

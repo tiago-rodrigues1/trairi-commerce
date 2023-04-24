@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Cliente;
 use App\Models\Produto;
+use App\Models\Anunciante;
 
 class UsuarioController extends Controller {
     
@@ -128,7 +129,11 @@ class UsuarioController extends Controller {
         return view('usuario/favoritos', compact('favoritos'));
     }
 
-    public function editar(Request $request) {
-
+    public function renderPerfilAnunciante ($id) {
+        $anunciante = Anunciante::findOrFail($id);
+        $produtos = $anunciante->produtos;
+        
+        return view('usuario/perfilAnunciante', compact('produtos'));
     }
+
 }
