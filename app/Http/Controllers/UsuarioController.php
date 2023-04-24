@@ -38,7 +38,11 @@ class UsuarioController extends Controller {
                 'anunciante.cidade' => 'required|max:100',
                 'anunciante.bairro' => 'required|max:100',
                 'anunciante.endereco' => 'required|max:200',
-                'anunciante.funcionamento' => 'required|max:100'
+                'anunciante.funcionamento' => 'required|max:100',
+                'anunciante.instagram' => 'required|max:100',
+                'anunciante.facebook' => 'required|max:100',
+                'anunciante.whatsapp' => 'required|max:11',
+                'anunciante.email' => 'required|max:100'
             ]);
             
             $u = Usuario::salvar($request->except('_token'), $request->except('_token')['anunciante']);
@@ -124,4 +128,7 @@ class UsuarioController extends Controller {
         return view('usuario/favoritos', compact('favoritos'));
     }
 
+    public function editar(Request $request) {
+
+    }
 }
