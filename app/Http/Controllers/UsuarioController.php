@@ -132,10 +132,8 @@ class UsuarioController extends Controller {
     public function renderPerfilAnunciante ($id) {
         $anunciante = Anunciante::findOrFail($id);
         $produtos = $anunciante->produtos;
-
-        $nome_fantasia = Anunciante::where('id', $anunciante->id)->first();
         
-        return view('usuario/perfilAnunciante', compact('produtos'), ['anunciante'=> $anunciante, 'nome_fantasia' => $nome_fantasia]);
+        return view('usuario/perfilAnunciante', compact('produtos','anunciante'));
     }
 
 }

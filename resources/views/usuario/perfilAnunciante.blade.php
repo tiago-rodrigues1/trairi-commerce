@@ -12,9 +12,9 @@
                             style="width: 8rem; height: 8rem;">
                         <div class="vstack">
                             <div>
-                                <h3><b>{{ $nome_fantasia}}</b></h3>
+                                <h3><b>{{ $anunciante->nome_fantasia }}</b></h3>
                             </div>
-                            <p>Veio no capricho! Super aprovado!</p>
+                            <p>{{ $anunciante->descricao }}</p>
                             <span>Localização: Avenida 25 de março</span>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                         <span><b>Canais de atendimento</b> </span>
                         <div class="gap-4 p-2 hstack justify-content-center">
                             <div class=" ">
-                                <img src="/images/perfil.jpg" alt="" class="rounded-circle"
+                                <img src="{{  }}" alt="" class="rounded-circle"
                                     style="width: 2.5rem; height: 2.5rem;">
                                     <span>cleitin_junior23</span>
                             </div>
