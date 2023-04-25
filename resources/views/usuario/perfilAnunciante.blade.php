@@ -22,7 +22,7 @@
                         <span><b>Canais de atendimento</b> </span>
                         <div class="gap-4 p-2 hstack justify-content-center">
                             <div class=" ">
-                                <img src="{{  }}" alt="" class="rounded-circle"
+                                <img src="/images/perfil.jpg" alt="" class="rounded-circle"
                                     style="width: 2.5rem; height: 2.5rem;">
                                     <span>cleitin_junior23</span>
                             </div>
