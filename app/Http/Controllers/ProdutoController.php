@@ -55,8 +55,11 @@ class ProdutoController extends Controller {
     }
 
     public function renderListar() {
+        $filters = [];
+
         $produtos = session()->get('usuario')->anunciante->produtos()->orderBy('nome')->get();
-        return view('produtos/listar', compact('produtos'));
+
+        return view('produtos/listar', compact('produtos', 'filters'));
     }
 
     public function renderWelcome() {
@@ -93,5 +96,22 @@ class ProdutoController extends Controller {
         }
 
         return redirect('/produtos/listar')->with(compact('status'));
+    }
+
+    public function filtrar() {
+        $filtros = request()->all();
+        $produtos = Produto::join('anunciantes', 'anunciantes.id', '=', 'produtos.anunciante_id')
+        ->join('aceitas', 'aceitas.anunciante_id', '=', 'anunciantes.id')
+        ->join('tipo_de_pagamentos', 'tipo_de_pagamentos.id', '=', 'aceitas.tipo_de_pagamento_id')
+        ->join('pedidos', 'pedidos.anunciante_id', '=', 'anunciantes.id');
+
+        foreach ($filtros as $key => $value) {
+            [$tabela, $campo] = explode('#', $key);
+            $produtos->orwhere($tabela.'.'.$campo, $value[0]);
+        }
+
+        $p = $produtos->get();
+
+        dd($p);
     }
 }

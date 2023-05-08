@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Cliente;
 use App\Models\Produto;
+use App\Models\TipoDePagamento;
+use App\Models\Anunciante;
 
 class UsuarioController extends Controller {
     
@@ -90,6 +92,20 @@ class UsuarioController extends Controller {
     public function buscar() {
         $u = session()->get('usuario');
         $termo = request('termo');
+        $pagamentos = TipoDePagamento::all();
+        $anunciantes = Anunciante::distinct('cidade')->get();
+
+        $filters = [];
+        $filters[0] = ['label' => ['Tipo de Pagamento', 'tipo_de_pagamentos#descricao']];
+        $filters[1] = ['label' => ['Cidade', 'anunciantes#cidade']];
+
+        foreach($pagamentos as $pagamento) {
+            $filters[0]['options'][] = $pagamento->descricao;
+        }
+
+        foreach($anunciantes as $anunciante) {
+            $filters[1]['options'][] = $anunciante->cidade;
+        }
 
         $resultados = $u->fazerBusca($termo);
 
@@ -97,7 +113,7 @@ class UsuarioController extends Controller {
             return redirect('/')->withErrors(['msg' => 'Não foi possível realizar busca. Por favor, tente novamente']);
         }
 
-        return view('/busca/resultados', compact('termo', 'resultados'));
+        return view('/busca/resultados', compact('termo', 'resultados', 'filters'));
     }
 
     public function favoritarProduto(Request $request, $id) {

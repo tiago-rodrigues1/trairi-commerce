@@ -45,6 +45,10 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
     });
 
     Route::post('/pedidos/atualizar/{pedido_id}', [PedidoController::class, 'atualizarPedido']);
+
+    Route::get('/produtos/filtrar', [ProdutoController::class, 'filtrar']);
+
+    Route::get('/busca/resultados', [UsuarioController::class, 'buscar']);
 });
 
 /* Rotas abertas */
@@ -52,8 +56,6 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
 Route::get('/', [ProdutoController::class, 'renderWelcome']);
 
 Route::get('/produtos/detalhar/{id}', [ProdutoController::class, 'renderDetalhar']);
-
-Route::get('/busca/resultados', [UsuarioController::class, 'buscar']);
 
 Route::post('/usuario/cadastrar', [UsuarioController::class, 'cadastrar']);
 

@@ -123,4 +123,21 @@ $(document).ready(function () {
             });
         });
     });
+
+    $('.filter-item input').change(function() {
+        $('.filter-form').submit();
+    });
+
+    // $('.filter-item').hide();
+
+    // $('.filter-container').on('click', function() {
+    //     console.log(this);
+    //     if ($(this).hasClass('filter-container')) {
+    //         var id = $(this).data('target');
+
+    //         $(id).toggle('fast');
+    //     } else {
+    //         return;
+    //     }
+    // });
 });

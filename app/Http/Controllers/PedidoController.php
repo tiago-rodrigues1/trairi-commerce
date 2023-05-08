@@ -69,6 +69,14 @@ class PedidoController extends Controller {
     }
 
     public function renderHistoricoPedidos() {
+        $pedidosEstado = Pedido::distinct('estado')->get();
+        $filters = [];
+        $filters[0] = ['label' => ['Estados', 'pedidos#estado']];
+
+        foreach($pedidosEstado as $pedido) {
+            $filters[0]['options'][] = $pedido->estado;
+        }
+
         $acesso = session()->get('acesso');
 
         if ($acesso == 'cliente') {
@@ -78,7 +86,7 @@ class PedidoController extends Controller {
             $pedidos = session()->get('usuario')->anunciante->pedidos()->orderByDesc('created_at')->get();
         }
 
-        return view('pedidos/listar', compact('pedidos'));
+        return view('pedidos/listar', compact('pedidos', 'filters'));
     }
 
     public function renderDetalharPedido($pedido_id) {
