@@ -34,7 +34,7 @@ class UsuarioController extends Controller {
                 'anunciante.cpf_cnpj' => 'required|max:14|unique:anunciantes,cpf_cnpj',
                 'anunciante.taxa_de_entrega' => 'numeric',
                 'anunciante.descricao' => 'required|max:300',
-                'anunciante.telefone' => 'required|max:11',
+                'anunciante.telefone' => 'required|string|max:11',
                 'anunciante.cep' => 'required|max:8',
                 'anunciante.cidade' => 'required|max:100',
                 'anunciante.bairro' => 'required|max:100',
@@ -42,8 +42,8 @@ class UsuarioController extends Controller {
                 'anunciante.funcionamento' => 'required|max:100',
                 'anunciante.instagram' => 'required|max:100',
                 'anunciante.facebook' => 'required|max:100',
-                'anunciante.whatsapp' => 'required|max:11',
-                'anunciante.email' => 'required|max:100'
+                'anunciante.whatsapp' => 'required|string|max:11',
+                'anunciante.email_anunciante' => 'required|max:100'
             ]);
             
             $u = Usuario::salvar($request->except('_token'), $request->except('_token')['anunciante']);

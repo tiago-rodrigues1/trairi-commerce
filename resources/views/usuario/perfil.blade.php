@@ -78,24 +78,24 @@
 
                     <legend class="fw-normal fs-6">Canais de atendimento</legend>
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="" placeholder="name@example.com" value=" " readonly required>
-                            <label for="instagram">Instagram</label>
+                            <input class="form-control" type="text" id="perfil_instagram" name="anunciante[instagram]" placeholder="name@example.com" value="{{$u->anunciante->instagram}}" readonly required>
+                            <label for="perfil_instagram">Instagram</label>
                         </div>
                         
                         
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="" id="" value="" readonly required>
-                            <label for="">Facebook</label>
+                            <input class="form-control" type="text" name="anunciante[facebook]" id="perfil_facebook" value="{{$u->anunciante->facebook}}" readonly required>
+                            <label for="perfil_facebook">Facebook</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="" id="" value="" readonly required>
-                            <label for="">Whatsapp</label>
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="perfil_whatsapp" value="{{$u->anunciante->whatsapp}}" readonly required>
+                            <label for="perfil_whatsapp">Whatsapp</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="email" name="" id="" value="" readonly required>
-                            <label for="">Email</label>
+                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="perfil_email" value="{{$u->anunciante->email_anunciante}}" readonly required>
+                            <label for="perfil_email">Email</label>
                         </div>
 
                     <fieldset class="pb-4">
