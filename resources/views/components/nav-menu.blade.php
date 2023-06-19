@@ -95,7 +95,7 @@
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Entrar</button>
-                <span class="py-2">Não está cadastrado ? <a class="text-tc-green trocar" href="#"
+                <span class="py-2">Não está cadastrado? <a class="text-tc-green trocar" href="#"
                         data-id="cadastro">Cadastre-se</a></span>
             </div>
         </form>
@@ -264,30 +264,30 @@
 
                         <div class="pb-4">
                             <label class="form-label" for="instagram">Instagram</label>
-                            <input class="form-control" type="text" name="anunciante[instagram]" id="instagram" placeholder="@Nome_exemplo" value="">
-                        </div>
-                        
-                        
-                        <div class="pb-4">
-                            <label for="">Facebook</label>
-                            <input class="form-control" type="text" name="anunciante[facebook]" id="" value="" placeholder="@Nome">
+                            <input class="form-control" type="text" name="anunciante[instagram]" id="instagram" placeholder="@nome_exemplo">
                         </div>
 
                         <div class="pb-4">
-                            <label for="">Whatsapp</label>
-                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="anunciante_whatsapp" value="" placeholder="(dd) xxxxx-xxxx">
+                            <label class="form-label" for="facebook">Facebook</label>
+                            <input class="form-control" type="text" name="anunciante[facebook]" id="facebook" placeholder="@nome">
                         </div>
 
                         <div class="pb-4">
-                            <label for="">Email</label>
-                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="" value="" placeholder="exemplo@email.exemplo">
+                            <label class="form-label" for="whatsapp">Whatsapp</label>
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="whatsapp" placeholder="(dd) xxxxx-xxxx" minlength="11" required>
                         </div>
+
+                        <div class="pb-4">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="email_anunciante" placeholder="exemplo@email.exemplo">
+                        </div>
+
                 </fieldset>
             </div>
 
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Cadastrar</button>
-                <span class="py-2">Já tem uma conta ? <a class="text-tc-green trocar" href="#"
+                <span class="py-2">Já tem uma conta? <a class="text-tc-green trocar" href="#"
                         data-id="login">Faça login</a></span>
             </div>
         </form>

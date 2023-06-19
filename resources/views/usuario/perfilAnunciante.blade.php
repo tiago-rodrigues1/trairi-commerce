@@ -12,9 +12,9 @@
                             style="width: 8rem; height: 8rem;">
                         <div class="vstack">
                             <div>
-                                <h3><b>Tak Empresa</b></h3>
+                                <h3><b>{{ $anunciante->nome_fantasia }}</b></h3>
                             </div>
-                            <p>Veio no capricho! Super aprovado!</p>
+                            <p>{{ $anunciante->descricao }}</p>
                             <span>Localização: Avenida 25 de março</span>
                         </div>
                     </div>

@@ -34,7 +34,7 @@ class UsuarioController extends Controller {
                 'anunciante.cpf_cnpj' => 'required|max:14|unique:anunciantes,cpf_cnpj',
                 'anunciante.taxa_de_entrega' => 'numeric',
                 'anunciante.descricao' => 'required|max:300',
-                'anunciante.telefone' => 'required|max:11',
+                'anunciante.telefone' => 'required|string|max:11',
                 'anunciante.cep' => 'required|max:8',
                 'anunciante.cidade' => 'required|max:100',
                 'anunciante.bairro' => 'required|max:100',
@@ -178,7 +178,7 @@ class UsuarioController extends Controller {
         $anunciante = Anunciante::findOrFail($id);
         $produtos = $anunciante->produtos;
         
-        return view('usuario/perfilAnunciante', compact('produtos'));
+        return view('usuario/perfilAnunciante', compact('produtos','anunciante'));
     }
 
 }
