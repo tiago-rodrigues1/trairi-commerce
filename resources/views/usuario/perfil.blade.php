@@ -4,7 +4,8 @@
 
 @section('content')
     <main class="p-4 vstack align-items-center justify-content-center">
-        <form action="" class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4" id="perfilform">
+        <form action="/usuario/perfil/atualizar" method="post" class="col-12 col-md-10 col-xl-6 p-4 rounded-3 d-flex flex-column gap-4" id="perfilform">
+            {{ csrf_field() }}
             <div class="hstack align-items-center justify-content-between">
                 <h1 class="fs-2 text-tc-green">Meu Perfil</h1>
                 <button class="btn tc-btn-outline-green allow-edit" type="button" data-formtarget="#perfilform">Editar</button>
@@ -78,23 +79,23 @@
 
                     <legend class="fw-normal fs-6">Canais de atendimento</legend>
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="" placeholder="name@example.com" value=" " readonly required>
+                            <input class="form-control" type="text" name="anunciante[instagram]" placeholder="name@example.com" value="{{$u->anunciante->instagram}}">
                             <label for="instagram">Instagram</label>
                         </div>
                         
                         
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="" id="" value="" readonly required>
+                            <input class="form-control" type="text" name="anunciante[facebook]" id="" value="{{$u->anunciante->facebook}}">
                             <label for="">Facebook</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="" id="" value="" readonly required>
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="" value="{{$u->anunciante->whatsapp}}">
                             <label for="">Whatsapp</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="email" name="" id="" value="" readonly required>
+                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="" value="{{$u->anunciante->email_anunciante}}">
                             <label for="">Email</label>
                         </div>
 

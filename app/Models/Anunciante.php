@@ -9,7 +9,7 @@ class Anunciante extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome_fantasia', 'descricao', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'funcionamento', 'cpf_cnpj', 'taxa_de_entrega'];
+    protected $fillable = ['nome_fantasia', 'descricao', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'funcionamento', 'cpf_cnpj', 'taxa_de_entrega', 'instagram', 'facebook', 'whatsapp', 'email_anunciante'];
 
     public function usuario() {
         return $this->belongsTo(Usuario::class);

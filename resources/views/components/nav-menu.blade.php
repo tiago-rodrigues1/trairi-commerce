@@ -264,23 +264,23 @@
 
                         <div class="pb-4">
                             <label class="form-label" for="instagram">Instagram</label>
-                            <input class="form-control" type="text" name="" id="instagram" placeholder="@Nome_exemplo" value="">
+                            <input class="form-control" type="text" name="anunciante[instagram]" id="instagram" placeholder="@Nome_exemplo" value="">
                         </div>
                         
                         
                         <div class="pb-4">
                             <label for="">Facebook</label>
-                            <input class="form-control" type="text" name="" id="" value="" placeholder="@Nome" readonly required>
+                            <input class="form-control" type="text" name="anunciante[facebook]" id="" value="" placeholder="@Nome">
                         </div>
 
                         <div class="pb-4">
                             <label for="">Whatsapp</label>
-                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="" id="" value="" placeholder="(dd) xxxxx-xxxx" readonly required>
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="anunciante_whatsapp" value="" placeholder="(dd) xxxxx-xxxx">
                         </div>
 
                         <div class="pb-4">
                             <label for="">Email</label>
-                            <input class="form-control" type="email" name="" id="" value="" placeholder="exemplo@email.exemplo" readonly required>
+                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="" value="" placeholder="exemplo@email.exemplo">
                         </div>
                 </fieldset>
             </div>

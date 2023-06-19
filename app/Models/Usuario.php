@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class Usuario extends Model {
     use HasFactory;
@@ -33,6 +34,8 @@ class Usuario extends Model {
     public static function salvar($dados, $dadosAnunciante = null) {
         $u = new Usuario($dados);
 
+        DB::beginTransaction();
+
         try {
             $u->senha = Hash::make($u->senha);
             $u->save();
@@ -50,11 +53,34 @@ class Usuario extends Model {
                     $tipoDePagamento->anunciantes()->attach($u->anunciante->id);
                 }
             }
+            DB::commit();
         } catch(\Exception $e) {
+            DB::rollback();
             $u = null;
         }
-        
         return $u;
+    }
+
+    public static function atualizar($dados, $dadosAnunciante = null) {
+        $u = Usuario::find(session()->get('usuario')->id);
+
+        DB::beginTransaction();
+
+        try {
+            $u->fill($dados);
+            $u->save();
+
+            if ($dadosAnunciante != null) {
+                $anunciante = $u->anunciante;
+                $anunciante->fill($dadosAnunciante);
+                $anunciante->save();
+            }
+            DB::commit();
+        } catch(\Exception $e) {
+            DB::rollback();
+            return false;
+        }
+        return true;
     }
 
     public static function autenticar($dados) {
