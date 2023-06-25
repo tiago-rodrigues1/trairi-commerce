@@ -177,6 +177,12 @@
                         <input class="form-control" type="text" name="endereco" id="endereco" required>
                     </div>
                 </div>
+                <div class="pb-4 row">
+                    <div class="fileInputs-container">
+                        <label class="form-label" for="imagens">Foto de perfil</label>
+                        <input type="file" class="file form-control" name="fotoPerfil[]" id="fotoPerfil">
+                    </div>
+                </div>
                 <fieldset>
                     <legend class="fw-normal fs-6">Gênero</legend>
                     <div class="form-check form-check-inline">
