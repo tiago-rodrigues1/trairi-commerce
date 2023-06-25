@@ -79,23 +79,23 @@
 
                     <legend class="fw-normal fs-6">Canais de atendimento</legend>
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="anunciante[instagram]" placeholder="name@example.com" value="{{$u->anunciante->instagram}}">
+                            <input class="form-control" type="text" name="anunciante[instagram]" placeholder="name@example.com" value="{{$u->anunciante->instagram}}" id="perfil_anunciante_instagram">
                             <label for="instagram">Instagram</label>
                         </div>
                         
                         
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="anunciante[facebook]" id="perfil_facebook" value="{{$u->anunciante->facebook}}">
+                            <input class="form-control" type="text" name="anunciante[facebook]" id="perfil_anunciante_facebook" value="{{$u->anunciante->facebook}}">
                             <label for="perfil_facebook">Facebook</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="perfil_whatsapp" value="{{$u->anunciante->whatsapp}}">
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="perfil_anunciante_whatsapp" value="{{$u->anunciante->whatsapp}}">
                             <label for="">Whatsapp</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="perfil_email" value="{{$u->anunciante->email_anunciante}}">
+                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="perfil_anunciante_email" value="{{$u->anunciante->email_anunciante}}">
                             <label for="">Email</label>
                         </div>
 
