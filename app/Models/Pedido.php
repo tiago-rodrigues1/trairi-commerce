@@ -81,6 +81,8 @@ class Pedido extends Model {
 
             $this->save();
 
+            Mail::to($pedido->cliente->usuario->email)->send(new UpdatePedido($pedido));
+
             return true;
         } catch (Exception $e) {
             return false;
