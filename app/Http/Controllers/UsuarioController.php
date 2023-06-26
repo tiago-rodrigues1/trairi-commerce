@@ -98,7 +98,8 @@ class UsuarioController extends Controller {
         }
 
         
-        if ($u) {
+        if ($u != null) {
+            session()->put('usuario', $u);
             return redirect('/usuario/perfil')->with(['status' => ['type' => 'success', 'msg' => 'Cadastro atualizado com sucesso!']]);
         }
         else {

@@ -101,6 +101,7 @@
         </form>
 
         {{-- * CADASTRO FORM --}}
+        @if (!session()->has('usuario'))
         <form class="modal-content" id="cadastro" action="/usuario/cadastrar" method="post">
             {{ csrf_field() }}
             <div class="modal-header">
@@ -297,5 +298,6 @@
                         data-id="login">Faça login</a></span>
             </div>
         </form>
+        @endif
     </div>
 </div>

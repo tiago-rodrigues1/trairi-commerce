@@ -51,11 +51,7 @@ $(document).ready(function () {
         $('#anunciante_cep').unmask();
         $('#anunciante_telefone').unmask();
         $('#anunciante_cpf_cnpj').unmask();
-        $('#whatsapp').unmask();
-        $('#perfil_anunciante_cep').unmask();
-        $('#perfil_anunciante_telefone').unmask();
-        $('#perfil_anunciante_cpf_cnpj').unmask();
-        $('#perfil_anunciante_whatsapp').unmask();
+        $('#anunciante_whatsapp').unmask();
 
         $(this).find('button[type=submit]').attr('disabled', 'disabled').html(`
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

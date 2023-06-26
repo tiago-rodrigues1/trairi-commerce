@@ -78,9 +78,10 @@ class Usuario extends Model {
             DB::commit();
         } catch(\Exception $e) {
             DB::rollback();
-            return false;
+            dd($e);
+            return null;
         }
-        return true;
+        return $u;
     }
 
     public static function autenticar($dados) {
