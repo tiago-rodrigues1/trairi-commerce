@@ -74,4 +74,22 @@ class Pedido extends Model {
             return false;
         }
     }
+
+    public function atualizar ($novoEstado) {
+        try {
+            $this->estado = $novoEstado;
+
+            $this->save();
+
+            if ( $pedido->estado == "Cancelado") {
+                Mail::to($pedido->anunciante->usuario->email)->send(new UpdatePedido($pedido));
+            } else {
+                 Mail::to($pedido->cliente->usuario->email)->send(new UpdatePedido($pedido));
+            }
+            
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }

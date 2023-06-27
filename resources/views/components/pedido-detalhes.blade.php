@@ -60,11 +60,66 @@
                 </div>
             </section>
         </main>
-        @if (session()->get('acesso') == 'anunciante')
-            <footer class="mt-4 hstack align-items-center justify-content-between">
-                <a class="col-4 btn tc-btn-outline-red">Recusar</a>
-                <a class="col-7 btn tc-btn">Aceitar</a>
-            </footer>
-        @endif
+        <footer class="mt-4 hstack align-items-center justify-content-between">
+            @switch($pedido->estado)
+                @case('Pendente')
+                    @if (session()->get('acesso') == 'anunciante')
+                        <form action="/pedidos/atualizar/{{ $pedido->id }}" method="post" class="col-4">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="acao" value="Recusado">
+                            <button type="submit" class="btn col-12 tc-btn-outline-red">Recusar</button>
+                        </form>
+                        <form action="/pedidos/atualizar/{{ $pedido->id }}" method="post" class="col-7">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="acao" value="Aceito">
+                            <button class="btn tc-btn col-12">Aceitar</button>
+                        </form>
+                    @else
+                        <form action="/pedidos/atualizar/{{ $pedido->id }}" method="post" class="col-4">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="acao" value="Cancelado">
+                            <button type="submit" class="btn col-12 tc-btn-outline-red">Cancelar</button>
+                        </form>
+                    @endif
+
+                    @break
+                @case('Aceito')
+                    <form action="/pedidos/atualizar/{{ $pedido->id }}" method="post" class="col-4">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="acao" value="Cancelado">
+                        <button type="submit" class="btn col-12 tc-btn-outline-red">Cancelar</button>
+                    </form>
+                    @if (session()->get('acesso') == 'anunciante')
+                        <form action="/pedidos/atualizar/{{ $pedido->id }}" method="post" class="col-7">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="acao" value="Em andamento">
+                            <button class="btn tc-btn col-12">Começar execução</button>
+                        </form>
+                    @endif
+
+                    @break
+                @case('Em andamento')
+                    @if (session()->get('acesso') == 'anunciante')
+                        <form action="/pedidos/atualizar/{{ $pedido->id }}" method="post" class="col-12">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="acao" value="Finalizado">
+                            <button class="btn tc-btn col-12">Finalizar</button>
+                        </form>
+                    @endif
+                    
+                    @break
+
+                @case('Finalizado')
+                    @if (session()->get('acesso') == 'cliente')
+                        <form action="/pedidos/atualizar/{{ $pedido->id }}" method="post" class="col-12">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="acao" value="Comprovado">
+                            <button class="btn tc-btn col-12">Comprovar</button>
+                        </form>
+                    @endif
+
+                    @break
+            @endswitch
+        </footer>
     </article>
 </div>
