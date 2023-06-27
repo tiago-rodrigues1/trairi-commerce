@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nome_fantasia', 200);
             $table->string('descricao', 300);
             $table->string('telefone', 11);
-            $table->float('taxa_de_entrega')->default(false)->nullable();
             $table->string('cidade', 100);
             $table->string('cep', 8);
             $table->string('bairro', 100);

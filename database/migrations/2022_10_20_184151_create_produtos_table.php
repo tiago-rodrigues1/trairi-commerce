@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nome', 100);
             $table->string('disponibilidade', 45);
             $table->float('valor');
+            $table->float('taxa_de_entrega')->default(0)->nullable();
             $table->string('descricao', 300);
             $table->boolean('is_servico')->default(false);
             $table->foreignId('categoria_id')->constrained();
