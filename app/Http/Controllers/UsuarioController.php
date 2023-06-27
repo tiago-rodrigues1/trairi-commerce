@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Cliente;
 use App\Models\Produto;
+use App\Models\Anunciante;
 
 class UsuarioController extends Controller {
     
@@ -33,12 +34,16 @@ class UsuarioController extends Controller {
                 'anunciante.cpf_cnpj' => 'required|max:14|unique:anunciantes,cpf_cnpj',
                 'anunciante.taxa_de_entrega' => 'numeric',
                 'anunciante.descricao' => 'required|max:300',
-                'anunciante.telefone' => 'required|max:11',
+                'anunciante.telefone' => 'required|string|max:11',
                 'anunciante.cep' => 'required|max:8',
                 'anunciante.cidade' => 'required|max:100',
                 'anunciante.bairro' => 'required|max:100',
                 'anunciante.endereco' => 'required|max:200',
-                'anunciante.funcionamento' => 'required|max:100'
+                'anunciante.funcionamento' => 'required|max:100',
+                'anunciante.instagram' => 'required|max:100',
+                'anunciante.facebook' => 'required|max:100',
+                'anunciante.whatsapp' => 'required|max:11',
+                'anunciante.email_anunciante' => 'required|max:100'
             ]);
             
             $u = Usuario::salvar($request->except('_token'), $request->except('_token')['anunciante']);
@@ -53,6 +58,52 @@ class UsuarioController extends Controller {
         }
         else {
             return redirect('/')->withErrors(['msg' => 'Não foi possível realizar seu cadastro. Por favor, tente novamente']);
+        }
+    }
+
+    public function atualizar(Request $request) {
+        $request->validate([
+            'nome' => 'required|max:200',
+            //'email' => 'required|email|max:300|unique:usuarios',
+            'nascimento' => 'required|date',
+            'telefone' => 'required|max:15',
+            'cep' => 'required|max:9',
+            'cidade' => 'required|max:100',
+            'bairro' => 'required|max:150',
+            'endereco' => 'required|max:200',
+            'genero' => 'required'
+        ]);
+
+        if ($request->session()->get('acesso') != 'anunciante') {
+            $u = Usuario::atualizar($request->except('_token'));
+        } else {
+            $request->validate([
+                'anunciante.nome_fantasia' => 'required|max:200',
+                'anunciante.cpf_cnpj' => 'required|max:14',
+                'anunciante.taxa_de_entrega' => 'numeric',
+                'anunciante.descricao' => 'required|max:300',
+                'anunciante.telefone' => 'required|max:11',
+                'anunciante.cep' => 'required|max:8',
+                'anunciante.cidade' => 'required|max:100',
+                'anunciante.bairro' => 'required|max:100',
+                'anunciante.endereco' => 'required|max:200',
+                'anunciante.funcionamento' => 'required|max:100',
+                'anunciante.instagram' => 'required|max:100',
+                'anunciante.facebook' => 'required|max:100',
+                'anunciante.whatsapp' => 'required|max:11',
+                'anunciante.email_anunciante' => 'required|max:100'
+            ]);
+            
+            $u = Usuario::atualizar($request->except('_token'), $request->except('_token')['anunciante']);
+        }
+
+        
+        if ($u != null) {
+            session()->put('usuario', $u);
+            return redirect('/usuario/perfil')->with(['status' => ['type' => 'success', 'msg' => 'Cadastro atualizado com sucesso!']]);
+        }
+        else {
+            return redirect('/usuario/perfil')->withErrors(['msg' => 'Não foi possível atualizar seu cadastro. Por favor, tente novamente']);
         }
     }
 
@@ -122,6 +173,13 @@ class UsuarioController extends Controller {
         $favoritos = $c->produtosFavoritados;
 
         return view('usuario/favoritos', compact('favoritos'));
+    }
+
+    public function renderPerfilAnunciante ($id) {
+        $anunciante = Anunciante::findOrFail($id);
+        $produtos = $anunciante->produtos;
+        
+        return view('usuario/perfilAnunciante', compact('produtos','anunciante'));
     }
 
 }

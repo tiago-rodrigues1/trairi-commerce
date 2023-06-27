@@ -95,12 +95,13 @@
             </div>
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Entrar</button>
-                <span class="py-2">Não está cadastrado ? <a class="text-tc-green trocar" href="#"
+                <span class="py-2">Não está cadastrado? <a class="text-tc-green trocar" href="#"
                         data-id="cadastro">Cadastre-se</a></span>
             </div>
         </form>
 
         {{-- * CADASTRO FORM --}}
+        @if (!session()->has('usuario'))
         <form class="modal-content" id="cadastro" action="/usuario/cadastrar" method="post">
             {{ csrf_field() }}
             <div class="modal-header">
@@ -177,9 +178,11 @@
                         <input class="form-control" type="number" name="numero" id="numero" required>
                     </div>
                 </div>
-                <div class="pb-4">
-                    <label class="form-label" for="endereco">Endereço</label>
-                    <input class="form-control" type="text" name="endereco" id="endereco" required>
+                <div class="pb-4 row">
+                    <div class="fileInputs-container">
+                        <label class="form-label" for="imagens">Foto de perfil</label>
+                        <input type="file" class="file form-control" name="fotoPerfil[]" id="fotoPerfil">
+                    </div>
                 </div>
                 <fieldset>
                     <legend class="fw-normal fs-6">Gênero</legend>
@@ -266,13 +269,38 @@
                             id="anunciante_funcionamento"
                             placeholder="Horário de funcionamento do seu estabelecimento">
                     </div>
+
+                    <legend class="fw-semibold fs-5 py-3">Canais de atendimento</legend>
+
+                        <div class="pb-4">
+                            <label class="form-label" for="instagram">Instagram</label>
+                            <input class="form-control" type="text" name="anunciante[instagram]" id="instagram" placeholder="@nome_exemplo">
+                        </div>
+
+                        <div class="pb-4">
+                            <label class="form-label" for="facebook">Facebook</label>
+                            <input class="form-control" type="text" name="anunciante[facebook]" id="facebook" placeholder="@nome">
+                        </div>
+
+                        <div class="pb-4">
+                            <label class="form-label" for="whatsapp">Whatsapp</label>
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="whatsapp" placeholder="(dd) xxxxx-xxxx" minlength="11" required>
+                        </div>
+
+                        <div class="pb-4">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="email_anunciante" placeholder="exemplo@email.exemplo">
+                        </div>
+
                 </fieldset>
             </div>
+
             <div class="modal-footer border-top-0 justify-content-center">
                 <button type="submit" class="btn tc-btn w-100">Cadastrar</button>
-                <span class="py-2">Já tem uma conta ? <a class="text-tc-green trocar" href="#"
+                <span class="py-2">Já tem uma conta? <a class="text-tc-green trocar" href="#"
                         data-id="login">Faça login</a></span>
             </div>
         </form>
+        @endif
     </div>
 </div>

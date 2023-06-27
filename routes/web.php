@@ -44,7 +44,7 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
         return view('usuario/notificacoes');
     });
 
-    Route::post('/pedidos/atualizar/{pedido_id}', [PedidoController::class, 'atualizarPedido']);
+    Route::get('/usuario/perfilAnunciante/{id}', [UsuarioController::class, 'renderPerfilAnunciante']);
 });
 
 /* Rotas abertas */
@@ -60,3 +60,5 @@ Route::post('/usuario/cadastrar', [UsuarioController::class, 'cadastrar']);
 Route::post('/usuario/logar', [UsuarioController::class, 'logar']);
 
 Route::get('/usuario/deslogar', [UsuarioController::class, 'deslogar']);
+
+Route::post('/usuario/perfil/atualizar', [UsuarioController::class, 'atualizar']);
