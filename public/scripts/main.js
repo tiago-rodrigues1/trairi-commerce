@@ -51,7 +51,7 @@ $(document).ready(function () {
         $('#anunciante_cep').unmask();
         $('#anunciante_telefone').unmask();
         $('#anunciante_cpf_cnpj').unmask();
-        $('#anunciante_whatsapp').unmask();
+        $('#whatsapp').unmask();
 
         $(this).find('button[type=submit]').attr('disabled', 'disabled').html(`
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
