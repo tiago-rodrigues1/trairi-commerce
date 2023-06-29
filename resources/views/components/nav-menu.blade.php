@@ -178,6 +178,10 @@
                         <input class="form-control" type="number" name="numero" id="numero" required>
                     </div>
                 </div>
+                <div class="pb-4">
+                        <label class="form-label" for="endereco">Endereço</label>
+                        <input class="form-control" type="text" name="endereco" id="endereco" required>
+                    </div>
                 <div class="pb-4 row">
                     <div class="fileInputs-container">
                         <label class="form-label" for="imagens">Foto de perfil</label>
@@ -255,13 +259,13 @@
                                 id="anunciante_bairro">
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="numero">Número</label>
-                            <input class="form-control" type="number" name="numero" id="numero" required>
+                            <label class="form-label" for="anunciante_numero">Número</label>
+                            <input class="form-control" type="number" name="anunciante[numero]" id="anunciante_numero" required>
                         </div>
                     </div>
                     <div class="pb-4">
                         <label class="form-label" for="endereco">Endereço</label>
-                        <input class="form-control" type="text" name="endereco" id="endereco" required>
+                        <input class="form-control" type="text" name="anunciante[endereco]" id="anunciante_endereco" required>
                     </div>
                     <div class="pb-4">
                         <label class="form-label" for="anunciante_funcionamento">Funcionamento</label>
