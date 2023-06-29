@@ -13,11 +13,12 @@
                         <img src="/images/perfil.jpg" alt="Imagem de perfil" class="rounded-circle"
                             style="width: 8rem; height: 8rem;">
                         <div class="vstack">
-                            <div>
                                 <h3><b>{{ $anunciante->nome_fantasia }}</b></h3>
-                            </div>
                             <p>{{ $anunciante->descricao }}</p>
-                            <span>Localização: {{ $anunciante->cidade }}, {{ $anunciante->bairro }} Rua {{ $anunciante->endereco }}</span>
+                            <div id="hstack">
+                                <i class="fa-solid fa-location-dot" style="color: #72b01d;"></i>
+                                <span>Localização: {{ $anunciante->cidade }}, {{ $anunciante->bairro }} Rua {{ $anunciante->endereco }}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="vstack bg-tc-gray border rounded-3  align-items-center gap-2 p-2">
@@ -25,7 +26,6 @@
                         <div class="gap-4 p-2 hstack justify-content-center align-content-space-around">
                             <div class=" ">
                                 <i class="fa-solid fa-envelope" style="color: #72b01d;"></i>
-                                <i class="fa-regular fa-envelope" style="color: #72b01d;"></i>
                                 <span>{{ $anunciante->email_anunciante }}</span>
                             </div>
 
@@ -33,17 +33,17 @@
                                 <i class="fa-brands fa-whatsapp" style="color: #72b01d;"></i>
                                 <span data-mask="(00) 00000-0000">{{ $anunciante->whatsapp }}</span>
                             </div>
-                            <div class=" ">
-                                <i class="fa-brands fa-instagram" style="color: #72b01d;"></i>
-                                <span>{{ $anunciante->instagram }}</span>
-                            </div>
 
                             <div class=" ">
                                 <i class="fa-brands fa-facebook" style="color: #72b01d;"></i>
                                 <span>{{ $anunciante->facebook }}</span>
                             </div>
-                        </div>
 
+                            <div class=" ">
+                                <i class="fa-brands fa-instagram" style="color: #72b01d;"></i>
+                                <span>{{ $anunciante->instagram }}</span>
+                            </div>
+                        </div>
                     </div>
 
                     <x-product-section sectionTitle="Produtos">
