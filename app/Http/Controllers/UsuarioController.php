@@ -22,6 +22,7 @@ class UsuarioController extends Controller {
             'cep' => 'required|max:9',
             'cidade' => 'required|max:100',
             'bairro' => 'required|max:150',
+            'numero' => 'required',
             'endereco' => 'required|max:200',
             'genero' => 'required'
         ]);
@@ -38,6 +39,7 @@ class UsuarioController extends Controller {
                 'anunciante.cep' => 'required|max:8',
                 'anunciante.cidade' => 'required|max:100',
                 'anunciante.bairro' => 'required|max:100',
+                'anunciante.numero' => 'required',
                 'anunciante.endereco' => 'required|max:200',
                 'anunciante.funcionamento' => 'required|max:100',
                 'anunciante.instagram' => 'required|max:100',
