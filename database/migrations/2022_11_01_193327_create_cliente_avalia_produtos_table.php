@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('cliente_avalia_produtos', function (Blueprint $table) {
             $table->id();
-            $table->integer('estrelas');
-            $table->string('comentario', 300);
+            $table->integer('estrelas')->nullable();
+            $table->string('comentario', 300)->nullable();
             $table->foreignId('produto_id')->constrained();
             $table->foreignId('cliente_id')->constrained();
             $table->timestamps();

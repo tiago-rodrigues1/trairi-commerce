@@ -56,16 +56,29 @@ class ProdutoController extends Controller {
 
     public function renderListar() {
         $produtos = session()->get('usuario')->anunciante->produtos()->orderBy('nome')->get();
+
         return view('produtos/listar', compact('produtos'));
     }
 
     public function renderWelcome() {
         $produtos = Produto::orderBy('created_at')->get();
+
+        if (session()->get('acesso') == 'cliente') {
+            $pedidosParaComprovar = session()->get('usuario')->cliente->pedidos()->where('estado', 'finalizado')->get();
+
+            if (sizeof($pedidosParaComprovar) > 0) {
+                return view('welcome', compact('produtos', 'pedidosParaComprovar'));
+            }
+        }
+
         return view('welcome', compact('produtos'));
     }
 
     public function renderDetalhar($id) {
         $produto = Produto::findOrFail($id);
+        $avaliacoes = $produto->clientesAvaliaram()->get();
+
+        dd($avaliacoes);
 
         $html = view('components/produto-detalhes', compact('produto'))->render();
 
@@ -94,4 +107,21 @@ class ProdutoController extends Controller {
 
         return redirect('/produtos/listar')->with(compact('status'));
     }
+
+    // public function filtrar() {
+    //     $filtros = request()->all();
+    //     $produtos = Produto::join('anunciantes', 'anunciantes.id', '=', 'produtos.anunciante_id')
+    //     ->join('aceitas', 'aceitas.anunciante_id', '=', 'anunciantes.id')
+    //     ->join('tipo_de_pagamentos', 'tipo_de_pagamentos.id', '=', 'aceitas.tipo_de_pagamento_id')
+    //     ->join('pedidos', 'pedidos.anunciante_id', '=', 'anunciantes.id');
+
+    //     foreach ($filtros as $key => $value) {
+    //         [$tabela, $campo] = explode('#', $key);
+    //         $produtos->orwhere($tabela.'.'.$campo, $value[0]);
+    //     }
+
+    //     $p = $produtos->get();
+
+    //     return redirect()->back()->with(compact('p'));
+    // }
 }

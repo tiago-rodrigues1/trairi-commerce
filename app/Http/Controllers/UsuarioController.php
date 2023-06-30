@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Cliente;
 use App\Models\Produto;
+use App\Models\TipoDePagamento;
 use App\Models\Anunciante;
 
 class UsuarioController extends Controller {
@@ -140,17 +141,46 @@ class UsuarioController extends Controller {
         return view('/usuario/perfil', compact('u'));
     }
 
+    private function checarFiltros(&$filtros) {
+        if(is_null($filtros)) {
+            return;
+        }
+    }
+
     public function buscar() {
         $u = session()->get('usuario');
         $termo = request('termo');
+        $filtrosUsuario = [
+            'tipo_de_pagamentos-descricao' => request('tipo_de_pagamentos-descricao'),
+            'anunciantes-cidade' => request('anunciantes-cidade')
+        ];
 
-        $resultados = $u->fazerBusca($termo);
+        $this->checarFiltros($filtrosUsuario['tipo_de_pagamentos-descricao']);
+        $this->checarFiltros($filtrosUsuario['anunciantes-cidade']);
+
+        $action = "/busca/resultados";
+        $pagamentos = TipoDePagamento::all();
+        $anunciantes = Anunciante::distinct('cidade')->get();
+
+        $filters = [];
+        $filters[0] = ['label' => ['Tipo de Pagamento', 'tipo_de_pagamentos-descricao']];
+        $filters[1] = ['label' => ['Cidade', 'anunciantes-cidade']];
+
+        foreach($pagamentos as $pagamento) {
+            $filters[0]['options'][] = $pagamento->descricao;
+        }
+
+        foreach($anunciantes as $anunciante) {
+            $filters[1]['options'][] = $anunciante->cidade;
+        }
+
+        $resultados = $u->fazerBusca($termo, $filtrosUsuario);
 
         if (is_null($resultados)) {
             return redirect('/')->withErrors(['msg' => 'Não foi possível realizar busca. Por favor, tente novamente']);
         }
 
-        return view('/busca/resultados', compact('termo', 'resultados'));
+        return view('/busca/resultados', compact('termo', 'resultados', 'filters', 'filtrosUsuario', 'action'));
     }
 
     public function favoritarProduto(Request $request, $id) {
@@ -176,6 +206,20 @@ class UsuarioController extends Controller {
 
         return view('usuario/favoritos', compact('favoritos'));
     }
+
+    public function avaliarProduto(Request $request, $produto_id) {
+        $produto = Produto::findOrFail($produto_id);
+        $cliente = session()->get('usuario')->cliente;
+
+        $resultado = $cliente->avaliarProduto($produto, $request['produto']);
+
+        if ($resultado) {
+            $status = ['type' =>'success','msg' => 'Comentário enviada com sucesso!'];
+        } else {
+            $status = ['type' =>'error','msg' => 'Não foi possível enviar seu comentário'];
+        }
+
+        redirect('/');
 
     public function renderPerfilAnunciante ($id) {
         $anunciante = Anunciante::findOrFail($id);

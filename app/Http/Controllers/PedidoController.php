@@ -68,17 +68,37 @@ class PedidoController extends Controller {
         return redirect('/')->with(compact('status'));
     }
 
+    private function checarFiltros(&$filtros) {
+        if(is_null($filtros)) {
+            return;
+        }
+    }
+
     public function renderHistoricoPedidos() {
+        $pedidosEstado = Pedido::distinct('estado')->get();
+        $action = "/pedidos/listar";
+        $filtrosUsuario = [
+            'pedidos-estado' => request('pedidos-estado'),
+        ];
+
+        $this->checarFiltros($filtrosUsuario['pedidos-estado']);
+        $filters = [];
+        $filters[0] = ['label' => ['Estados', 'pedidos-estado']];
+
+        foreach($pedidosEstado as $pedido) {
+            $filters[0]['options'][] = $pedido->estado;
+        }
+
         $acesso = session()->get('acesso');
 
         if ($acesso == 'cliente') {
-            $pedidos = session()->get('usuario')->cliente->pedidos()->orderByDesc('created_at')->get();
+            $pedidos = session()->get('usuario')->cliente->listarPedidos($filtrosUsuario);
 
         } else if ($acesso == 'anunciante') {
             $pedidos = session()->get('usuario')->anunciante->pedidos()->orderByDesc('created_at')->get();
         }
 
-        return view('pedidos/listar', compact('pedidos'));
+        return view('pedidos/listar', compact('pedidos', 'filters', 'action', 'filtrosUsuario'));
     }
 
     public function renderDetalharPedido($pedido_id) {
@@ -94,12 +114,40 @@ class PedidoController extends Controller {
 
         $novoEstado = $request->acao;
 
-        if ($pedido->atualizar($novoEstado)) {
-            $status = ['type' =>'success','msg' => 'Pedido atualizado com sucesso!'];
+        if ($novoEstado == "Comprovado") {
+            return view('/pedidos/comprovar', compact('pedido'));
         } else {
-            $status = ['type' =>'error','msg' => 'Não foi possível atualizar o pedido!'];
+            if ($pedido->atualizar($novoEstado)) {
+                $status = ['type' =>'success','msg' => 'Pedido atualizado com sucesso!'];
+            } else {
+                $status = ['type' =>'error','msg' => 'Não foi possível atualizar o pedido!'];
+            }
         }
 
         return redirect('/pedidos/listar/')->with(compact('status'));
+    }
+
+    public function comprovar(Request $request, $id) {
+        $request->validate([
+            'produto.comentario' => 'max:300',
+            'produto.estrelas' => 'min:0|max:5',
+            'anunciante.comentario' => 'max:300',
+            'anunciante.estrelas' => 'required|min:0|max:5',
+        ]);
+
+        $pedido = Pedido::findOrFail($id);
+        $cliente = session()->get('usuario')->cliente;
+
+        if (isset($request['anunciante'])) {
+            $resultado = $cliente->comprovarFinalizacao($pedido, $request['anunciante'], $request['acao']);
+
+            if ($resultado) {
+                $status = ['type' =>'success','msg' => 'Avaliação enviada com sucesso!'];
+            } else {
+                $status = ['type' =>'error','msg' => 'Não foi possível enviar avaliação'];
+            }
+
+            return redirect('/pedidos/listar/')->with(compact('status'));
+        }
     }
 }

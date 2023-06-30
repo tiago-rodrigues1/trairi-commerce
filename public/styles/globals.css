@@ -1,6 +1,6 @@
 :root {
     --tc-black: #0D0A0B;
-    --tc-green: #72B01D;
+    --tc-green: #73b01d;
     --tc-green-dark: #4F7914;
     --tc-white: #FCFFFC;
     --tc-gray: #f7f7f7;
@@ -44,6 +44,10 @@ body {
 
 .bg-tc-green {
     background-color: var(--tc-green) !important;
+}
+
+.bg-tc-green--transparent {
+    background-color: rgba(114, 176, 29, .1);
 }
 
 .bg-tc-green-dark {
@@ -229,6 +233,10 @@ button:hover {
 .favoritado svg {
     stroke: var(--tc-green);
     fill: var(--tc-green);
+}
+
+.rotate {
+    rotate: 180deg;
 }
 
 @media (min-width: 768px) {

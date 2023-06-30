@@ -115,17 +115,34 @@
                 </section>
                 <section class="vstack pt-4">
                     <h6 class="pb-2">Comentários</h6>
-                    <div class="bg-tc-gray border rounded-3 hstack align-items-center gap-3 p-3">
+                    <form action="/produtos/avaliar/{{$produto->id}}" method="post" class="pr-0 gap-3 hstack align-items-center">
+                        {{ csrf_field() }}
                         <img src="/images/perfil.jpg" alt="" class="rounded-circle"
-                            style="width: 4rem; height: 4rem;">
-                        <div class="vstack">
-                            <div>
-                                <span><b>Bruce Wayne</b></span>
-                                <small class="tc-light-text">Em 06/07/2022</small>
+                            style="width: 4rem; min-width: 4rem; height: 4rem;">
+                        <div class="w-100">
+                            <label class="form-label" for="produto-comentario">Adicione um comentário</label>
+                            <div class="d-flex align-items-stretch">
+                                <textarea class="h-100 w-100 form-control" name="produto[comentario]" style="border-radius: .5rem 0 0 .5rem" id="floatingTextarea"></textarea>
+                                <button class="border p-2" style="border-radius: 0 .5rem .5rem 0">></button>
                             </div>
-                            <p>Veio no capricho! Super aprovado!</p>
                         </div>
-                    </div>
+                    </form>
+                    @if (isset($comentariosProduto))
+                        @foreach ($comentariosProduto as $comentario)
+                            <div class="bg-tc-gray rounded-3 border hstack align-items-center gap-3 p-3">
+                                <img src="/images/perfil.jpg" alt="" class="rounded-circle"
+                                    style="width: 4rem; height: 4rem;">
+                                <div class="vstack">
+                                    <div>
+                                        <span><b>Bruce Wayne</b></span>
+                                        <small class="tc-light-text">Em 06/07/2022</small>
+                                    </div>
+                                    <p>Veio no capricho! Super aprovado!</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                        
                 </section>
             </div>
         </div>

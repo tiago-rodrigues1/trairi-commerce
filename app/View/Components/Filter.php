@@ -5,10 +5,13 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 
 class Filter extends Component {
-    public $filters;
+    public $filters, $termo, $filtrosUsuario, $action;
 
-    public function __construct($filters) {
+    public function __construct($filters, $termo, $filtrosUsuario, $action) {
         $this->filters = $filters;
+        $this->termo = $termo;
+        $this->filtrosUsuario = $filtrosUsuario;
+        $this->action = $action;
     }
 
 

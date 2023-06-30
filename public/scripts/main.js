@@ -125,4 +125,18 @@ $(document).ready(function () {
             });
         });
     });
+
+    $('.filter-item input').change(function() {
+        $('.filter-form').submit();
+    });
+    
+    $('.mostrar').click(function() {
+        var target = $(this).data('target');
+
+        $(target).toggle('fast');
+    });
+
+    $('.mostrar#expand').click(function() {
+        $(this).toggleClass('rotate');
+    });
 });
