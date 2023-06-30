@@ -22,6 +22,7 @@ $(document).ready(function () {
     }
     
     $('#anunciante_cpf_cnpj').mask('000.000.000-000', options);
+    $('#perfil_anunciante_cpf_cnpj').mask('000.000.000-000', options);
 
     $('.tipo_cadastro_input').change(function () {
         if ($(this).val() == "anunciante") {
@@ -50,6 +51,7 @@ $(document).ready(function () {
         $('#anunciante_cep').unmask();
         $('#anunciante_telefone').unmask();
         $('#anunciante_cpf_cnpj').unmask();
+        $('#whatsapp').unmask();
 
         $(this).find('button[type=submit]').attr('disabled', 'disabled').html(`
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

@@ -19,7 +19,7 @@
                 </div>
             </section>
             <section class="vstack gap-2">
-                <span>Por {{ $produto->anunciante->nome_fantasia }} </span>
+                <span>Por <a href="">{{ $produto->anunciante->nome_fantasia }}</a> </span>
                 <span>{{ $produto->anunciante->cidade }}</span>
             </section>
             <hr class="my-1">

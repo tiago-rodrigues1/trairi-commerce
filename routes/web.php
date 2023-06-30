@@ -48,6 +48,7 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
     Route::get('/produtos/filtrar', [ProdutoController::class, 'filtrar']);
 
     Route::get('/busca/resultados', [UsuarioController::class, 'buscar']);
+    Route::get('/usuario/perfilAnunciante/{id}', [UsuarioController::class, 'renderPerfilAnunciante']);
 });
 
 /* Rotas abertas */
@@ -61,3 +62,5 @@ Route::post('/usuario/cadastrar', [UsuarioController::class, 'cadastrar']);
 Route::post('/usuario/logar', [UsuarioController::class, 'logar']);
 
 Route::get('/usuario/deslogar', [UsuarioController::class, 'deslogar']);
+
+Route::post('/usuario/perfil/atualizar', [UsuarioController::class, 'atualizar']);

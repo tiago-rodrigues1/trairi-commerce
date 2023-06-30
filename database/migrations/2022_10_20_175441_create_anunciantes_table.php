@@ -18,14 +18,18 @@ return new class extends Migration
             $table->string('nome_fantasia', 200);
             $table->string('descricao', 300);
             $table->string('telefone', 11);
-            $table->float('taxa_de_entrega')->default(false)->nullable();
             $table->string('cidade', 100);
             $table->string('cep', 8);
             $table->string('bairro', 100);
+            $table->integer('numero');
             $table->string('endereco', 200);
             $table->string('funcionamento', 100);
             $table->string('cpf_cnpj', 14);
             $table->foreignId('usuario_id')->constrained();
+            $table->string('instagram', 100);
+            $table->string('facebook', 100);
+            $table->string('whatsapp', 11);
+            $table->string('email_anunciante', 100);
             $table->timestamps();
         });
     }
