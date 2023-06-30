@@ -220,6 +220,7 @@ class UsuarioController extends Controller {
         }
 
         redirect('/');
+    }
 
     public function renderPerfilAnunciante ($id) {
         $anunciante = Anunciante::findOrFail($id);

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class Usuario extends Model {
     use HasFactory;
 
-    protected $fillable = ['email', 'senha', 'nome', 'nascimento', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'genero'];
+    protected $fillable = ['email', 'senha', 'nome', 'nascimento', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'genero', 'numero'];
 
     protected $hidden = ['senha'];
 
@@ -56,6 +56,7 @@ class Usuario extends Model {
             DB::commit();
         } catch(\Exception $e) {
             DB::rollback();
+            dd($e);
             $u = null;
         }
         return $u;

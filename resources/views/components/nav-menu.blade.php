@@ -182,12 +182,12 @@
                         <label class="form-label" for="endereco">Endereço</label>
                         <input class="form-control" type="text" name="endereco" id="endereco" required>
                     </div>
-                <div class="pb-4 row">
+                {{-- <div class="pb-4 row">
                     <div class="fileInputs-container">
                         <label class="form-label" for="imagens">Foto de perfil</label>
                         <input type="file" class="file form-control" name="fotoPerfil[]" id="fotoPerfil">
                     </div>
-                </div>
+                </div> --}}
                 <fieldset>
                     <legend class="fw-normal fs-6">Gênero</legend>
                     <div class="form-check form-check-inline">
@@ -278,12 +278,12 @@
 
                         <div class="pb-4">
                             <label class="form-label" for="instagram">Instagram</label>
-                            <input class="form-control" type="text" name="anunciante[instagram]" id="instagram" placeholder="@nome_exemplo">
+                            <input class="input-canal form-control" type="text" name="anunciante[instagram]" id="instagram" placeholder="@nome_exemplo">
                         </div>
 
                         <div class="pb-4">
                             <label class="form-label" for="facebook">Facebook</label>
-                            <input class="form-control" type="text" name="anunciante[facebook]" id="facebook" placeholder="@nome">
+                            <input class="input-canal form-control" type="text" name="anunciante[facebook]" id="facebook" placeholder="@nome">
                         </div>
 
                         <div class="pb-4">
@@ -293,7 +293,7 @@
 
                         <div class="pb-4">
                             <label class="form-label" for="email">Email</label>
-                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="email_anunciante" placeholder="exemplo@email.exemplo">
+                            <input class="input-canal form-control" type="email" name="anunciante[email_anunciante]" id="email_anunciante" placeholder="exemplo@email.exemplo">
                         </div>
 
                 </fieldset>

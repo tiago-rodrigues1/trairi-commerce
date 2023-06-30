@@ -1,3 +1,17 @@
+function isAnuncianteChecked(el) {
+    console.log(el.val() == "anunciante" && el.is(':checked'));
+    if (el.val() == "anunciante" && el.is(':checked')) {
+        console.log("anunciante");
+        $('#camposAnunciante').show();
+        $('#camposAnunciante').find('input:not([type=checkbox]) input:not(.input-canal)').attr('required', 'required');
+        $('#camposAnunciante').find('textarea').attr('required', 'required');
+    } else {
+        $('#camposAnunciante').find('input').removeAttr('required');
+        $('#camposAnunciante').find('textarea').removeAttr('required');
+        $('#camposAnunciante').hide();
+    }
+}
+
 $(document).ready(function () {
     $('#cadastro').hide();
 
@@ -24,16 +38,10 @@ $(document).ready(function () {
     $('#anunciante_cpf_cnpj').mask('000.000.000-000', options);
     $('#perfil_anunciante_cpf_cnpj').mask('000.000.000-000', options);
 
+    isAnuncianteChecked($('#cadastroAnunciante'));
+
     $('.tipo_cadastro_input').change(function () {
-        if ($(this).val() == "anunciante") {
-            $('#camposAnunciante').show();
-            $('#camposAnunciante').find('input:not([type=checkbox])').attr('required', 'required');
-            $('#camposAnunciante').find('textarea').attr('required', 'required');
-        } else {
-            $('#camposAnunciante').find('input').removeAttr('required');
-            $('#camposAnunciante').find('textarea').removeAttr('required');
-            $('#camposAnunciante').hide();
-        }
+        isAnuncianteChecked($(this));
     });
 
     $('#login').submit(function() {
