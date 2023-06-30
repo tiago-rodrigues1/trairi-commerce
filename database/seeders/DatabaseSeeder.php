@@ -20,5 +20,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $this->call([
+            CanalAtendimentoSeeder::class,
+            CategoriaSeeder::class,
+            PagamentoSeeder::class
+        ]);
     }
 }
