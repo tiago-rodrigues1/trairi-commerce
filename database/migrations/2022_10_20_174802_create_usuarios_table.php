@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('cidade', 100);
             $table->string('cep', 8);
             $table->string('bairro', 100);
+            $table->integer('numero');
             $table->string('endereco', 200);
             $table->enum('genero', ['feminino', 'masculino', 'não declarado']);
             $table->boolean('admin')->default(false);
