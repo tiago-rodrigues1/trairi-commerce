@@ -91,11 +91,27 @@ class Usuario extends Model {
         return 'cliente';
     }
 
-    public function fazerBusca($termo) {
+    public function fazerBusca($termo, $filtrosUsuario) {
         $resultados = [];
 
         try {
-            $resultados = Produto::where('nome', 'like', '%'.$termo.'%')->get();
+            $resultados = Produto::join('anunciantes', 'anunciantes.id', '=', 'produtos.anunciante_id')
+            ->join('aceitas', 'aceitas.anunciante_id', '=', 'anunciantes.id')
+            ->join('tipo_de_pagamentos', 'tipo_de_pagamentos.id', '=', 'aceitas.tipo_de_pagamento_id')
+            ->join('pedidos', 'pedidos.anunciante_id', '=', 'anunciantes.id')
+            ->select('produtos.*')->where('produtos.nome', 'like', '%'.$termo.'%')
+            ->where(function($query) use($filtrosUsuario) {
+                foreach ($filtrosUsuario as $key => $filtrosGrupos) {
+                    if (!is_null($filtrosGrupos)) {
+                        foreach ($filtrosGrupos as $value) {
+                            [$tabela, $campo] = explode('-', $key);
+                            $query->orwhere($tabela.'.'.$campo, $value);
+                        }
+                    }
+                }
+            });
+
+            $resultados = $resultados->distinct()->get();
         } catch (Exception $e) {
             $resultados = null;
         } finally {

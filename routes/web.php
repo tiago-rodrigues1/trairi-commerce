@@ -8,17 +8,16 @@ use App\Http\Controllers\PedidoController;
 /* Rotas de cliente */
 
 Route::middleware('autorizacao:false,true,false')->group(function() {
-    Route::get('/pedidos/comprovar', function () {
-        return view('pedidos/comprovar');
-    });
-
     Route::get('/pedidos/carrinho', [PedidoController::class, 'renderCarrinho']);
     Route::get('/pedidos/carrinho/{id}', [PedidoController::class, 'adicionarItem']);
     Route::get('/pedidos/carrinho/remover/{id}', [PedidoController::class, 'removerItem']);
     Route::post('/pedidos/novo', [PedidoController::class, 'novoPedido']);
+    Route::post('/pedidos/comprovar/{id}', [PedidoController::class, 'comprovar']);
 
     Route::post('/usuario/favoritar/{id}', [UsuarioController::class, 'favoritarProduto']);
     Route::get('/usuario/favoritos', [UsuarioController::class, 'renderFavoritos']);
+
+    Route::post('/produtos/avaliar/{id}', [UsuarioController::class, 'avaliarProduto']);
 });
 
 /* Rotas de anunciante */

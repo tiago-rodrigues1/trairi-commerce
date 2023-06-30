@@ -127,17 +127,14 @@ $(document).ready(function () {
     $('.filter-item input').change(function() {
         $('.filter-form').submit();
     });
+    
+    $('.mostrar').click(function() {
+        var target = $(this).data('target');
 
-    // $('.filter-item').hide();
+        $(target).toggle('fast');
+    });
 
-    // $('.filter-container').on('click', function() {
-    //     console.log(this);
-    //     if ($(this).hasClass('filter-container')) {
-    //         var id = $(this).data('target');
-
-    //         $(id).toggle('fast');
-    //     } else {
-    //         return;
-    //     }
-    // });
+    $('.mostrar#expand').click(function() {
+        $(this).toggleClass('rotate');
+    });
 });

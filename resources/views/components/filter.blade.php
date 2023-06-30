@@ -1,5 +1,9 @@
-<form class="vstack col-3 col-xl-2 pt-4 ps-4 d-none d-lg-block filter-form" method="get" action="/produtos/filtrar">
+<form class="vstack col-3 col-xl-2 pt-4 ps-4 d-none d-lg-block filter-form" method="get" action="{{ $action }}">
     <h4>Filtros</h4>
+    <a href="{{ $action }}{{ isset($termo) ? "?termo=".$termo : "" }}">Limpar</a>
+    @if (isset($termo))
+        <input type="hidden" name="termo" value="{{ $termo }}">
+    @endif
     <ul class="vstack h-100 w-100 p-0">
         @foreach ($filters as $filter)
             <li class="filter-container py-3 d-flex flex-column justify-content-between border-bottom"
@@ -13,15 +17,28 @@
                     </svg>
                 </div>
 
-                <div class="filter-item" id="{{$filter['label'][1]}}">
-                    <div class="form-check mt-3">
-                        <input class="form-check-input" checked type="checkbox" name="{{$filter['label'][1]}}[]" value="*">
-                        <label class="form-check-label">Todos</label>
-                    </div>
+                <div class="filter-item" id="filter_{{$filter['label'][1]}}">
                     @foreach ($filter['options'] as $index => $option)
+                        @php
+                            $isChecked = false;
+                            $filtros = $filtrosUsuario[$filter['label'][1]] ?? [];
+
+                            foreach ($filtros as $filtro) {
+                                if ($filtro == $option) {
+                                    $isChecked = true;
+                                    break;
+                                }
+                            }
+                        @endphp
                         <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" name="{{$filter['label'][1]}}[]"
-                                id="{{ $filter['label'][1].'_'.$index }}" value="{{ $option }}">
+                            <input 
+                                class="form-check-input" 
+                                {{ $isChecked ? "checked" : "" }} 
+                                type="checkbox" 
+                                name="{{ $filter['label'][1] }}[]"
+                                data-target="#filter_{{$filter['label'][1]}}"
+                                value="{{ $option == "Todos" ? "*" : $option }}"
+                            >
                             <label class="form-check-label" for="{{ $filter['label'][1].'_'.$index }}">{{ $option }}</label>
                         </div>
                     @endforeach

@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="d-flex flex-column flex-lg-row max-w-100">
-        <x-filter :filters="$filters" />
+        <x-filter :filters="$filters" :filtrosUsuario="$filtrosUsuario ?? null" :termo="$termo ?? null" :action="$action" />
 
         <section class="w-100 px-4 px-lg-5 pt-4 flex-1">
             <div class="w-100 d-flex align-items-center justify-content-center">
