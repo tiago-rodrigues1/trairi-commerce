@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            CanalAtendimentoSeeder::class,
             CategoriaSeeder::class,
             PagamentoSeeder::class
         ]);
