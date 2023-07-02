@@ -16,6 +16,7 @@
 
 <body>
     <script src="/scripts/jquery/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/b021e22a72.js" crossorigin="anonymous"></script>
     @if (session('status'))
         <x-toast type="{{ session('status')['type'] }}">
             <ul class="p-0 m-0">

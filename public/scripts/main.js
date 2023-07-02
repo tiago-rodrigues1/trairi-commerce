@@ -1,5 +1,4 @@
 function isAnuncianteChecked(el) {
-    console.log(el.val() == "anunciante" && el.is(':checked'));
     if (el.val() == "anunciante" && el.is(':checked')) {
         console.log("anunciante");
         $('#camposAnunciante').show();
@@ -129,7 +128,26 @@ $(document).ready(function () {
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
-                })
+                });
+            });
+
+            $('#enviar-avaliacao').click(function() {
+                var comentario = $('#produto-comentario').val();
+                $.ajax({
+                    url: `/produtos/avaliar/${id}`,
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        produto: {
+                            comentario
+                        }
+                    },
+                    success: function() {
+                        $('#comentarios').load(`${url} #comentarios`);
+                    }
+                });
             });
         });
     });

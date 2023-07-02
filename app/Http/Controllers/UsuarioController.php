@@ -196,7 +196,7 @@ class UsuarioController extends Controller {
             $c->favoritarProduto($p);
         }
 
-        return redirect('/produtos/detalhar/'.$id);
+        // return redirect('/produtos/detalhar/'.$id);
     }
 
     public function renderFavoritos() {
@@ -214,12 +214,12 @@ class UsuarioController extends Controller {
         $resultado = $cliente->avaliarProduto($produto, $request['produto']);
 
         if ($resultado) {
-            $status = ['type' =>'success','msg' => 'Comentário enviada com sucesso!'];
+            $status = ['type' =>'success','msg' => 'Comentário enviado com sucesso!'];
         } else {
             $status = ['type' =>'error','msg' => 'Não foi possível enviar seu comentário'];
         }
 
-        redirect('/');
+        return redirect('/')->with(compact('status'));
     }
 
     public function renderPerfilAnunciante ($id) {
