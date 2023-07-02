@@ -225,11 +225,6 @@
                             id="anunciante_cpf_cnpj" placeholder="CPF ou CNPJ">
                     </div>
                     <div class="pb-4">
-                        <label class="form-label" for="taxa_de_entrega">Taxa de entrega</label>
-                        <input class="form-control" type="text" name="anunciante[taxa_de_entrega]"
-                            id="taxa_de_entrega" placeholder="Exemplo: 00">
-                    </div>
-                    <div class="pb-4">
                         <label class="form-label" for="anunciante_descricao">Descrição</label>
                         <textarea class="form-control" type="text" name="anunciante[descricao]" id="anunciante_descricao"
                             placeholder="Descrição sobre seu estabelecimento"></textarea>

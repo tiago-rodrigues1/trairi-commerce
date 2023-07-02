@@ -79,23 +79,23 @@
 
                     <legend class="fw-normal fs-6">Canais de atendimento</legend>
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="anunciante[instagram]" placeholder="name@example.com" value="{{$u->anunciante->instagram}}" id="anunciante_instagram">
+                            <input class="form-control" type="text" name="anunciante[instagram]" placeholder="name@example.com" value="{{$u->anunciante->instagram}}" id="instagram">
                             <label for="instagram">Instagram</label>
                         </div>
                         
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="text" name="anunciante[facebook]" id="anunciante_facebook" value="{{$u->anunciante->facebook}}">
+                            <input class="form-control" type="text" name="anunciante[facebook]" id="facebook" value="{{$u->anunciante->facebook}}">
                             <label for="facebook">Facebook</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="anunciante_whatsapp" value="{{$u->anunciante->whatsapp}}">
+                            <input class="form-control" data-mask="(00) 00000-0000" type="text" name="anunciante[whatsapp]" id="whatsapp" value="{{$u->anunciante->whatsapp}}">
                             <label for="whatsapp">Whatsapp</label>
                         </div>
 
                         <div class="mb-3 form-floating">
-                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="anunciante_email" value="{{$u->anunciante->email_anunciante}}">
-                            <label for="email">Email</label>
+                            <input class="form-control" type="email" name="anunciante[email_anunciante]" id="email_anunciante" value="{{$u->anunciante->email_anunciante}}">
+                            <label for="email_anunciante">Email</label>
                         </div>
 
                     <fieldset class="pb-4">
@@ -111,10 +111,6 @@
                     <div class="mb-3 form-floating">
                         <textarea class="form-control" name="anunciante[descricao]" id="anunciante_descricao" readonly required style="min-height: 10rem !important">{{$u->anunciante->descricao}}</textarea> 
                         <label for="anunciante_descricao">Descrição</label>
-                    </div>
-                    <div class="mb-3 form-floating">
-                        <input class="form-control" type="text" name="anunciante[taxa_de_entrega]" id="taxa_de_entrega" value="{{$u->anunciante->taxa_de_entrega}}" readonly required>
-                        <label for="taxa_de_entrega">Taxa de entrega</label>
                     </div>
                     <div class="mb-3 form-floating">
                         <input class="form-control" type="text" name="anunciante[telefone]" id="anunciante_telefone" data-mask="(00) 00000-0000" value="{{$u->anunciante->telefone}}" readonly required>
