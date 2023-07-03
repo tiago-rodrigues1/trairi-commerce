@@ -41,6 +41,10 @@
                 <label class="form-label" for="valor">Valor</label>
                 <input class="form-control" type="text" name="valor" id="valor" value="{{ $produto->valor }}">
             </div>
+            <div>
+                <label class="form-label" for="taxa_de_entrega">Taxa de entrega</label>
+                <input class="form-control money" type="text" name="taxa_de_entrega" id="taxa_de_entrega" value="{{ $produto->taxa_de_entrega }}">
+            </div>
             <div class="w-100">
                 <h6 class="fw-normal mb-3">Fotos</h6>
                 <div class="vstack gap-3 align-items-center justify-content-center fileInputs-container">
