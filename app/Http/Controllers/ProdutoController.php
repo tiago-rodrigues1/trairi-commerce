@@ -80,9 +80,8 @@ class ProdutoController extends Controller {
         $produto = Produto::findOrFail($id);
         $avaliacoes = $produto->clientesAvaliaram()->get();
 
-        dd($avaliacoes);
 
-        $html = view('components/produto-detalhes', compact('produto'))->render();
+        $html = view('components/produto-detalhes', compact('produto', 'avaliacoes'))->render();
 
         return $html;
     }

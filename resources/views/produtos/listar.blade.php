@@ -2,9 +2,6 @@
 
 @section('title', 'TC | Seu catálogo')
 
-@section('pageLabel', 'Seu catálogo')
-@section('resultsCount', count($produtos))
-
 @section('extralinks')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
 @endsection
@@ -22,11 +19,8 @@
                     <th>Produto</th>
                     <th>Valor</th>
                     <th>Disponível</th>
-                    <th>Taxa de Entrega</th>
                     <th>Adicionado</th>
                     <th>Detalhar</th>
-                    <th>Editar</th>
-                    <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,16 +30,9 @@
                         <td>{{ $produto->nome }}</td>
                         <td>{{ $produto->valor }}</td>
                         <td>{{ $produto->disponibilidade }}</td>
-                        <td>{{ $produto->taxa_de_entrega }}</td>
                         <td>{{ $produto->created_at }}</td>
                         <td>detalhar</td>
-                        <td> <a class="btn tc-btn" href="/produtos/editar/{{ $produto->id }}">Editar</a></td>
-                        <td><form action="/produtos/excluir/{{ $produto->id }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn tc-btn-outline-red">Excluir</button>
-                            </form></td>
-                        </tr>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
