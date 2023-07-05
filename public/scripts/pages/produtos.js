@@ -1,14 +1,35 @@
-$(document).ready(function() {
-    $('#produtosTable').DataTable({
-        language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json'
-        },
-        initComplete: function() {
-            $('.dataTables_wrapper > div:nth-child(odd) > div:nth-child(2)').addClass('d-flex justify-content-end');
+function getProdutosByName(produtos, termo) {
+    var produtosFiltrados = [];
+
+    produtos.each(function() {
+        var nome = $(this).children('td:nth-child(2)').text();
+        var rgx = new RegExp(`${nome}`, 'gi');
+
+        if (rgx.test(termo)) {
+            produtosFiltrados.push($(this));
         }
     });
 
-    
+    return produtosFiltrados;
+}
 
-    $('div.toolbar').html('');
+$(document).ready(function() {
+    var produtos = $('.produto');
+
+    $('#busca-catalogo').on('input', function() {
+        var termo = $(this).val();
+
+        var produtosFiltrados = getProdutosByName($(produtos), termo);
+
+        if (produtosFiltrados.length > 0) {
+            $('.produtos').children().remove();
+            $('.produtos').append(produtosFiltrados);
+        } else if (produtosFiltrados.length === 0 && termo) {
+            $('.produtos').children().remove();
+        } else {
+            $('.produtos').children().remove();
+            $('.produtos').append(produtos);
+        }
+    });
+
 });
