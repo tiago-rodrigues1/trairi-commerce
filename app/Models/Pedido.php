@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Mail\NovoPedido;
+use App\Mail\UpdatePedido;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -81,10 +82,10 @@ class Pedido extends Model {
 
             $this->save();
 
-            if ( $pedido->estado == "Cancelado") {
-                Mail::to($pedido->anunciante->usuario->email)->send(new UpdatePedido($pedido));
+            if ( $this->estado == "Cancelado") {
+                Mail::to($this->anunciante->usuario->email)->send(new UpdatePedido($this));
             } else {
-                 Mail::to($pedido->cliente->usuario->email)->send(new UpdatePedido($pedido));
+                Mail::to($this->cliente->usuario->email)->send(new UpdatePedido($this));
             }
             
             return true;
