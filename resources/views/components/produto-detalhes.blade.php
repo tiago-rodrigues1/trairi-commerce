@@ -1,7 +1,7 @@
 <div class="modal w-100 h-100 bg-dark bg-opacity-25 fixed" id="detalheProduto_{{ $produto->id }}">
     <div class="modal-dialog overflow-y-scroll modal-xl">
         <div class="modal-content h-100 align-items-center py-3">
-            <div class="d-flex flex-column p-4 col-12 col-lg-8">
+            <div class="d-flex flex-column p-4 col-12 col-lg-11">
                 <section class="d-flex flex-column w-100">
                     <div class="w-100 vstack gap-3">
                         <div class="vstack">
@@ -113,23 +113,21 @@
                         <p>{{ $produto->descricao }}</p>
                     </div>
                 </section>
-                <section class="vstack pt-4">
+                <section class="vstack pt-4" id="comentarios">
                     <h6 class="pb-2">Comentários</h6>
-                    <form action="/produtos/avaliar/{{$produto->id}}" method="post" class="pr-0 gap-3 hstack align-items-center">
-                        {{ csrf_field() }}
+                    <div class="avaliar mb-3 ps-3 gap-3 hstack align-items-center">
                         <img src="/images/perfil.jpg" alt="" class="rounded-circle"
                             style="width: 4rem; min-width: 4rem; height: 4rem;">
-                        <div class="w-100">
-                            <label class="form-label" for="produto-comentario">Adicione um comentário</label>
-                            <div class="d-flex align-items-stretch">
-                                <textarea class="h-100 w-100 form-control" name="produto[comentario]" style="border-radius: .5rem 0 0 .5rem" id="floatingTextarea"></textarea>
-                                <button class="border p-2" style="border-radius: 0 .5rem .5rem 0">></button>
-                            </div>
+                        <div class="w-100 d-flex align-items-stretch">
+                            <textarea class="h-100 w-100 form-control" id="produto-comentario" name="produto[comentario]" style="border-radius: .5rem 0 0 .5rem" id="floatingTextarea" placeholder="Adicione um comentário"></textarea>
+                            <button type="button" id="enviar-avaliacao" class="btn tc-btn" style="border-radius: 0 .5rem .5rem 0">
+                                <i class="fa-regular fa-paper-plane fa-lg" style="color: #FFFFFF;"></i>
+                            </button>
                         </div>
-                    </form>
-                    @if (isset($comentariosProduto))
-                        @foreach ($comentariosProduto as $comentario)
-                            <div class="bg-tc-gray rounded-3 border hstack align-items-center gap-3 p-3">
+                    </div>
+                    @if (isset($avaliacoes))
+                        @foreach ($avaliacoes as $avaliacao)
+                            <div class="mt-3 rounded-3 border hstack align-items-center gap-3 p-3">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
                                     style="width: 4rem; height: 4rem;">
                                 <div class="vstack">
@@ -137,7 +135,7 @@
                                         <span><b>Bruce Wayne</b></span>
                                         <small class="tc-light-text">Em 06/07/2022</small>
                                     </div>
-                                    <p>Veio no capricho! Super aprovado!</p>
+                                    <p>{{$avaliacao->pivot->comentario}}</p>
                                 </div>
                             </div>
                         @endforeach
