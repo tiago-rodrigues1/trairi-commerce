@@ -47,7 +47,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td>Sem produtos</td>
+                            <td colspan="6">Sem produtos</td>
                         </tr>
                     @endforelse
                 </tbody>
