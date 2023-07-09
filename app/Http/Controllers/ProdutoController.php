@@ -15,6 +15,7 @@ class ProdutoController extends Controller {
             'descricao' => 'required|string|max:300',
             'categoria_id' => 'required',
             'valor' => 'required|numeric',
+            'taxa_de_entrega' => 'required|numeric',
             'imagens.*' => 'required|image|mimes:jpg,png,jpeg,svg,webp|max:1000',
         ]);
 
@@ -35,6 +36,7 @@ class ProdutoController extends Controller {
             'nome' => 'string|max:100',
             'descricao' => 'string|max:300',
             'valor' => 'numeric',
+            'taxa_de_entrega' => 'required|numeric',
             'imagens.*' => 'image|mimes:jpg,png,jpeg,svg,webp|max:1000',
         ]);
 
@@ -90,6 +92,14 @@ class ProdutoController extends Controller {
 
         return view('/produtos/editar', compact('produto', 'categorias'));
     }
+
+    public function arquivar($id){
+        $produto = Produto::findOrFail($id);
+
+        $resultado = Produto::deletar($produto);
+        
+        
+    } 
 
     public function excluir($id) {
         $produto = Produto::findOrFail($id);
