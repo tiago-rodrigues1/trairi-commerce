@@ -20,11 +20,19 @@ class Cliente extends Model
     }
 
     public function anunciantesAvaliados() {
-        return $this->belongsToMany(Anunciante::class, 'cliente_avalia_anunciantes')->withPivot('estrelas', 'comentario')->withTimestamps();
+        return $this->belongsToMany(Anunciante::class, 'cliente_avalia_anunciantes')->withPivot('estrelas')->withTimestamps();
     }
 
     public function produtosAvaliados() {
-        return $this->belongsToMany(Produto::class, 'cliente_avalia_produtos')->withPivot('estrelas', 'comentario')->withTimestamps();
+        return $this->belongsToMany(Produto::class, 'cliente_avalia_produtos')->withPivot('estrelas')->withTimestamps();
+    }
+
+    public function anunciantesComentados() {
+        return $this->belongsToMany(Anunciante::class, 'cliente_comenta_anunciantes')->withPivot('comentario')->withTimestamps();
+    }
+
+    public function produtosComentados() {
+        return $this->belongsToMany(Anunciante::class, 'cliente_comenta_produtos')->withPivot('comentario')->withTimestamps();
     }
 
     public function produtosFavoritados() {

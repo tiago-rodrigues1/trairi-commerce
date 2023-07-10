@@ -27,8 +27,12 @@ class Anunciante extends Model
         return $this->belongsToMany(TipoDePagamento::class, 'aceitas')->withTimestamps();
     }
 
-    public function clientes() {
-        return $this->belongsToMany(Cliente::class, 'cliente_avalia_anunciantes')->withPivot('estrelas', 'comentario')->withTimestamps();
+    public function avaliacoesClientes() {
+        return $this->belongsToMany(Cliente::class, 'cliente_avalia_anunciantes')->withPivot('estrelas')->withTimestamps();
+    }
+
+    public function comentariosClientes() {
+        return $this->belongsToMany(Cliente::class, 'cliente_comenta_anunciantes')->withPivot('comentario')->withTimestamps();
     }
 
     public function pedidos() {
