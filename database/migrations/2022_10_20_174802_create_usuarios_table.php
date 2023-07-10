@@ -28,6 +28,7 @@ return new class extends Migration
             $table->enum('genero', ['feminino', 'masculino', 'não declarado']);
             $table->boolean('admin')->default(false);
             $table->boolean('bloqueado')->default(false);
+            $table->string('path', 256);
             $table->timestamps();
         });
     }

@@ -25,7 +25,8 @@ class UsuarioController extends Controller {
             'bairro' => 'required|max:150',
             'numero' => 'required',
             'endereco' => 'required|max:200',
-            'genero' => 'required'
+            'genero' => 'required',
+            'fotoPerfil' => 'required|image|mimes:jpg,png,jpeg,svg,webp|max:1000',
         ]);
 
         if ($request->tipoCadastro == 'cliente') {
