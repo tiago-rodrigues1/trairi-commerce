@@ -29,7 +29,7 @@ Route::middleware('autorizacao:false,false,true')->group(function() {
 
     Route::post('/produtos/cadastrar', [ProdutoController::class, 'cadastrar']);
     Route::post('/produtos/editar/{id}', [ProdutoController::class, 'editar']);
-    Route::delete('/produtos/excluir/{id}', [ProdutoController::class, 'excluir']);
+    Route::delete('/produtos/arquivar/{id}', [ProdutoController::class, 'arquivar']);
 });
 
 /* Rotas de cliente e anunciante */

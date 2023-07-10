@@ -49,11 +49,13 @@
                             <td>{{ $produto->created_at }}</td>
                             <td><a href="/produtos/detalhar/{{ $produto->id }}">Abrir</a></td>
                             <td><a class="btn tc-btn" href="/produtos/editar/{{ $produto->id }}">Editar</a></td>
-                            <td><form action="/produtos/excluir/{{ $produto->id }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn tc-btn-outline-red">Excluir</button>
-                                </form></td>
+                            <td>
+                                <form action="/produtos/arquivar/{{ $produto->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn tc-btn-outline-red">Excluir</button>
+                                </form>
+                            </td>
                         </tr>
                     @empty
                         <tr>

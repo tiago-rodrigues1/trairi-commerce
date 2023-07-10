@@ -66,6 +66,10 @@ class Produto extends Model
             $produto = Produto::findOrFail($produtoId);
             $produto->update($dados);
 
+            if ($produto->bloqueado) {
+                throw new Exception();
+            }
+
             if (isset($dados['imagens'])) {
                 $manterImagens = isset($dados['mantem']) ? $dados['mantem'] : null;
 
@@ -82,20 +86,18 @@ class Produto extends Model
         }
     }
 
-    public static function deletar($produto) {
+    public function arquivar() {
         try {
-            if (count($produto->pedidos) > 0) {
-                foreach($produto->pedidos as $pedido) {
-                    if ($pedido->estado == 'Pendente' || $pedido->estado == 'Aceito') {
+            if (count($this->pedidos) > 0) {
+                foreach($this->pedidos as $pedido) {
+                    if ($this->estado == 'Pendente' || $pedido->estado == 'Aceito' || $pedido->estado == 'Em andamento') {
                         throw new ExcluirProdutoException('Não é possível excluir produtos com pedidos em aberto. Finalize ou cancele o pedido.');
-                    } else {
-                        $pedido->produtos()->detach($produto->id);
                     }
                 }
             }
 
-            ProdutoImagem::deletar($produto->imagens);
-            $produto->delete();
+            $this->bloqueado = true;
+            $this->save();
 
             return true;
         } catch (ExcluirProdutoException $ep) {
