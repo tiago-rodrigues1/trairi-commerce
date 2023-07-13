@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cliente_avalia_anunciantes', function (Blueprint $table) {
+        Schema::create('cliente_comenta_anunciantes', function (Blueprint $table) {
             $table->id();
-            $table->integer('estrelas');
-            // $table->string('comentario', 300);
+            $table->string('comentario', 300);
             $table->foreignId('cliente_id')->constrained();
             $table->foreignId('anunciante_id')->constrained();
             $table->timestamps();
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente_avalia_anunciantes');
+        Schema::dropIfExists('cliente_comenta_anunciantes');
     }
 };
