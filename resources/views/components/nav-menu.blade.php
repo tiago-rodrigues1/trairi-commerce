@@ -102,7 +102,7 @@
 
         {{-- * CADASTRO FORM --}}
         @if (!session()->has('usuario'))
-        <form class="modal-content" id="cadastro" action="/usuario/cadastrar" method="post">
+        <form class="modal-content" id="cadastro" action="/usuario/cadastrar" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro</h1>
@@ -182,12 +182,12 @@
                         <label class="form-label" for="endereco">Endereço</label>
                         <input class="form-control" type="text" name="endereco" id="endereco" required>
                     </div>
-                {{-- <div class="pb-4 row">
+                <div class="pb-4 row">
                     <div class="fileInputs-container">
-                        <label class="form-label" for="imagens">Foto de perfil</label>
-                        <input type="file" class="file form-control" name="fotoPerfil[]" id="fotoPerfil">
+                        <label class="form-label" for="fotoPerfil">Foto de perfil</label>
+                        <input type="file" class="file form-control" name="fotoPerfil" id="fotoPerfil">
                     </div>
-                </div> --}}
+                </div> 
                 <fieldset>
                     <legend class="fw-normal fs-6">Gênero</legend>
                     <div class="form-check form-check-inline">
@@ -303,3 +303,34 @@
         @endif
     </div>
 </div>
+<div class="modal w-100 h-100 bg-dark bg-opacity-25 fixed" id="image-editor">
+    <div class="modal-dialog overflow-y-scroll modal-xl">
+        <div class="modal-content h-100 p-4 vstack align-items-center">
+            <div class="w-50 h-50 d-flex flex-column gap-4 align-items-center">
+                <div class="d-flex gap-3 align-self-end">
+                    <button type="button" class="btn border-2" style="font-size: 0; border-color: var(--tc-green);"
+                        id="zoom_in">
+                        <img src="/icons/zoom-in.svg" alt="">
+                    </button>
+                    <button type="button" class="btn border-2" style="font-size: 0; border-color: var(--tc-green);"
+                        id="zoom_out">
+                        <img src="/icons/zoom-out.svg" alt="">
+                    </button>
+                </div>
+                <div class="w-100 h-100" id="img-canvas">
+                </div>
+                <div class="hstack align-items-center justify-content-between">
+                    <button class="col-6 btn tc-btn-ghost-red" type="button" id="cancel">Cancelar</button>
+                    <button class="col-5 btn tc-btn" type="button" id="crop">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"
+        integrity="sha512-cyzxRvewl+FOKTtpBzYjW6x6IAYUCZy3sGP40hn+DQkqeluGRCax7qztK2ImL64SA+C7kVWdLI6wvdlStawhyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"
+        integrity="sha512-6lplKUSl86rUVprDIjiW8DuOniNX8UDoRATqZSds/7t6zCQZfaCe3e5zcGaQwxa8Kpn5RTM9Fvl3X2lLV4grPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/scripts/pages/image_perfil.js"></script>

@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class Usuario extends Model {
     use HasFactory;
 
-    protected $fillable = ['email', 'senha', 'nome', 'nascimento', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'genero', 'numero'];
+    protected $fillable = ['email', 'senha', 'nome', 'nascimento', 'telefone', 'cidade', 'cep', 'bairro', 'endereco', 'genero', 'numero', 'path'];
 
     protected $hidden = ['senha'];
 
@@ -38,6 +39,10 @@ class Usuario extends Model {
 
         try {
             $u->senha = Hash::make($u->senha);
+
+            $path = $dados['fotoPerfil']->store('imagens', 'public');
+            $u->foto_perfil_path = $path;
+
             $u->save();
 
             if ($dadosAnunciante == null) {
