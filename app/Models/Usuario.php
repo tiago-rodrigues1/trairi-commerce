@@ -39,6 +39,10 @@ class Usuario extends Model {
 
         try {
             $u->senha = Hash::make($u->senha);
+
+            $path = $dados['fotoPerfil']->store('imagens', 'public');
+            $u->foto_perfil_path = $path;
+
             $u->save();
 
             if ($dadosAnunciante == null) {
