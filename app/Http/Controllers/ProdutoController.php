@@ -86,9 +86,7 @@ class ProdutoController extends Controller {
             return;
         }
 
-        $avaliacoes = $produto->clientesAvaliaram()->get();
-
-        $html = view('components/produto-detalhes', compact('produto', 'avaliacoes'))->render();
+        $html = view('components/produto-detalhes', compact('produto'))->render();
 
         return $html;
     }

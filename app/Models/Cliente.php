@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Error;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -47,8 +48,15 @@ class Cliente extends Model
         DB::beginTransaction();
         try {
             $anunciante = $pedido->anunciante;
-            $this->avaliarAnunciante($anunciante, $avaliacao);
-            $pedido->atualizar($novoEstado);
+            
+            $responseAvaliacao = $this->avaliarAnunciante($anunciante, $avaliacao);
+            $responseComentario = $this->comentarAnunciante($anunciante, $avaliacao);
+            
+            if ($responseAvaliacao && $responseComentario) {
+                $pedido->atualizar($novoEstado);
+            } else {
+                throw new Error();
+            }
 
             DB::commit();
             return true;
@@ -105,7 +113,7 @@ class Cliente extends Model
 
     public function avaliarAnunciante($anunciante, $avaliacao) {
         try {
-            $this->anunciantesAvaliados()->attach($anunciante->id, ['estrelas' => $avaliacao['estrelas'], 'comentario' => $avaliacao['comentario']]);
+            $this->anunciantesAvaliados()->attach($anunciante->id, ['estrelas' => $avaliacao['estrelas']]);
 
             return true;
         } catch (Exception $e) {
@@ -119,11 +127,20 @@ class Cliente extends Model
                 $avaliacao['estrelas'] = 0;
             }
             
-            $this->produtosAvaliados()->attach($produto->id, ['estrelas' => $avaliacao['estrelas'], 'comentario' => $avaliacao['comentario']]);
+            $this->produtosAvaliados()->attach($produto->id, ['estrelas' => $avaliacao['estrelas']]);
 
             return true;
         } catch (Exception $e) {
-            dd($e);
+            return false;
+        }
+    }
+
+    public function comentarAnunciante($anunciante, $avaliacao) {
+        try {
+            $this->anunciantesComentados()->attach($anunciante->id, ['comentario' => $avaliacao['comentario']]);
+
+            return true;
+        } catch (Exception $e) {
             return false;
         }
     }

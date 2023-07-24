@@ -116,7 +116,7 @@
                 <section class="vstack pt-4" id="comentarios">
                     <h6 class="pb-2">Comentários</h6>
                     <div class="avaliar mb-3 ps-3 gap-3 hstack align-items-center">
-                        <img src="/images/perfil.jpg" alt="" class="rounded-circle"
+                        <img src="/storage/{{ session()->get('usuario')->foto_perfil_path }}" alt="" class="rounded-circle"
                             style="width: 4rem; min-width: 4rem; height: 4rem;">
                         <div class="w-100 d-flex align-items-stretch">
                             <textarea class="h-100 w-100 form-control" id="produto-comentario" name="produto[comentario]" style="border-radius: .5rem 0 0 .5rem" id="floatingTextarea" placeholder="Adicione um comentário"></textarea>
@@ -125,7 +125,7 @@
                             </button>
                         </div>
                     </div>
-                    @if (isset($avaliacoes))
+                    {{-- @if (isset($avaliacoes))
                         @foreach ($avaliacoes as $avaliacao)
                             <div class="mt-3 rounded-3 border hstack align-items-center gap-3 p-3">
                                 <img src="/images/perfil.jpg" alt="" class="rounded-circle"
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endif
+                    @endif --}}
                         
                 </section>
             </div>

@@ -183,7 +183,7 @@
                         <input class="form-control" type="text" name="endereco" id="endereco" required>
                     </div>
                 <div class="pb-4 row">
-                    <div class="fileInputs-container">
+                    <div>
                         <label class="form-label" for="fotoPerfil">Foto de perfil</label>
                         <input type="file" class="file form-control" name="fotoPerfil" id="fotoPerfil">
                     </div>

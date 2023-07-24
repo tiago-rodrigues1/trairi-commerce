@@ -129,10 +129,8 @@ class PedidoController extends Controller {
 
     public function comprovar(Request $request, $id) {
         $request->validate([
-            'produto.comentario' => 'max:300',
-            'produto.estrelas' => 'min:0|max:5',
             'anunciante.comentario' => 'max:300',
-            'anunciante.estrelas' => 'required|min:0|max:5',
+            'anunciante.estrelas' => 'required|min:0|max:5'
         ]);
 
         $pedido = Pedido::findOrFail($id);
