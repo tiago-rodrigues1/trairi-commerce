@@ -48,6 +48,7 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
     Route::get('/produtos/filtrar', [ProdutoController::class, 'filtrar']);
 
     Route::get('/busca/resultados', [UsuarioController::class, 'buscar']);
+    
     Route::get('/usuario/perfilAnunciante/{id}', [UsuarioController::class, 'renderPerfilAnunciante']);
 });
 
