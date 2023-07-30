@@ -207,19 +207,22 @@ class UsuarioController extends Controller {
         return view('usuario/favoritos', compact('favoritos'));
     }
 
+    public function comentarProduto(Request $request, $produto_id) {
+        $produto = Produto::findOrFail($produto_id);
+        $cliente = session()->get('usuario')->cliente;
+
+        $resultado = $cliente->comentarProduto($produto, $request['produto']);
+
+        return $resultado;
+    }
+
     public function avaliarProduto(Request $request, $produto_id) {
         $produto = Produto::findOrFail($produto_id);
         $cliente = session()->get('usuario')->cliente;
 
         $resultado = $cliente->avaliarProduto($produto, $request['produto']);
 
-        if ($resultado) {
-            $status = ['type' =>'success','msg' => 'Comentário enviado com sucesso!'];
-        } else {
-            $status = ['type' =>'error','msg' => 'Não foi possível enviar seu comentário'];
-        }
-
-        return redirect('/')->with(compact('status'));
+        return $resultado;
     }
 
     public function renderPerfilAnunciante ($id) {
