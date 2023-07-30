@@ -33,7 +33,7 @@ class Cliente extends Model
     }
 
     public function produtosComentados() {
-        return $this->belongsToMany(Anunciante::class, 'cliente_comenta_produtos')->withPivot('comentario')->withTimestamps();
+        return $this->belongsToMany(Produto::class, 'cliente_comenta_produtos')->withPivot('comentario')->withTimestamps();
     }
 
     public function produtosFavoritados() {
@@ -123,11 +123,13 @@ class Cliente extends Model
 
     public function avaliarProduto($produto, $avaliacao) {
         try {
-            if (!(isset($avaliacao['estrelas']))) {
-                $avaliacao['estrelas'] = 0;
+            $temProdutosAvaliados = $this->produtosAvaliados()->get()->isNotEmpty();
+
+            if ($temProdutosAvaliados) {
+                $this->produtosAvaliados()->updateExistingPivot($produto->id, ['estrelas' => $avaliacao['estrelas']]);
+            } else {
+                $this->produtosAvaliados()->attach($produto->id, ['estrelas' => $avaliacao['estrelas']]);
             }
-            
-            $this->produtosAvaliados()->attach($produto->id, ['estrelas' => $avaliacao['estrelas']]);
 
             return true;
         } catch (Exception $e) {
@@ -141,6 +143,17 @@ class Cliente extends Model
 
             return true;
         } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function comentarProduto($produto, $avaliacao) {
+        try {
+            $this->produtosComentados()->attach($produto->id, ['comentario' => $avaliacao['comentario']]);
+
+            return true;
+        } catch (Exception $e) {
+            dd($e);
             return false;
         }
     }
