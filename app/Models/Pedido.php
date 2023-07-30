@@ -67,7 +67,7 @@ class Pedido extends Model {
 
             session()->forget('carrinho');
 
-            Mail::to($pedido->anunciante->usuario->email)->send(new NovoPedido($pedido));
+            Mail::to($pedido->anunciante->usuario->email)->queue(new NovoPedido($pedido));
 
             return true;
         } catch (Exception $e) {
@@ -83,9 +83,9 @@ class Pedido extends Model {
             $this->save();
 
             if ( $this->estado == "Cancelado") {
-                Mail::to($this->anunciante->usuario->email)->send(new UpdatePedido($this));
+                Mail::to($this->anunciante->usuario->email)->queue(new UpdatePedido($this));
             } else {
-                Mail::to($this->cliente->usuario->email)->send(new UpdatePedido($this));
+                Mail::to($this->cliente->usuario->email)->queue(new UpdatePedido($this));
             }
             
             return true;
