@@ -17,6 +17,7 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
     Route::post('/usuario/favoritar/{id}', [UsuarioController::class, 'favoritarProduto']);
     Route::get('/usuario/favoritos', [UsuarioController::class, 'renderFavoritos']);
 
+    Route::post('/produtos/comentar/{id}', [UsuarioController::class, 'comentarProduto']);
     Route::post('/produtos/avaliar/{id}', [UsuarioController::class, 'avaliarProduto']);
 });
 
