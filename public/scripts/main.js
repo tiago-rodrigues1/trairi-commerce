@@ -134,7 +134,7 @@ $(document).ready(function () {
             $('#enviar-avaliacao').click(function() {
                 var comentario = $('#produto-comentario').val();
                 $.ajax({
-                    url: `/produtos/avaliar/${id}`,
+                    url: `/produtos/comentar/${id}`,
                     type: "POST",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -145,7 +145,37 @@ $(document).ready(function () {
                         }
                     },
                     success: function() {
-                        $('#comentarios').load(`${url} #comentarios`);
+                        console.log($('#comentarios').load(`${url} #comentarios`));;
+                    }
+                });
+            });
+
+            $('.btnstar').click(function() {
+                var indexClicado = $(this).data('star-index');
+        
+                $('.btnstar').each(function() {
+                    var atual = $(this).data('star-index');
+        
+                    if (atual <= indexClicado) {
+                        $(this).css('color', '#72B01D');
+                    } else {
+                        $(this).css('color', '#DDDDDD');
+                    }
+                });
+
+                $.ajax({
+                    url: `/produtos/avaliar/${id}`,
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        produto: {
+                            estrelas: indexClicado
+                        }
+                    },
+                    success: function() {
+                        $('#produto-estrelas-container').load(`${url} #produto-estrelas`);
                     }
                 });
             });
