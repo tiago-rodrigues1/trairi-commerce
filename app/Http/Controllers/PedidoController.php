@@ -75,7 +75,7 @@ class PedidoController extends Controller {
     }
 
     public function renderHistoricoPedidos() {
-        $pedidosEstado = Pedido::distinct('estado')->get();
+        $pedidosEstado = Pedido::select('estado')->distinct()->get();
         $action = "/pedidos/listar";
         $filtrosUsuario = [
             'pedidos-estado' => request('pedidos-estado'),
