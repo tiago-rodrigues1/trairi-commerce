@@ -19,6 +19,9 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
 
     Route::post('/produtos/comentar/{id}', [UsuarioController::class, 'comentarProduto']);
     Route::post('/produtos/avaliar/{id}', [UsuarioController::class, 'avaliarProduto']);
+
+    Route::post('/anunciante/comentar/{id}', [UsuarioController::class, 'comentarAnunciante']);
+    Route::post('/anunciante/avaliar/{id}', [UsuarioController::class, 'avaliarAnunciante']);
 });
 
 /* Rotas de anunciante */

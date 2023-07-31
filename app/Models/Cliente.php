@@ -113,7 +113,13 @@ class Cliente extends Model
 
     public function avaliarAnunciante($anunciante, $avaliacao) {
         try {
-            $this->anunciantesAvaliados()->attach($anunciante->id, ['estrelas' => $avaliacao['estrelas']]);
+            $temAnunciantesAvaliados = $this->anunciantesAvaliados()->get()->isNotEmpty();
+
+            if ($temAnunciantesAvaliados) {
+                $this->anunciantesAvaliados()->updateExistingPivot($anunciante->id, ['estrelas' => $avaliacao['estrelas']]);
+            } else {
+                $this->anunciantesAvaliados()->attach($anunciante->id, ['estrelas' => $avaliacao['estrelas']]);
+            }
 
             return true;
         } catch (Exception $e) {
@@ -153,7 +159,6 @@ class Cliente extends Model
 
             return true;
         } catch (Exception $e) {
-            dd($e);
             return false;
         }
     }

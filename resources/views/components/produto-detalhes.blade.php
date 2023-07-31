@@ -148,7 +148,7 @@
                     <h6 class="pb-2">Avalie este produto</h6>
                     <div class="d-flex gap-3 py-3 cursor-pointer">
                         @for ($i = 0; $i < 5; $i++)
-                            <i role="button" class="btnstar fa-solid fa-star fa-xl" style="color: {{ $numeroEstrelas <= $i ? '#DDDDDD' : '#72B01D' }};" data-star-index="{{$i + 1}}"></i>
+                            <i role="button" class="btnstar--produto fa-solid fa-star fa-xl" style="color: {{ $numeroEstrelas <= $i ? '#DDDDDD' : '#72B01D' }};" data-star-index="{{$i + 1}}"></i>
                         @endfor
                     </div>
                 </section>
