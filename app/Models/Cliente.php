@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Error;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,7 +33,7 @@ class Cliente extends Model
     }
 
     public function produtosComentados() {
-        return $this->belongsToMany(Anunciante::class, 'cliente_comenta_produtos')->withPivot('comentario')->withTimestamps();
+        return $this->belongsToMany(Produto::class, 'cliente_comenta_produtos')->withPivot('comentario')->withTimestamps();
     }
 
     public function produtosFavoritados() {
@@ -47,8 +48,15 @@ class Cliente extends Model
         DB::beginTransaction();
         try {
             $anunciante = $pedido->anunciante;
-            $this->avaliarAnunciante($anunciante, $avaliacao);
-            $pedido->atualizar($novoEstado);
+            
+            $responseAvaliacao = $this->avaliarAnunciante($anunciante, $avaliacao);
+            $responseComentario = $this->comentarAnunciante($anunciante, $avaliacao);
+            
+            if ($responseAvaliacao && $responseComentario) {
+                $pedido->atualizar($novoEstado);
+            } else {
+                throw new Error();
+            }
 
             DB::commit();
             return true;
@@ -105,7 +113,13 @@ class Cliente extends Model
 
     public function avaliarAnunciante($anunciante, $avaliacao) {
         try {
-            $this->anunciantesAvaliados()->attach($anunciante->id, ['estrelas' => $avaliacao['estrelas'], 'comentario' => $avaliacao['comentario']]);
+            $temAnunciantesAvaliados = $this->anunciantesAvaliados()->get()->isNotEmpty();
+
+            if ($temAnunciantesAvaliados) {
+                $this->anunciantesAvaliados()->updateExistingPivot($anunciante->id, ['estrelas' => $avaliacao['estrelas']]);
+            } else {
+                $this->anunciantesAvaliados()->attach($anunciante->id, ['estrelas' => $avaliacao['estrelas']]);
+            }
 
             return true;
         } catch (Exception $e) {
@@ -115,15 +129,36 @@ class Cliente extends Model
 
     public function avaliarProduto($produto, $avaliacao) {
         try {
-            if (!(isset($avaliacao['estrelas']))) {
-                $avaliacao['estrelas'] = 0;
+            $temProdutosAvaliados = $this->produtosAvaliados()->get()->isNotEmpty();
+
+            if ($temProdutosAvaliados) {
+                $this->produtosAvaliados()->updateExistingPivot($produto->id, ['estrelas' => $avaliacao['estrelas']]);
+            } else {
+                $this->produtosAvaliados()->attach($produto->id, ['estrelas' => $avaliacao['estrelas']]);
             }
-            
-            $this->produtosAvaliados()->attach($produto->id, ['estrelas' => $avaliacao['estrelas'], 'comentario' => $avaliacao['comentario']]);
 
             return true;
         } catch (Exception $e) {
-            dd($e);
+            return false;
+        }
+    }
+
+    public function comentarAnunciante($anunciante, $avaliacao) {
+        try {
+            $this->anunciantesComentados()->attach($anunciante->id, ['comentario' => $avaliacao['comentario']]);
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function comentarProduto($produto, $avaliacao) {
+        try {
+            $this->produtosComentados()->attach($produto->id, ['comentario' => $avaliacao['comentario']]);
+
+            return true;
+        } catch (Exception $e) {
             return false;
         }
     }

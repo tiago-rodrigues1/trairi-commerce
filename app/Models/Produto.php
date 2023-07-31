@@ -45,8 +45,12 @@ class Produto extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    public function clientesAvaliaram() {
-        return $this->belongsToMany(Cliente::class, 'cliente_avalia_produtos')->withPivot('estrelas', 'comentario')->withTimestamps();
+    public function comentariosClientes() {
+        return $this->belongsToMany(Cliente::class, 'cliente_comenta_produtos')->withPivot('comentario')->withTimestamps();
+    }
+
+    public function avaliacoesClientes() {
+        return $this->belongsToMany(Cliente::class, 'cliente_avalia_produtos')->withPivot('estrelas')->withTimestamps();
     }
 
     public function clientesFavoritaram() {

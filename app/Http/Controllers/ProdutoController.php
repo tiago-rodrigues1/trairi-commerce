@@ -82,13 +82,13 @@ class ProdutoController extends Controller {
     public function renderDetalhar($id) {
         $produto = Produto::findOrFail($id);
 
+        $comentarios= $produto->comentariosClientes()->orderByDesc('pivot_created_at')->get();
+
         if ($produto->bloquado) {
             return;
         }
 
-        $avaliacoes = $produto->clientesAvaliaram()->get();
-
-        $html = view('components/produto-detalhes', compact('produto', 'avaliacoes'))->render();
+        $html = view('components/produto-detalhes', compact('produto', 'comentarios'))->render();
 
         return $html;
     }

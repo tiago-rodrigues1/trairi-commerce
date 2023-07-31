@@ -65,7 +65,7 @@
                 <hr>
                 <section>
                     <h5 class="mb-3 text-tc-green">Avalie sua experiência</h5>
-                    <form action="/pedidos/comprovar/{{ $pedido->id }}" method="post" class="col-12">
+                    <form action="/pedidos/comprovar/{{ $pedido->id }}" method="POST" class="col-12">
                         {{ csrf_field() }}
                         <fieldset class="pt-3">
                             <legend class="mb-3 fs-6 fw-bold">Sobre o anunciante</legend>

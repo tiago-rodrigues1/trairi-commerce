@@ -207,26 +207,48 @@ class UsuarioController extends Controller {
         return view('usuario/favoritos', compact('favoritos'));
     }
 
+    public function comentarProduto(Request $request, $produto_id) {
+        $produto = Produto::findOrFail($produto_id);
+        $cliente = session()->get('usuario')->cliente;
+
+        $resultado = $cliente->comentarProduto($produto, $request['produto']);
+
+        return $resultado;
+    }
+
     public function avaliarProduto(Request $request, $produto_id) {
         $produto = Produto::findOrFail($produto_id);
         $cliente = session()->get('usuario')->cliente;
 
         $resultado = $cliente->avaliarProduto($produto, $request['produto']);
 
-        if ($resultado) {
-            $status = ['type' =>'success','msg' => 'Comentário enviado com sucesso!'];
-        } else {
-            $status = ['type' =>'error','msg' => 'Não foi possível enviar seu comentário'];
-        }
+        return $resultado;
+    }
 
-        return redirect('/')->with(compact('status'));
+    public function avaliarAnunciante(Request $request, $anunciante_id) {
+        $anunciante = Anunciante::findOrFail($anunciante_id);
+        $cliente = session()->get('usuario')->cliente;
+
+        $resultado = $cliente->avaliarAnunciante($anunciante, $request['anunciante']);
+
+        return $resultado;
     }
 
     public function renderPerfilAnunciante ($id) {
         $anunciante = Anunciante::findOrFail($id);
-        $produtos = $anunciante->produtos;
+        $produtos = $anunciante->produtos->where('bloqueado', '0');
+        $comentarios = $anunciante->comentariosClientes()->orderByDesc('pivot_created_at')->get();
         
-        return view('usuario/perfilAnunciante', compact('produtos','anunciante'));
+        return view('usuario/perfilAnunciante', compact('produtos','anunciante', 'comentarios'));
+    }
+
+    public function comentarAnunciante(Request $request, $anunciante_id) {
+        $anunciante = Anunciante::findOrFail($anunciante_id);
+        $cliente = session()->get('usuario')->cliente;
+
+        $resultado = $cliente->comentarAnunciante($anunciante, $request['produto']);
+
+        return $resultado;
     }
 
 }

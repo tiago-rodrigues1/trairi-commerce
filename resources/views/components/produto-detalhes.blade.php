@@ -1,3 +1,7 @@
+@php
+    $numeroEstrelas = $produto->avaliacoesClientes()->avg('estrelas');
+@endphp
+
 <div class="modal w-100 h-100 bg-dark bg-opacity-25 fixed" id="detalheProduto_{{ $produto->id }}">
     <div class="modal-dialog overflow-y-scroll modal-xl">
         <div class="modal-content h-100 align-items-center py-3">
@@ -10,17 +14,12 @@
                                 <button type="button" class="btn-close close" aria-label="Close"
                                     data-target="#detalheProduto_{{ $produto->id }}"></button>
                             </div>
-                            <div class="py-2 w-100 d-flex align-items-center gap-3">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="{{ $i < 5 ? '#72B01D' : '#DDDDDD' }}"
-                                        stroke="{{ $i < 5 ? '#72B01D' : '#DDDDDD' }}" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                                        <polygon
-                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                        </polygon>
-                                    </svg>
-                                @endfor
+                            <div class="py-3" id="produto-estrelas-container">
+                                <div class="w-100 d-flex align-items-center gap-3" id="produto-estrelas">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <i class="fa-solid fa-star fa-lg" style="color: {{ $numeroEstrelas <= $i ? '#DDDDDD' : '#72B01D' }};"></i>
+                                    @endfor
+                                </div>
                             </div>
                         </div>
                         <div class="vstack gap-3">
@@ -113,10 +112,10 @@
                         <p>{{ $produto->descricao }}</p>
                     </div>
                 </section>
-                <section class="vstack pt-4" id="comentarios">
+                <section class="vstack pt-4">
                     <h6 class="pb-2">Comentários</h6>
                     <div class="avaliar mb-3 ps-3 gap-3 hstack align-items-center">
-                        <img src="/images/perfil.jpg" alt="" class="rounded-circle"
+                        <img src="/storage/{{ session()->get('usuario')->foto_perfil_path }}" alt="" class="rounded-circle"
                             style="width: 4rem; min-width: 4rem; height: 4rem;">
                         <div class="w-100 d-flex align-items-stretch">
                             <textarea class="h-100 w-100 form-control" id="produto-comentario" name="produto[comentario]" style="border-radius: .5rem 0 0 .5rem" id="floatingTextarea" placeholder="Adicione um comentário"></textarea>
@@ -125,22 +124,33 @@
                             </button>
                         </div>
                     </div>
-                    @if (isset($avaliacoes))
-                        @foreach ($avaliacoes as $avaliacao)
-                            <div class="mt-3 rounded-3 border hstack align-items-center gap-3 p-3">
-                                <img src="/images/perfil.jpg" alt="" class="rounded-circle"
-                                    style="width: 4rem; height: 4rem;">
-                                <div class="vstack">
-                                    <div>
-                                        <span><b>Bruce Wayne</b></span>
-                                        <small class="tc-light-text">Em 06/07/2022</small>
+                    @if (isset($comentarios))
+                        <div id="comentarios-container">
+                            <div id="comentarios">
+                                @foreach ($comentarios as $comentario)
+                                    <div class="mt-3 rounded-3 border hstack align-items-center gap-3 p-3">
+                                        <img src="storage/{{$comentario->usuario->foto_perfil_path}}" alt="" class="rounded-circle"
+                                            style="width: 4rem; height: 4rem;">
+                                        <div class="vstack">
+                                            <div>
+                                                <span><b>{{ $comentario->usuario->nome }}</b></span>
+                                                <small class="tc-light-text">Em {{ $comentario->pivot->created_at }}</small>
+                                            </div>
+                                            <p>{{ $comentario->pivot->comentario }}</p>
+                                        </div>
                                     </div>
-                                    <p>{{$avaliacao->pivot->comentario}}</p>
-                                </div>
+                                @endforeach
                             </div>
-                        @endforeach
-                    @endif
-                        
+                        </div>
+                    @endif  
+                </section>
+                <section class="vstack pt-4" id="avaliacoes-produto">
+                    <h6 class="pb-2">Avalie este produto</h6>
+                    <div class="d-flex gap-3 py-3 cursor-pointer">
+                        @for ($i = 0; $i < 5; $i++)
+                            <i role="button" class="btnstar--produto fa-solid fa-star fa-xl" style="color: {{ $numeroEstrelas <= $i ? '#DDDDDD' : '#72B01D' }};" data-star-index="{{$i + 1}}"></i>
+                        @endfor
+                    </div>
                 </section>
             </div>
         </div>

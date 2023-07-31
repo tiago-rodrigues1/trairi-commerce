@@ -33,14 +33,14 @@ $(document).ready(function () {
         $('#img-canvas').append(
             `<img src="${imageSrc}" class="img-fluid pt-2" alt="" id="edit_${e.target.id}">`);
         image = document.getElementById(`edit_${e.target.id}`);
-        $('#image-editor').show().trigger('shown_modal');
+        $('#image-editor').show().trigger('shown_img-product-modal');
     });
 
     $('#crop').click(function () {
-        $('#image-editor').hide().trigger('hidden_modal');
+        $('#image-editor').hide().trigger('hidden_img-product-modal');
     });
 
-    $('#image-editor').on('shown_modal', function () {
+    $('#image-editor').on('shown_img-product-modal', function () {
         cropper = new Cropper(image, {
             viewMode: 1,
             dragMode: 'move',
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 }
             }
         });
-    }).on('hidden_modal', function () {
+    }).on('hidden_img-product-modal', function () {
         var canvas = cropper.getCroppedCanvas();
 
         canvas.toBlob(function (blob) {
@@ -84,7 +84,8 @@ $(document).ready(function () {
         $(`#edit_${element.id}`).remove();
     });
 
-    $('#cancel').click(function () {
+    $('#cancel').click(function (e) {
+        console.log(e.target)
         cropper.destroy();
         $(`#edit_${element.id}`).remove();
         $('#image-editor').hide();
