@@ -27,6 +27,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/usuario/perfil">Perfil</a></li>
                         @if (session()->get('acesso') == 'anunciante')
+                            <li><a class="dropdown-item" href="/usuario/perfilAnunciante/{{session()->get('usuario')->anunciante->id}}">Perfil Anunciante</a></li>
                             <li><a class="dropdown-item" href="/produtos/listar">Catálogo</a></li>
                         @else
                             <li><a class="dropdown-item" href="/usuario/favoritos">Favoritos</a></li>
