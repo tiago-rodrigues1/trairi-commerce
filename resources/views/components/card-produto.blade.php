@@ -11,7 +11,7 @@
                 <div class="hstack align-items-center justify-content-between">
                     <h5 class="fw-normal m-0 p-0">R$ {{ number_format($produto->valor, 2, ',') }}</h5>
                     <div class="hstack gap-2 align-items-center justify-content-center">
-                        <span class="text-tc-green">{{ is_null($numeroEstrelas) ? "0" : $numeroEstrelas  }}</span>
+                        <span class="text-tc-green">{{ is_null($numeroEstrelas) ? "0" : floor($numeroEstrelas) }}</span>
                         <i class="fa-solid fa-star" style="color: #72B01D;"></i>
                     </div>
                 </div>
