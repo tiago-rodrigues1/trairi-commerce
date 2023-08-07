@@ -54,7 +54,8 @@ class PedidoController extends Controller {
             'cep_destino' => 'required|max:9',
             'cidade_destino' => 'required|max:100',
             'bairro_destino' => 'required|max:100',
-            'endereco_destino' => 'required|max:300'
+            'endereco_destino' => 'required|max:300',
+            'numero_destino' => 'required'
         ]);
 
         $pedido = Pedido::salvar($request->except('_token'));
@@ -115,7 +116,7 @@ class PedidoController extends Controller {
         $novoEstado = $request->acao;
 
         if ($novoEstado == "Comprovado") {
-            return view('/pedidos/comprovar', compact('pedido'));
+            return redirect('/pedidos/comprovar/'.$pedido_id);
         } else {
             if ($pedido->atualizar($novoEstado)) {
                 $status = ['type' =>'success','msg' => 'Pedido atualizado com sucesso!'];
@@ -127,10 +128,15 @@ class PedidoController extends Controller {
         return redirect('/pedidos/listar/')->with(compact('status'));
     }
 
+    public function renderComprovar($pedido_id) {
+        $pedido = Pedido::findOrFail($pedido_id);
+
+        return view('/pedidos/comprovar', compact('pedido'));
+    }
+
     public function comprovar(Request $request, $id) {
         $request->validate([
-            'anunciante.comentario' => 'max:300',
-            'anunciante.estrelas' => 'required|min:0|max:5'
+            'anunciante.comentario' => 'max:300'
         ]);
 
         $pedido = Pedido::findOrFail($id);

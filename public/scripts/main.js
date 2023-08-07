@@ -220,10 +220,7 @@ $(document).ready(function () {
                 anunciante: {
                     estrelas: indexClicado
                 }
-            },
-            // success: function() {
-            //     $('#produto-estrelas-container').load(`${url} #produto-estrelas`);
-            // }
+            }
         });
     });
 });

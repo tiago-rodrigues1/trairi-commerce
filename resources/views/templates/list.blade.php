@@ -13,10 +13,7 @@
                     <h6 class="m-0 fw-normal">@yield('resultsCount') resultados encontrados</h6>
                 </div>
                 <div class="hstack gap-3 align-items-end">
-                    @if (session()->get('acesso') == 'anunciante')
-                        <a class="btn tc-btn" href="/produtos/adicionar">Novo</a>
-                    @endif
-                    <div class="d-none d-lg-flex flex-column">
+                    {{-- <div class="d-none d-lg-flex flex-column">
                         <label for="sortOpts" class="form-label">Ordenar</label>
                         <select class="form-select" name="sortOpts" id="sortOpts">
                             <option value="">Mais pedidos</option>
@@ -24,7 +21,7 @@
                             <option value="">Maior preço</option>
                             <option value="">Avaliação</option>
                         </select>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="w-100 pt-5 d-flex align-items-center justify-content-center">

@@ -246,9 +246,9 @@ class UsuarioController extends Controller {
         $anunciante = Anunciante::findOrFail($anunciante_id);
         $cliente = session()->get('usuario')->cliente;
 
-        $resultado = $cliente->comentarAnunciante($anunciante, $request['produto']);
+        $resultado = $cliente->comentarAnunciante($anunciante, $request['anunciante']);
 
-        return $resultado;
+        return redirect('/usuario/perfilAnunciante/'.$anunciante_id);
     }
 
 }

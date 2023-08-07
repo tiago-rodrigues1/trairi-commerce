@@ -8,15 +8,7 @@
         @foreach ($filters as $filter)
             <li class="filter-container py-3 d-flex flex-column justify-content-between border-bottom"
                 style="max-height: max-content; cursor: pointer;" data-target="#{{$filter['label'][1]}}">
-                <div class="hstack align-items-center justify-content-between">
-                    <span>{{ $filter['label'][0] }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </div>
-
+                <span>{{ $filter['label'][0] }}</span>
                 <div class="filter-item" id="filter_{{$filter['label'][1]}}">
                     @foreach ($filter['options'] as $index => $option)
                         @php

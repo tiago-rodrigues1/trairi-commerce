@@ -13,6 +13,7 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
     Route::get('/pedidos/carrinho/remover/{id}', [PedidoController::class, 'removerItem']);
     Route::post('/pedidos/novo', [PedidoController::class, 'novoPedido']);
     Route::post('/pedidos/comprovar/{id}', [PedidoController::class, 'comprovar']);
+    Route::get('/pedidos/comprovar/{id}', [PedidoController::class, 'renderComprovar']);
 
     Route::post('/usuario/favoritar/{id}', [UsuarioController::class, 'favoritarProduto']);
     Route::get('/usuario/favoritos', [UsuarioController::class, 'renderFavoritos']);

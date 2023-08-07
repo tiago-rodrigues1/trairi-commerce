@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('cidade_destino', 100);
             $table->string('bairro_destino', 100);
             $table->string('endereco_destino', 300);
+            $table->integer('numero_destino');
             $table->string('observacao', 500)->nullable();
             $table->timestamps();
         });

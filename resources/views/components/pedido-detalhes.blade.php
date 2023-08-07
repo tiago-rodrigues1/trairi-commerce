@@ -28,6 +28,11 @@
                         @foreach ($pedido->produtos as $produto)
                             @php
                                 $soma += $produto->valor * $produto->pivot->quantidade;
+                                $frete = 0;
+
+                                if ($produto->taxa_de_entrega > $frete) {
+                                    $frete = $produto->taxa_de_entrega;
+                                }
                             @endphp
                             <tr>
                                 <td>{{ $produto->nome }}</td>
@@ -39,8 +44,8 @@
                     <tfoot>
                         <tr class="text-tc-green-dark">
                             <td>Subtotal: R$ {{ number_format($soma, 2, ',') }}</td>
-                            <td>Frete: R$ {{ number_format($pedido->anunciante->taxa_de_entrega, 2, ',') }}</td>
-                            <td>Total: R$ {{ number_format(($soma + $pedido->anunciante->taxa_de_entrega), 2, ',') }}</td>
+                            <td>Frete: R$ {{ number_format($frete, 2, ',') }}</td>
+                            <td>Total: R$ {{ number_format(($soma + $frete), 2, ',') }}</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -57,6 +62,7 @@
                     <p><strong>Cidade:</strong><br class="d-lg-none"> {{$pedido->cidade_destino }}</p>
                     <p><strong>Bairro:</strong><br class="d-lg-none"> {{$pedido->bairro_destino }}</p>
                     <p><strong>Endereço:</strong><br class="d-lg-none"> {{$pedido->endereco_destino }}</p>
+                    <p><strong>Número:</strong><br class="d-lg-none"> {{$pedido->numero_destino }}</p>
                 </div>
             </section>
         </main>

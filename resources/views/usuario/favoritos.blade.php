@@ -1,16 +1,15 @@
-@extends('templates.list')
+@extends('templates.base')
 
-@section('title', 'TC | Favoritos')
+@section('title', 'TC | Meu perfil')
 
-@section('pageLabel', 'Seus favoritos')
-@section('resultsCount', count($favoritos))
-
-@section('items')
-    <x-product-section :sectionTitle="null">
-        @forelse ($favoritos as $favorito)
-            <x-card-produto :produto="$favorito" />
-        @empty
-            <p>Não tem produtos</p>
-        @endforelse
-    </x-product-section>
+@section('content')
+    <div class="container-fluid p-4 vstack align-items-center justify-content-center">
+        <x-product-section sectionTitle="Seus Favoritos">
+            @forelse ($favoritos as $favorito)
+                <x-card-produto :produto="$favorito" />
+            @empty
+                <p>Não tem produtos</p>
+            @endforelse
+        </x-product-section>
+    </div>
 @endsection

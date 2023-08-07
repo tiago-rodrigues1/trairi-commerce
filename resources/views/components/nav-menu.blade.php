@@ -14,36 +14,21 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Produtos/Serviços</a>
-                </li>
-                <li class="nav-item">
-                    @if ($isAuthenticated)
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Minha conta
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/usuario/perfil">Perfil</a></li>
-                        @if (session()->get('acesso') == 'anunciante')
-                            <li><a class="dropdown-item" href="/usuario/perfilAnunciante/{{session()->get('usuario')->anunciante->id}}">Perfil Anunciante</a></li>
-                            <li><a class="dropdown-item" href="/produtos/listar">Catálogo</a></li>
-                        @else
-                            <li><a class="dropdown-item" href="/usuario/favoritos">Favoritos</a></li>
-                        @endif
-                    </ul>
-                </li>
-            @else
-                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                    style="cursor: pointer;">Fazer login</a>
-                @endif
-                </li>
                 @if ($isAuthenticated)
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Notificações
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Minha conta
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/usuario/perfil">Perfil</a></li>
+                            @if (session()->get('acesso') == 'anunciante')
+                                <li><a class="dropdown-item" href="/usuario/perfilAnunciante/{{session()->get('usuario')->anunciante->id}}">Perfil Anunciante</a></li>
+                                <li><a class="dropdown-item" href="/produtos/listar">Catálogo</a></li>
+                            @else
+                                <li><a class="dropdown-item" href="/usuario/favoritos">Favoritos</a></li>
+                            @endif
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/pedidos/listar">Pedidos</a>
@@ -51,9 +36,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/usuario/deslogar">Sair</a>
                     </li>
+                @else
+                    <a class="nav-link py-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">Fazer login</a>
                 @endif
             </ul>
-            <form class="d-flex col-12 col-lg-5 mb-2" role="search" method="GET" action="/busca/resultados">
+            <form class="d-flex col-12 col-lg-5 mb-2 mb-lg-0" role="search" method="GET" action="/busca/resultados">
                 <input class="form-control me-2 bg-tc-white" type="text" name="termo" placeholder="O que você procura ?"
                     aria-label="Search">
                 <button class="btn bg-tc-green-dark px-4 border-0" type="submit">

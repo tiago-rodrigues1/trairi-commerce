@@ -49,10 +49,9 @@ class Cliente extends Model
         try {
             $anunciante = $pedido->anunciante;
             
-            $responseAvaliacao = $this->avaliarAnunciante($anunciante, $avaliacao);
             $responseComentario = $this->comentarAnunciante($anunciante, $avaliacao);
             
-            if ($responseAvaliacao && $responseComentario) {
+            if ($responseComentario) {
                 $pedido->atualizar($novoEstado);
             } else {
                 throw new Error();
@@ -149,6 +148,7 @@ class Cliente extends Model
 
             return true;
         } catch (Exception $e) {
+            dd($e);
             return false;
         }
     }

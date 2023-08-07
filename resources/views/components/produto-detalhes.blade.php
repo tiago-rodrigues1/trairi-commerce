@@ -112,6 +112,16 @@
                         <p>{{ $produto->descricao }}</p>
                     </div>
                 </section>
+                @if (session()->get('acesso') == 'cliente')
+                    <section class="vstack pt-4" id="avaliacoes-produto">
+                        <h6 class="pb-2">Avalie este produto</h6>
+                        <div class="d-flex gap-3 py-3 cursor-pointer">
+                            @for ($i = 0; $i < 5; $i++)
+                                <i role="button" class="btnstar--produto fa-solid fa-star fa-xl" style="color: {{ $numeroEstrelas <= $i ? '#DDDDDD' : '#72B01D' }};" data-star-index="{{$i + 1}}"></i>
+                            @endfor
+                        </div>
+                    </section>
+                @endif
                 <section class="vstack pt-4">
                     <h6 class="pb-2">Comentários</h6>
                     @if (session()->get('acesso') == 'cliente')
@@ -131,7 +141,7 @@
                             <div id="comentarios">
                                 @foreach ($comentarios as $comentario)
                                     <div class="mt-3 rounded-3 border hstack align-items-center gap-3 p-3">
-                                        <img src="storage/{{$comentario->usuario->foto_perfil_path}}" alt="" class="rounded-circle"
+                                        <img src="/storage/{{$comentario->usuario->foto_perfil_path}}" alt="" class="rounded-circle"
                                             style="width: 4rem; height: 4rem;">
                                         <div class="vstack">
                                             <div>
@@ -146,16 +156,6 @@
                         </div>
                     @endif  
                 </section>
-                @if (session()->get('acesso') == 'cliente')
-                    <section class="vstack pt-4" id="avaliacoes-produto">
-                        <h6 class="pb-2">Avalie este produto</h6>
-                        <div class="d-flex gap-3 py-3 cursor-pointer">
-                            @for ($i = 0; $i < 5; $i++)
-                                <i role="button" class="btnstar--produto fa-solid fa-star fa-xl" style="color: {{ $numeroEstrelas <= $i ? '#DDDDDD' : '#72B01D' }};" data-star-index="{{$i + 1}}"></i>
-                            @endfor
-                        </div>
-                    </section>
-                @endif
             </div>
         </div>
     </div>

@@ -31,6 +31,11 @@
                                 @php
                                     $subtotal += $produto->valor;
                                     $modosPagamento = $produto ? $produto->anunciante->tiposDePagamento : null;
+                                    $frete = 0;
+
+                                    if ($produto->taxa_de_entrega > $frete) {
+                                        $frete = $produto->taxa_de_entrega;
+                                    }
                                 @endphp
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
@@ -55,10 +60,10 @@
                                 <td><strong>Subotal</strong></td>
                                 <td id="subtotal">{{ number_format($subtotal, 2, ',') }}</td>
                                 <td><strong>Frete</strong></td>
-                                <td id="frete" data-frete="{{ $produto->anunciante->taxa_de_entrega }}">{{ number_format($produto->anunciante->taxa_de_entrega, 2, ',') }}</td>
+                                <td id="frete" data-frete="{{ $frete }}">{{ number_format($frete, 2, ',') }}</td>
                             </tr>
                             <tr>
-                                <td colspan="5" class="text-center text-tc-green fw-bold" style="font-size: 1.125rem" id="total">Total: {{ number_format($subtotal + $produto->anunciante->taxa_de_entrega, 2, ',') }}</td>
+                                <td colspan="5" class="text-center text-tc-green fw-bold" style="font-size: 1.125rem" id="total">Total: {{ number_format($subtotal + $frete, 2, ',') }}</td>
                             </tr>
                         </tfoot>
                         @endif
@@ -82,31 +87,37 @@
                 </div>
                 </section>
                 <section class="pt-3">
-                    <div class="hstack gap-3 align-items-center">
-                        <h4 class="text-tc-green fs-4">Endereço</h4>
-                        <a href="#" class="hstack align-items-center gap-1 text-decoration-none text-tc-green">
+                    <div class="hstack gap-3 align-items-center mb-3">
+                        <h4 class="text-tc-green fs-4 m-0">Endereço</h4>
+                        <button type="button" id="edit-destino" class="btn p-0 m-0 border-0 text-tc-green">
                             Editar
-                        </a>
+                        </button>
                     </div>
-                    <ul class="p-0 vstack gap-2">
+                    <ul class="p-0 vstack gap-2" id="dest-inputs">
                         <li class="row p-0 mt-0 gx-2 mb-3">
                             <div class="form-floating col-6">
-                                <input type="text" class="form-control" data-mask="00000-000" name="cep_destino" id="perfil_cep" value="{{$u->cep}}" readonly>
+                                <input type="text" class="form-control" data-mask="00000-000" name="cep_destino" value="{{$u->cep}}" readonly>
                                 <label for="cep">CEP</label>
                             </div>
                             <div class="form-floating col-6">
-                                <input type="text" class="form-control" name="cidade_destino" id="perfil_cidade" value="{{$u->cidade}}" readonly>
+                                <input type="text" class="form-control" name="cidade_destino" value="{{$u->cidade}}" readonly>
                                 <label for="cidade">Cidade</label>
                             </div>
                         </li>
                         <li class="row p-0 mt-0 gx-2 mb-3">
+                            <div class="form-floating col-12">
+                                <input type="text" class="form-control" name="endereco_destino" value="{{$u->endereco}}" readonly>
+                                <label for="endereco">Endereço</label>
+                            </div>
+                        </li>
+                        <li class="row p-0 mt-0 gx-2 mb-3">
                             <div class="form-floating col-6">
-                                <input type="text" class="form-control" name="bairro_destino" id="perfil_bairro" value="{{$u->bairro}}" readonly>
+                                <input type="text" class="form-control" name="bairro_destino" value="{{$u->bairro}}" readonly>
                                 <label for="bairro">Bairro</label>
                             </div>
                             <div class="form-floating col-6">
-                                <input type="text" class="form-control" name="endereco_destino" id="perfil_endereco" value="{{$u->endereco}}" readonly>
-                                <label for="endereco">Endereço</label>
+                                <input type="text" class="form-control" name="numero_destino" value="{{$u->numero}}" readonly>
+                                <label for="endereco">Número</label>
                             </div>
                         </li>
                     </ul>

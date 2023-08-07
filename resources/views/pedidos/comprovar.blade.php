@@ -69,9 +69,14 @@
                         {{ csrf_field() }}
                         <fieldset class="pt-3">
                             <legend class="mb-3 fs-6 fw-bold">Sobre o anunciante</legend>
-                            <div class="my-4">
-                                <label for="anunciante-estrelas" class="form-label">Nº de estrelas</label>
-                                <input type="number" value="1" class="form-control" name="anunciante[estrelas]" id="anunciante-estrelas" required style="width: 10% !important;" min="1" max="5">
+                            <div class="vstack pt-4" id="avaliacoes-anunciante">
+                                <h6 class="pb-2">Avalie este anunciante</h6>
+                                <div class="d-flex gap-3 py-3 cursor-pointer">
+                                    <input type="hidden" id="anunciante" value="{{ $pedido->anunciante->id }}">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <i role="button" class="btnstar--anunciante fa-solid fa-star fa-xl" style="color: #DDDDDD;" data-star-index="{{$i + 1}}"></i>
+                                    @endfor
+                                </div>
                             </div>
                             <div class="my-3">
                                 <label for="anunciante-comentario" class="form-label">Deixe um comentário</label>
