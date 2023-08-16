@@ -23,6 +23,9 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
 
     Route::post('/anunciante/comentar/{id}', [UsuarioController::class, 'comentarAnunciante']);
     Route::post('/anunciante/avaliar/{id}', [UsuarioController::class, 'avaliarAnunciante']);
+
+    Route::get('/anunciantes/comentarios/{id}/deletar', [UsuarioController::class, 'deletarComentarioAnunciante']);
+    Route::get('/produtos/comentarios/{id}/deletar', [UsuarioController::class, 'deletarComentarioProduto']);
 });
 
 /* Rotas de anunciante */
@@ -43,10 +46,6 @@ Route::middleware('autorizacao:false,true,true')->group(function() {
 
     Route::get('/pedidos/listar', [PedidoController::class, 'renderHistoricoPedidos'])->name('pedidos.listar');
     Route::get('/pedidos/detalhar/{pedido_id}', [PedidoController::class, 'renderDetalharPedido']);
-
-    Route::get('/usuario/notificacoes', function () {
-        return view('usuario/notificacoes');
-    });
 
     Route::post('/pedidos/atualizar/{pedido_id}', [PedidoController::class, 'atualizarPedido']);
 
