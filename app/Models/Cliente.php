@@ -29,11 +29,11 @@ class Cliente extends Model
     }
 
     public function anunciantesComentados() {
-        return $this->belongsToMany(Anunciante::class, 'cliente_comenta_anunciantes')->withPivot('comentario')->withTimestamps();
+        return $this->belongsToMany(Anunciante::class, 'cliente_comenta_anunciantes')->withPivot('id')->withPivot('comentario')->withPivot('bloqueado')->withTimestamps();
     }
 
     public function produtosComentados() {
-        return $this->belongsToMany(Produto::class, 'cliente_comenta_produtos')->withPivot('comentario')->withTimestamps();
+        return $this->belongsToMany(Produto::class, 'cliente_comenta_produtos')->withPivot('id')->withPivot('comentario')->withPivot('bloqueado')->withTimestamps();
     }
 
     public function produtosFavoritados() {
@@ -163,7 +163,28 @@ class Cliente extends Model
         }
     }
 
-    public function editarAvaliacao ($a, $estrelas, $comentario) {
-        
+    public function deletarComentarioAnunciante($comentario_id) {
+        try {
+            DB::table('cliente_comenta_anunciantes')
+            ->where('id', $comentario_id)
+            ->update(['bloqueado' => '1']);
+
+            return true;
+        } catch (Exception $e) {
+            dd($e);
+            return false;
+        }
+    }
+
+    public function deletarComentarioProduto($comentario_id) {
+        try {
+            DB::table('cliente_comenta_produtos')
+            ->where('id', $comentario_id)
+            ->update(['bloqueado' => '1']);
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
