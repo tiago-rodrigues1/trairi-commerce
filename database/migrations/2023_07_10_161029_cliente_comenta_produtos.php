@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('comentario', 300);
             $table->foreignId('cliente_id')->constrained();
             $table->foreignId('produto_id')->constrained();
+            $table->boolean('bloqueado')->default(false);
             $table->timestamps();
         });
     }
