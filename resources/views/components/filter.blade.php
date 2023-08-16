@@ -10,30 +10,32 @@
                 style="max-height: max-content; cursor: pointer;" data-target="#{{$filter['label'][1]}}">
                 <span>{{ $filter['label'][0] }}</span>
                 <div class="filter-item" id="filter_{{$filter['label'][1]}}">
-                    @foreach ($filter['options'] as $index => $option)
-                        @php
-                            $isChecked = false;
-                            $filtros = $filtrosUsuario[$filter['label'][1]] ?? [];
+					@if (isset($filter['options']))
+						@foreach ($filter['options'] as $index => $option)
+							@php
+								$isChecked = false;
+								$filtros = $filtrosUsuario[$filter['label'][1]] ?? [];
 
-                            foreach ($filtros as $filtro) {
-                                if ($filtro == $option) {
-                                    $isChecked = true;
-                                    break;
-                                }
-                            }
-                        @endphp
-                        <div class="form-check mt-3">
-                            <input 
-                                class="form-check-input" 
-                                {{ $isChecked ? "checked" : "" }} 
-                                type="checkbox" 
-                                name="{{ $filter['label'][1] }}[]"
-                                data-target="#filter_{{$filter['label'][1]}}"
-                                value="{{ $option == "Todos" ? "*" : $option }}"
-                            >
-                            <label class="form-check-label" for="{{ $filter['label'][1].'_'.$index }}">{{ $option }}</label>
-                        </div>
-                    @endforeach
+								foreach ($filtros as $filtro) {
+									if ($filtro == $option) {
+										$isChecked = true;
+										break;
+									}
+								}
+							@endphp
+							<div class="form-check mt-3">
+								<input 
+									class="form-check-input" 
+									{{ $isChecked ? "checked" : "" }} 
+									type="checkbox" 
+									name="{{ $filter['label'][1] }}[]"
+									data-target="#filter_{{$filter['label'][1]}}"
+									value="{{ $option == "Todos" ? "*" : $option }}"
+								>
+								<label class="form-check-label" for="{{ $filter['label'][1].'_'.$index }}">{{ $option }}</label>
+							</div>
+						@endforeach
+					@endif
                 </div>
             </li>
         @endforeach
