@@ -32,7 +32,7 @@ class Anunciante extends Model
     }
 
     public function comentariosClientes() {
-        return $this->belongsToMany(Cliente::class, 'cliente_comenta_anunciantes')->withPivot('comentario')->withTimestamps();
+        return $this->belongsToMany(Cliente::class, 'cliente_comenta_anunciantes')->withPivot('id')->withPivot('comentario')->withPivot('bloqueado')->withTimestamps();
     }
 
     public function pedidos() {
