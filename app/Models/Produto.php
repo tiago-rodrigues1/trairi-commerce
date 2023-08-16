@@ -46,7 +46,7 @@ class Produto extends Model
     }
 
     public function comentariosClientes() {
-        return $this->belongsToMany(Cliente::class, 'cliente_comenta_produtos')->withPivot('comentario')->withTimestamps();
+        return $this->belongsToMany(Cliente::class, 'cliente_comenta_produtos')->withPivot('id')->withPivot('comentario')->withPivot('bloqueado')->withTimestamps();
     }
 
     public function avaliacoesClientes() {
