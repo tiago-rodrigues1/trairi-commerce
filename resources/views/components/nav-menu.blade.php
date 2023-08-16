@@ -291,25 +291,25 @@
         @endif
     </div>
 </div>
-<div class="modal w-100 h-100 bg-dark bg-opacity-25 fixed" id="image-editor">
+<div class="modal w-100 h-100 bg-dark bg-opacity-25 fixed" id="image-editor-perfil">
     <div class="modal-dialog overflow-y-scroll modal-xl">
         <div class="modal-content h-100 p-4 vstack align-items-center">
             <div class="w-50 h-50 d-flex flex-column gap-4 align-items-center">
                 <div class="d-flex gap-3 align-self-end">
                     <button type="button" class="btn border-2" style="font-size: 0; border-color: var(--tc-green);"
-                        id="zoom_in">
+                        id="zoom_in_perfil">
                         <img src="/icons/zoom-in.svg" alt="">
                     </button>
                     <button type="button" class="btn border-2" style="font-size: 0; border-color: var(--tc-green);"
-                        id="zoom_out">
+                        id="zoom_out_perfil">
                         <img src="/icons/zoom-out.svg" alt="">
                     </button>
                 </div>
-                <div class="w-100 h-100" id="img-canvas">
+                <div class="w-100 h-100" id="img-canvas-perfil">
                 </div>
                 <div class="hstack align-items-center justify-content-between">
-                    <button class="col-6 btn tc-btn-ghost-red" type="button" id="cancel">Cancelar</button>
-                    <button class="col-5 btn tc-btn" type="button" id="crop">Ok</button>
+                    <button class="col-6 btn tc-btn-ghost-red" type="button" id="cancel-perfil">Cancelar</button>
+                    <button class="col-5 btn tc-btn" type="button" id="crop-perfil">Ok</button>
                 </div>
             </div>
         </div>
