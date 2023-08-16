@@ -237,7 +237,7 @@ class UsuarioController extends Controller {
     public function renderPerfilAnunciante ($id) {
         $anunciante = Anunciante::findOrFail($id);
         $produtos = $anunciante->produtos->where('bloqueado', '0');
-        $comentarios = $anunciante->comentariosClientes()->orderByDesc('pivot_created_at')->get();
+        $comentarios = $anunciante->comentariosClientes()->where('bloqueado', '0')->orderByDesc('pivot_created_at')->get();
         
         return view('usuario/perfilAnunciante', compact('produtos','anunciante', 'comentarios'));
     }
@@ -249,6 +249,32 @@ class UsuarioController extends Controller {
         $resultado = $cliente->comentarAnunciante($anunciante, $request['anunciante']);
 
         return redirect('/usuario/perfilAnunciante/'.$anunciante_id);
+    }
+
+    public function deletarComentarioAnunciante($comentario_id) {
+        $c = session()->get('usuario')->cliente;
+        $resultado = $c->deletarComentarioAnunciante($comentario_id);
+
+        if ($resultado) {
+            $status = ['type' => 'success', 'msg' => 'Comentário deletado com sucesso!'];
+        } else {
+            $status = ['type' => 'error', 'msg' => 'Não foi possível deletar seu comentário neste momento'];
+        }
+
+        return back()->with(compact('status'));
+    }
+
+    public function deletarComentarioProduto($comentario_id) {
+        $c = session()->get('usuario')->cliente;
+        $resultado = $c->deletarComentarioProduto($comentario_id);
+
+        if ($resultado) {
+            $status = ['type' => 'success', 'msg' => 'Comentário deletado com sucesso!'];
+        } else {
+            $status = ['type' => 'error', 'msg' => 'Não foi possível deletar seu comentário neste momento'];
+        }
+
+        return back()->with(compact('status'));
     }
 
 }
