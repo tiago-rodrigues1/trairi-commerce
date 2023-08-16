@@ -82,7 +82,7 @@ class ProdutoController extends Controller {
     public function renderDetalhar($id) {
         $produto = Produto::findOrFail($id);
 
-        $comentarios= $produto->comentariosClientes()->orderByDesc('pivot_created_at')->get();
+        $comentarios= $produto->comentariosClientes()->where('bloqueado', '0')->orderByDesc('pivot_created_at')->get();
 
         if ($produto->bloquado) {
             return;
