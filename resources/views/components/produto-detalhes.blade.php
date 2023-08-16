@@ -140,17 +140,7 @@
                         <div id="comentarios-container">
                             <div id="comentarios">
                                 @foreach ($comentarios as $comentario)
-                                    <div class="mt-3 rounded-3 border hstack align-items-center gap-3 p-3">
-                                        <img src="/storage/{{$comentario->usuario->foto_perfil_path}}" alt="" class="rounded-circle"
-                                            style="width: 4rem; height: 4rem;">
-                                        <div class="vstack">
-                                            <div>
-                                                <span><b>{{ $comentario->usuario->nome }}</b></span>
-                                                <small class="tc-light-text">Em {{ $comentario->pivot->created_at }}</small>
-                                            </div>
-                                            <p>{{ $comentario->pivot->comentario }}</p>
-                                        </div>
-                                    </div>
+                                    <x-comentario :objectData="$comentario" tipoDeComentario="produtos" />
                                 @endforeach
                             </div>
                         </div>
