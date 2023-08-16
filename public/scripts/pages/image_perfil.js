@@ -1,6 +1,4 @@
 $(document).ready(function () {   
-
-
     var image, cropper, fileName, element;
     $('#fotoPerfil').on('change', function (e) {
         var file = e.target.files[0];
@@ -9,17 +7,17 @@ $(document).ready(function () {
         fileName = file.name;
         element = e.target;
 
-        $('#img-canvas').append(
-            `<img src="${imageSrc}" class="img-fluid pt-2" alt="" id="edit_${e.target.id}">`);
-        image = document.getElementById(`edit_${e.target.id}`);
-        $('#image-editor').show().trigger('shown_modal');
+        $('#img-canvas-perfil').append(
+            `<img src="${imageSrc}" class="img-fluid pt-2" alt="" id="perfil_edit_${e.target.id}">`);
+        image = document.getElementById(`perfil_edit_${e.target.id}`);
+        $('#image-editor-perfil').show().trigger('shown_modal');
     });
 
-    $('#crop').click(function () {
-        $('#image-editor').hide().trigger('hidden_modal');
+    $('#crop-perfil').click(function () {
+        $('#image-editor-perfil').hide().trigger('hidden_modal');
     });
 
-    $('#image-editor').on('shown_modal', function () {
+    $('#image-editor-perfil').on('shown_modal', function () {
         cropper = new Cropper(image, {
             viewMode: 1,
             dragMode: 'move',
@@ -32,11 +30,11 @@ $(document).ready(function () {
             cropBoxResizable: false,
             toggleDragModeOnDblclick: false,
             ready: function () {
-                $('#zoom_in').click(function () {
+                $('#zoom_in_perfil').click(function () {
                     cropper.zoom(0.1);
                 });
 
-                $('#zoom_out').click(function () {
+                $('#zoom_out_perfil').click(function () {
                     cropper.zoom(-0.1);
                 });
             },
@@ -60,13 +58,13 @@ $(document).ready(function () {
         });
 
         cropper.destroy();
-        $(`#edit_${element.id}`).remove();
+        $(`#perfil_edit_${element.id}`).remove();
     });
 
-    $('#cancel').click(function () {
+    $('#cancel-perfil').click(function () {
         cropper.destroy();
-        $(`#edit_${element.id}`).remove();
-        $('#image-editor').hide();
+        $(`#perfil_edit_${element.id}`).remove();
+        $('#image-editor-perfil').hide();
         element.value = "";
     });
 })
