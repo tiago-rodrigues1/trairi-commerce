@@ -10,7 +10,7 @@
     <div class="p-4 vstack gap-4">
         <div>
             <h1>Seu catálogo</h1>
-            <h6>0 Resultados encontrados</h6>
+            <h6>{{ isset($produtos) ? count($produtos) : 0 }} Resultados encontrados</h6>
         </div>
 
         <div class="mt-3 mb-2 w-100 d-flex align-items-end justify-content-between">
@@ -40,7 +40,7 @@
                 </thead>
                 <tbody class="produtos">
                     @forelse ($produtos as $produto)
-                        <tr class="produto">
+                        <tr>
                             <td>{{ $produto->id }}</td>
                             <td>{{ $produto->nome }}</td>
                             <td>{{ $produto->valor }}</td>
@@ -59,7 +59,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6">Sem produtos</td>
+                            <td colspan="9" class="text-center">Sem produtos</td>
                         </tr>
                     @endforelse
 
