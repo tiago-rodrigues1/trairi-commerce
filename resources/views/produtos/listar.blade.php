@@ -47,7 +47,7 @@
                             <td>{{ $produto->disponibilidade }}</td>
                             <td>{{ $produto->taxa_de_entrega }}</td>
                             <td>{{ $produto->created_at }}</td>
-                            <td><a href="/produtos/detalhar/{{ $produto->id }}">Abrir</a></td>
+                            <td><a href="#" data-produto_id="{{ $produto->id }}" class="open">Abrir</a></td>
                             <td><a class="btn tc-btn" href="/produtos/editar/{{ $produto->id }}">Editar</a></td>
                             <td>
                                 <form action="/produtos/arquivar/{{ $produto->id }}" method="POST">

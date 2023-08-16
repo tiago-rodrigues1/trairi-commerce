@@ -68,10 +68,11 @@
                             @endif
                         </div>
                         <span>Taxa de entrega: R$
-                            {{ number_format($produto->anunciante->taxa_de_entrega, 2, ',') }}</span>
+                            {{ number_format($produto->taxa_de_entrega, 2, ',') }}</span>
                         <div class="mt-3">
-                            <p class="mb-2">Por {{ $produto->anunciante->nome_fantasia }}</p>
-                            <p>{{ $produto->anunciante->cidade }}</p>
+                            <p class="mb-2">
+                                Por <a href="/usuario/perfilAnunciante/{{ $produto->anunciante->id }}">{{ $produto->anunciante->nome_fantasia }}</a>
+                            </p>
                         </div>
                         <div class="pt-2 vstack gap-1">
                             <h6>Aceitamos</h6>

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 class Pedido extends Model {
     use HasFactory;
 
-    protected $fillable = ['tipo_de_pagamento_id', 'cep_destino', 'cidade_destino', 'bairro_destino', 'endereco_destino'];
+    protected $fillable = ['tipo_de_pagamento_id', 'cep_destino', 'cidade_destino', 'bairro_destino', 'endereco_destino', 'numero_destino'];
 
     public function cliente() {
         return $this->belongsTo(Cliente::class);
