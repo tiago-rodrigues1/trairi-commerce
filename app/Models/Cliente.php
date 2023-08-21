@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Cliente extends Model
-{
+class Cliente extends Model {
     use HasFactory;
 
     public function usuario() {
@@ -181,6 +180,31 @@ class Cliente extends Model
             DB::table('cliente_comenta_produtos')
             ->where('id', $comentario_id)
             ->update(['bloqueado' => '1']);
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function editarComentarioAnunciante($comentario_id, $novoComentario) {
+        try {
+            DB::table('cliente_comenta_anunciantes')
+            ->where('id', $comentario_id)
+            ->update(['comentario' => $novoComentario]);
+
+            return true;
+        } catch (Exception $e) {
+            dd($e);
+            return false;
+        }
+    }
+
+    public function editarComentarioProduto($comentario_id, $novoComentario) {
+        try {
+            DB::table('cliente_comenta_produtos')
+            ->where('id', $comentario_id)
+            ->update(['comentario' => $novoComentario]);
 
             return true;
         } catch (Exception $e) {

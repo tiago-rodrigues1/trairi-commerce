@@ -277,4 +277,30 @@ class UsuarioController extends Controller {
         return back()->with(compact('status'));
     }
 
+    public function editarComentarioAnunciante(Request $request, $comentario_id) {
+        $c = session()->get('usuario')->cliente;
+        $resultado = $c->editarComentarioAnunciante($comentario_id, $request['comentario']);
+
+        if ($resultado) {
+            $status = ['type' => 'success', 'msg' => 'Comentário editado com sucesso!'];
+        } else {
+            $status = ['type' => 'error', 'msg' => 'Não foi possível editar seu comentário neste momento'];
+        }
+
+        return back()->with(compact('status'));
+    }
+
+    public function editarComentarioProduto(Request $request, $comentario_id) {
+        $c = session()->get('usuario')->cliente;
+        $resultado = $c->editarComentarioProduto($comentario_id, $request['comentario']);
+
+        if ($resultado) {
+            $status = ['type' => 'success', 'msg' => 'Comentário editado com sucesso!'];
+        } else {
+            $status = ['type' => 'error', 'msg' => 'Não foi possível deletar seu comentário neste momento'];
+        }
+
+        return back()->with(compact('status'));
+    }
+
 }
