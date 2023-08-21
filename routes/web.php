@@ -26,6 +26,9 @@ Route::middleware('autorizacao:false,true,false')->group(function() {
 
     Route::get('/anunciantes/comentarios/{id}/deletar', [UsuarioController::class, 'deletarComentarioAnunciante']);
     Route::get('/produtos/comentarios/{id}/deletar', [UsuarioController::class, 'deletarComentarioProduto']);
+
+    Route::post('/anunciantes/comentarios/{id}/editar', [UsuarioController::class, 'editarComentarioAnunciante']);
+    Route::post('/produtos/comentarios/{id}/editar', [UsuarioController::class, 'editarComentarioProduto']);
 });
 
 /* Rotas de anunciante */
