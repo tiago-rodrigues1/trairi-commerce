@@ -2,7 +2,7 @@
     <img src="/storage/{{$objectData->usuario->foto_perfil_path}}" alt="" class="rounded-circle"
         style="width: 4rem; height: 4rem;">
     <div class="vstack">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="coment-header d-flex align-items-center justify-content-between">
             <span>
                 <b>{{ $objectData->usuario->nome }}</b>
                 <small class="tc-light-text">Em {{ date('d/m/Y', strtotime($objectData->pivot->created_at)) }}</small>
@@ -13,12 +13,14 @@
                         <i class="fa-solid fa-ellipsis-vertical" style="color: #0D0A0B;"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-lg-end">
-                        <li><a href="/{{ $tipoDeComentario }}/comentarios/{{ $objectData->pivot->id }}/editar" class="dropdown-item">Editar</a></li>
+                        <li>
+                            <button class="btn-edit-coment dropdown-item" type="button" data-target_coment="#coment_{{$tipoDeComentario}}__{{$objectData->pivot->id}}">Editar</button>
+                        </li>
                         <li><a href="/{{ $tipoDeComentario }}/comentarios/{{ $objectData->pivot->id }}/deletar" class="dropdown-item">Excluir</a></li>
                     </ul>
                 </div>
             @endif
         </div>
-        <p>{{ $objectData->pivot->comentario }}</p>
+        <input type="text" id="coment_{{$tipoDeComentario}}__{{$objectData->pivot->id}}" value="{{ $objectData->pivot->comentario }}" class="input-coment py-1 form-control" disabled>
     </div>
 </div>
