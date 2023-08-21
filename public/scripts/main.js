@@ -11,6 +11,47 @@ function isAnuncianteChecked(el) {
     }
 }
 
+function editarComentarioHandler(event) {
+    let target = event.target.getAttribute('data-target_coment');
+    let originalComent = $(target).val();
+    let comentHeader = $('.coment-header');
+
+    $(comentHeader).addClass('d-none');
+
+    $(target).removeAttr('disabled').focus().after(`
+        <div class="mt-3 d-flex gap-3 align-self-end coment-controls">
+            <button type="button" class="cancel-coment btn btn-sm text-tc-green">Cancelar</button>
+            <button  type="button"class="save-coment btn btn-sm tc-btn">Salvar</button>
+        </div>
+    `);
+
+    $('.cancel-coment').click(function() {
+        $(target).val(originalComent);
+        $(target).attr('disabled', 'true');
+        $(comentHeader).removeClass('d-none');
+        $('.coment-controls').remove();
+    });
+
+    $('.save-coment').click(function() {
+        let comentario = $(target).val();
+        let [, tipoComentario, , comentario_id] = target.split('_');
+
+        $.ajax({
+            url: `/${tipoComentario}/comentarios/${comentario_id}/editar`,
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                comentario
+            },
+            success: function() {
+                window.location.reload();
+            }
+        });
+    });
+}
+
 $(document).ready(function () {
     $('#cadastro').hide();
 
@@ -179,6 +220,8 @@ $(document).ready(function () {
                     }
                 });
             });
+
+            $('.btn-edit-coment').on('click', editarComentarioHandler);
         });
     });
 
@@ -223,4 +266,6 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.btn-edit-coment').on('click', editarComentarioHandler);
 });
