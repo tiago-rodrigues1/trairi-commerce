@@ -139,7 +139,7 @@
                     @endif
                     @if (isset($comentarios))
                         <div id="comentarios-container">
-                            <div id="comentarios">
+                            <div id="produtos-comentarios">
                                 @foreach ($comentarios as $comentario)
                                     <x-comentario :objectData="$comentario" tipoDeComentario="produtos" />
                                 @endforeach
