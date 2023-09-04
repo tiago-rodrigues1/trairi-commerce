@@ -255,6 +255,10 @@ button:hover {
     border-bottom: 1px solid var(--tc-green) !important;
 }
 
+.toast-container {
+    pointer-events: all !important;
+}
+
 @media (min-width: 768px) {
     .h-md-auto {
         height: auto !important;

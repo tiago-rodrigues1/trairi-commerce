@@ -32,7 +32,6 @@ class ProdutoController extends Controller {
 
     public function editar(Request $request) {
         $request->validate([
-            'disponibilidade' => 'boolean',
             'nome' => 'string|max:100',
             'descricao' => 'string|max:300',
             'valor' => 'numeric',

@@ -15,7 +15,7 @@
             <h1 class="fs-2 text-tc-green">Editar produto</h1>
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="isDisponivel"
-                    {{ $produto->disponibilidade ? 'checked' : '' }}>
+                    {{ $produto->disponibilidade ? 'checked' : '' }} value="{{ $produto->disponibilidade }}">
                 <label class="form-check-label" for="isDisponivel">Disponível</label>
             </div>
             <div>

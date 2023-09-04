@@ -52,6 +52,12 @@ function editarComentarioHandler(event) {
     });
 }
 
+function closeHandler(event) {
+    let target = event.target.getAttribute('data-target');
+
+    $(target).remove();
+}
+
 $(document).ready(function () {
     $('#cadastro').hide();
 
@@ -155,11 +161,7 @@ $(document).ready(function () {
             $('body').append(data);
             $(`#detalheProduto_${id}`).show();
 
-            $('.close').click(function() {
-                var target = $(this).data('target');
-
-                $(target).remove();
-            });
+            $('.close').click(closeHandler);
 
             $('.favoritar').click(function() {
                 $(this).toggleClass('favoritado');
@@ -268,4 +270,6 @@ $(document).ready(function () {
     });
 
     $('.btn-edit-coment').on('click', editarComentarioHandler);
+
+    $(document).on('click', '.close', closeHandler);
 });

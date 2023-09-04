@@ -39,7 +39,7 @@ class ProdutoImagem extends Model {
         try {
             foreach ($imagensProduto as $imagem) {
                 if (!is_null($manterImagens)) {
-                    if (!(in_array($manterImagens, $imagem->path))) {
+                    if (!(in_array($imagem->path, $manterImagens))) {
                         Storage::delete('public/'.$imagem->path);
                         $imagem->delete();
                     }

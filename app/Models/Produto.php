@@ -68,6 +68,7 @@ class Produto extends Model
     public static function atualizar($produtoId, $dados) {
         try {
             $produto = Produto::findOrFail($produtoId);
+
             $produto->update($dados);
 
             if ($produto->bloqueado) {

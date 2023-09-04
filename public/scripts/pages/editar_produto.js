@@ -10,6 +10,10 @@ $(document).ready(function () {
             affixesStay: false
         });
     });
+    
+    $('#isDisponivel').change(function () {
+        $(this).val($(this).prop('checked') ? '1' : '0');
+    });
 
     $('#editarProduto').on('submit', function (e) {
         e.preventDefault();
@@ -27,16 +31,16 @@ $(document).ready(function () {
             if ($(this).attr('value') && !($(this).prop('files').length)) {
                 var divImg = $(`div[data-target="#${$(this).attr('id')}"]`).children('img')[0];
 
-                console.log();
-
                 var newInput = document.createElement('input');
                 newInput.type = 'hidden';
                 newInput.name = 'mantem[]';
-                newInput.value = $(divImg).attr('src').split('storage/');
+                newInput.value = $(divImg).attr('src').split('storage/')[1];
 
                 $(this).append(newInput);
             }
         });
+
+        $(this).append('<input type="hidden" name="disponibilidade" value="'+$('#isDisponivel').val()+'" />')
 
         $(this).unbind('submit').submit();
     });

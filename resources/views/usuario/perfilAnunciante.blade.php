@@ -21,7 +21,7 @@
                     <p>{{ $anunciante->descricao }}</p>
                     <div>
                         <i class="fa-solid fa-location-dot pe-2" style="color: #72b01d;"></i>
-                        <span>Localização: {{ $anunciante->cidade }}, {{ $anunciante->bairro }} Rua {{ $anunciante->endereco }}</span>
+                        <span>Localização: {{ $anunciante->cidade }} - {{ $anunciante->endereco }} Nº {{ $anunciante->numero }}, {{ $anunciante->bairro }}</span>
                     </div>
                 </div>
             </div>
