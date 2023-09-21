@@ -83,10 +83,17 @@ class Produto extends Model
                 if (!$resultado) {
                     throw new Exception();
                 }
+            } else if (isset($dados['mantem'])) {
+                $resultado = ProdutoImagem::editar($produto, null, $dados['mantem']);
+
+                if (!$resultado) {
+                    throw new Exception();
+                }
             }
             
             return true;
         } catch (\Exception $e) {
+            dd($e);
             return false;
         }
     }

@@ -33,7 +33,7 @@ class ProdutoImagem extends Model {
         }
     }
 
-    public static function editar($produto, $novasImagens, $manterImagens = null) {
+    public static function editar($produto, $novasImagens = null, $manterImagens = null) {
         $imagensProduto = $produto->imagens;
 
         try {
@@ -49,11 +49,13 @@ class ProdutoImagem extends Model {
                 }
             }
     
-            foreach ($novasImagens as $img) {
-                $path = $img->store('imagens', 'public');
-    
-                $pi = new ProdutoImagem(['path' => $path]);
-                $produto->imagens()->save($pi);
+            if (!is_null($novasImagens)) {
+                foreach ($novasImagens as $img) {
+                    $path = $img->store('imagens', 'public');
+        
+                    $pi = new ProdutoImagem(['path' => $path]);
+                    $produto->imagens()->save($pi);
+                }
             }
 
             return true;

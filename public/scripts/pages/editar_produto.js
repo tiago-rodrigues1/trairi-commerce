@@ -136,8 +136,9 @@ $(document).ready(function () {
         if ($(this).hasClass('substituir')) {
             $(input).click();
         } else if ($(this).hasClass('remover')) {
-            $(input).val("");
+            $(input).val("").removeAttr("name");
             $(input).files = [];
+
             $(this).prev().addClass('add_img').css('cursor', 'pointer').children('img').attr('src',
                 '/icons/plus.svg');
             $(`.substituir[data-related="${input}"]`).remove();
