@@ -188,7 +188,7 @@ $(document).ready(function () {
                         }
                     },
                     success: function() {
-                        console.log($('#comentarios').load(`${url} #comentarios`));;
+                        $('#comentarios-container').load(`${url} #produtos-comentarios`);
                     }
                 });
             });
