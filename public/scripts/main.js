@@ -227,8 +227,12 @@ $(document).ready(function () {
         });
     });
 
-    $('.filter-item input').change(function() {
-        $('.filter-form').submit();
+    $('.filter-item__input').change(function() {
+        if ($(this).hasClass('.filter-item__input--mobile')) {
+            $('#mobile-filter').submit()
+        } else {
+            $('#desktop-filter').submit()
+        }
     });
     
     $('.mostrar').click(function() {

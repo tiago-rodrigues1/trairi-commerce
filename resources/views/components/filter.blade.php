@@ -1,4 +1,4 @@
-<form class="vstack col-3 col-xl-2 pt-4 ps-4 d-none d-lg-block filter-form" method="get" action="{{ $action }}">
+<form class="vstack col-3 col-xl-2 pt-4 ps-4 d-none d-lg-block filter-form" method="get" action="{{ $action }}" id="desktop-filter">
     <h4>Filtros</h4>
     <a href="{{ $action }}{{ isset($termo) ? "?termo=".$termo : "" }}">Limpar</a>
     @if (isset($termo))
@@ -25,7 +25,7 @@
 							@endphp
 							<div class="form-check mt-3">
 								<input 
-									class="form-check-input" 
+									class="form-check-input filter-item__input" 
 									{{ $isChecked ? "checked" : "" }} 
 									type="checkbox" 
 									name="{{ $filter['label'][1] }}[]"
@@ -42,7 +42,7 @@
     </ul>
 </form>
 
-<form class="filter-form d-lg-none hstack bg-tc-gray justify-content-between align-items-center py-3 px-4" method="get" action="{{ $action }}">
+<form class="filter-form d-lg-none hstack bg-tc-gray justify-content-between align-items-center py-3 px-4" method="get" action="{{ $action }}" id="mobile-filter">
     <button type="button" class="hstack btn p-1 gap-2" data-bs-toggle="modal" data-bs-target="#mb-filters">
         <span>Filtrar</span>
         <i class="fa-solid fa-sliders" style="color: #0a0b0d;"></i>
@@ -80,7 +80,7 @@
                                             @endphp
                                             <div class="form-check mt-3">
                                                 <input 
-                                                    class="form-check-input" 
+                                                    class="form-check-input filter-item__input filter-item__input--mobile" 
                                                     {{ $isChecked ? "checked" : "" }} 
                                                     type="checkbox" 
                                                     name="{{ $filter['label'][1] }}[]"
