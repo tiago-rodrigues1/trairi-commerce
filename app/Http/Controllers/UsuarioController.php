@@ -26,7 +26,7 @@ class UsuarioController extends Controller {
             'numero' => 'required',
             'endereco' => 'required|max:200',
             'genero' => 'required',
-            'fotoPerfil' => 'required|image|mimes:jpg,png,jpeg,svg,webp|max:1000',
+            'fotoPerfil' => 'required|image|mimes:jpg,png,jpeg,svg,webp',
         ]);
 
         if ($request->tipoCadastro == 'cliente') {
