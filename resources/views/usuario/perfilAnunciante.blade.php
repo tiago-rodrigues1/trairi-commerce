@@ -8,26 +8,28 @@
     @endphp
     <main class="p-4 vstack align-items-center justify-content-center">
         <section class="vstack gap-4 p-4">
-            <div class="hstack gap-4">
-                <img src="/storage/{{ $anunciante->usuario->foto_perfil_path }}" alt="Imagem de perfil" class="rounded-circle"
-                    style="width: 8rem; height: 8rem;">
-                <div class="vstack">
-                    <h3><b>{{ $anunciante->nome_fantasia }}</b></h3>
-                    <div class="w-100 d-flex align-items-center gap-3 pb-3" id="produto-estrelas">
-                        @for ($i = 0; $i < 5; $i++)
-                            <i class="fa-solid fa-star" style="color: {{ $numeroEstrelas <= $i ? '#DDDDDD' : '#72B01D' }};"></i>
-                        @endfor
-                    </div>
-                    <p>{{ $anunciante->descricao }}</p>
-                    <div>
-                        <i class="fa-solid fa-location-dot pe-2" style="color: #72b01d;"></i>
-                        <span>Localização: {{ $anunciante->cidade }} - {{ $anunciante->endereco }} Nº {{ $anunciante->numero }}, {{ $anunciante->bairro }}</span>
+            <div class="vstack">
+                <div class="d-flex gap-4 align-items-center">
+                    <img src="/storage/{{ $anunciante->usuario->foto_perfil_path }}" alt="Imagem de perfil" class="rounded-circle"
+                        style="width: 8rem; height: 8rem;">
+                    <div class="vstack justify-content-center">
+                        <h3><b>{{ $anunciante->nome_fantasia }}</b></h3>
+                        <div class="w-100 d-flex align-items-center gap-3 pb-3" id="produto-estrelas">
+                            @for ($i = 0; $i < 5; $i++)
+                                <i class="fa-solid fa-star" style="color: {{ $numeroEstrelas <= $i ? '#DDDDDD' : '#72B01D' }};"></i>
+                            @endfor
+                        </div>
+                        <p class="m-0 p-0">{{ $anunciante->descricao }}</p>
                     </div>
                 </div>
+                <div class="w-100 mt-4">
+                    <i class="fa-solid fa-location-dot pe-2" style="color: #72b01d;"></i>
+                    <span>Localização: {{ $anunciante->cidade }} - {{ $anunciante->endereco }} Nº {{ $anunciante->numero }}, {{ $anunciante->bairro }}</span>
+                </div>
             </div>
-            <div class="vstack bg-tc-gray border rounded-3  align-items-center gap-2 p-2">
+            <div class="vstack bg-tc-gray border rounded-3 align-items-center gap-2 p-2">
                 <span><b>Canais de atendimento</b> </span>
-                <div class="gap-4 p-2 hstack justify-content-center align-content-space-around">
+                <div class="gap-4 p-2 d-flex flex-column flex-md-row justify-content-center align-content-space-around">
                     <div class=" ">
                         <i class="fa-solid fa-envelope" style="color: #72b01d;"></i>
                         <span>{{ $anunciante->email_anunciante }}</span>
